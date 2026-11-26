@@ -1,8 +1,10 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { Instagram, Facebook, Twitter, Youtube, Linkedin } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { TikTokIcon, PinterestIcon } from "@/components/site/BrandIcons";
 import { SOCIAL_LINKS } from "@/lib/social";
+import { venueLine } from "@/lib/thursday/calendar";
+import { IRIE_JERK_JUGGLING } from "@/lib/thursday/irie-jerk-juggling-event";
 
 const SOCIALS = [
   { Icon: Instagram, href: SOCIAL_LINKS.instagram, label: "Instagram" },
@@ -14,7 +16,24 @@ const SOCIALS = [
   { Icon: Linkedin, href: SOCIAL_LINKS.linkedin, label: "LinkedIn" },
 ];
 
+// Archives never change: the venue address block stays off these pages and
+// their sub-pages. Add a path here when an event is archived.
+const ARCHIVED_PATHS = [
+  "/past-events",
+  "/chicago-vybez",
+  "/work-fi-di-beach",
+  "/charly-black",
+  "/st-catherine-linkup",
+  "/jamaicaday",
+  "/jamaica64",
+];
+
 export function Footer() {
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const archived = ARCHIVED_PATHS.some(
+    (path) => pathname === path || pathname.startsWith(`${path}/`),
+  );
+
   return (
     <footer className="border-t border-border bg-background">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
@@ -60,8 +79,21 @@ export function Footer() {
                   Irie Jerk &amp; Juggling — Free Thursdays
                 </Link>
               </li>
+              {!archived && (
+                <li>
+                  <address className="not-italic">
+                    {IRIE_JERK_JUGGLING.venue.name}
+                    <br />
+                    {venueLine(IRIE_JERK_JUGGLING)}
+                    <br />
+                    <a href={`tel:${IRIE_JERK_JUGGLING.venue.phone.tel}`} className="hover:text-gold">
+                      {IRIE_JERK_JUGGLING.venue.phone.display}
+                    </a>
+                  </address>
+                </li>
+              )}
               <li>
-                <a href="https://www.google.com/maps/search/?api=1&query=Irie+Jerk+Bar+and+Grill+1413+W+127th+St+Calumet+Park+IL+60827" target="_blank" rel="noreferrer" className="hover:text-gold">
+                <a href={IRIE_JERK_JUGGLING.venue.mapsUrl} target="_blank" rel="noreferrer" className="hover:text-gold">
                   Get Directions
                 </a>
               </li>

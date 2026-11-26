@@ -6,8 +6,10 @@
 // Jamaica's dinner-specific narrative/hero/notify-me signup. That page still
 // carries its own hook and Culture Card story around Sunday's food; this one
 // is the plain "what's on, every day" index.
-import { CalendarDays, UtensilsCrossed } from "lucide-react";
+import { CalendarDays, Phone, UtensilsCrossed } from "lucide-react";
 import { IrieJerkLineupGrid } from "@/components/site/IrieJerkLineupGrid";
+import { venueLine } from "@/lib/thursday/calendar";
+import { IRIE_JERK_JUGGLING } from "@/lib/thursday/irie-jerk-juggling-event";
 import ijjFlyer from "@/assets/irie-jerk-juggling-flyer-560.webp";
 
 const SITE_URL = "https://trcevent.com";
@@ -52,8 +54,15 @@ export function EventsPage() {
               <CalendarDays className="size-4 text-gold" /> 7 days a week
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <UtensilsCrossed className="size-4 text-gold" /> Irie Jerk Bar and Grill, Calumet Park, IL
+              <UtensilsCrossed className="size-4 text-gold" /> {IRIE_JERK_JUGGLING.venue.name},{" "}
+              {venueLine(IRIE_JERK_JUGGLING)}
             </span>
+            <a
+              href={`tel:${IRIE_JERK_JUGGLING.venue.phone.tel}`}
+              className="inline-flex items-center gap-1.5 hover:text-gold"
+            >
+              <Phone className="size-4 text-gold" /> {IRIE_JERK_JUGGLING.venue.phone.display}
+            </a>
           </div>
         </div>
       </section>
