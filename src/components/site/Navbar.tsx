@@ -1,5 +1,6 @@
-import { Link } from "@tanstack/react-router";
-import { MessageCircle } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Link, useRouterState } from "@tanstack/react-router";
+import { Menu, MessageCircle, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 
@@ -12,9 +13,26 @@ const EVENT_LINKS = [
 ];
 
 export function Navbar() {
+  const [open, setOpen] = useState(false);
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+
+  // Close the menu after moving to another page (including with Back).
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
+
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6">
         <div className="flex items-center gap-6">
           <Link to="/" className="flex shrink-0 items-center gap-2.5">
             <img
@@ -29,7 +47,8 @@ export function Navbar() {
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-5 sm:flex">
+          {/* The links need about 850px, so narrower screens get the menu button. */}
+          <nav className="hidden items-center gap-5 lg:flex">
             {EVENT_LINKS.map((event) => (
               <Link
                 key={event.to}
@@ -42,12 +61,48 @@ export function Navbar() {
           </nav>
         </div>
 
-        <Button asChild variant="gold" size="sm">
-          <a href="https://www.google.com/maps/search/?api=1&query=Irie+Jerk+Bar+and+Grill+1413+W+127th+St+Calumet+Park+IL+60827" target="_blank" rel="noreferrer">
-            <MessageCircle className="size-4" /> Get Directions
-          </a>
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button asChild variant="gold" size="sm">
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Irie+Jerk+Bar+and+Grill+1413+W+127th+St+Calumet+Park+IL+60827"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Get Directions"
+            >
+              <MessageCircle className="size-4" />
+              <span className="hidden sm:inline">Get Directions</span>
+            </a>
+          </Button>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="site-menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+            className="flex size-11 items-center justify-center rounded-md border border-border text-foreground hover:text-gold lg:hidden"
+          >
+            {open ? <X className="size-5" /> : <Menu className="size-5" />}
+          </button>
+        </div>
       </div>
+
+      {open && (
+        <nav
+          id="site-menu"
+          className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-border/60 bg-background px-4 py-2 sm:px-6 lg:hidden"
+        >
+          {EVENT_LINKS.map((event) => (
+            <Link
+              key={event.to}
+              to={event.to}
+              onClick={() => setOpen(false)}
+              className="block border-b border-border/40 py-3.5 text-base font-medium text-muted-foreground last:border-0 hover:text-gold [&.active]:text-gold"
+            >
+              {event.label}
+            </Link>
+          ))}
+        </nav>
+      )}
     </header>
   );
 }
