@@ -21,12 +21,12 @@ needs it) instead.
 
 ## Deployment
 
-**One repo, one push.** This repo, `trcevents/events` (local folder
+**One repo, one push.** This repo, `trcevents/TRC` (local folder
 `C:\Users\mkepr\Documents\GitHub\trcevents-events-inspect`), is both the source and the live site.
 `git push origin main` deploys trcevent.com: `.github/workflows/deploy.yml` runs `bun install
 --frozen-lockfile` and `bun run build`, then publishes `dist/client` to GitHub Pages (Pages source
 is set to "GitHub Actions"). It goes live 1–3 minutes after the push. Check the run with
-`gh run list -R trcevents/events`. If the build fails, the previous deploy stays live.
+`gh run list -R trcevents/TRC`. If the build fails, the previous deploy stays live.
 
 - Never commit build output (`dist/`). CI builds it.
 - Never force-push or rewrite history on `main`.
@@ -35,8 +35,11 @@ is set to "GitHub Actions"). It goes live 1–3 minutes after the push. Check th
 - Local builds: bun isn't installed on the owner's machine, so use `node node_modules/vite/bin/vite.js build`.
 - Edge functions in `supabase/functions/` are deployed separately with the Supabase CLI
   (project `xdjbgcqaynnzykrglgnf`, shared with other sites). Pushing does not deploy them.
-- History: until 2026-11-25 the source lived in a separate repo and only built HTML was committed
-  here. That setup is retired. Don't recreate it, and don't add a second repo or cross-repo tokens.
+- History: until 2026-11-25 the source lived in a separate repo and built HTML was committed to
+  `trcevents/events`. On 2026-11-25 the site moved to this fresh repo, `trcevents/TRC`, starting
+  from a single commit without that history. The old full history is kept locally on the
+  `old-events-main` branch. Don't recreate the old setup, and don't add a second repo or
+  cross-repo tokens.
 
 ## Commands
 
@@ -56,17 +59,15 @@ regenerates automatically whenever `bun dev`/`bun run build` is running and a ro
 for the `Navbar`/`Outlet`/`Footer` layout) and also owns the global `notFoundComponent` /
 `errorComponent`.
 
-As of 2026-07-13 there are only two real routes: `src/routes/index.tsx` (a bare redirect to
-`/charly-black` — the root domain has no content of its own) and `src/routes/charly-black.tsx`
-(the actual site: the Charly Black "Good Times" event page, self-contained with hardcoded event
-details, no loader/data layer). `src/routes/sitemap[.]xml.ts` is a server route (`GET` handler)
-generating `/sitemap.xml` — it lists routes as a plain hardcoded array now that there's no data
-layer to walk; keep it in sync when real routes are added/removed.
+There are about 50 routes. Each route file in `src/routes/` is a thin wrapper that imports its
+page from a `-<name>-page.tsx` file (the `-` prefix keeps it out of route generation).
+`src/routes/index.tsx` renders the Irie Jerk & Juggling page at `/`. Event pages are
+self-contained, with hardcoded copy where content is static and live Supabase reads only where the
+data is genuinely dynamic (signups, leaderboard, door check-in, admin tools). Admin and other
+private pages set `noindex`.
 
-Dancehall 101 (a weekly event migrating from selassiefest.com/dancehall101/, backed by an existing
-Supabase project) is queued as the next real page — when it's built, follow the same pattern:
-self-contained route, hardcoded copy where content is static, live Supabase reads only where the
-data is genuinely dynamic (signups, leaderboard, door check-in).
+`/sitemap.xml` is the hand-maintained static file `public/sitemap.xml`. Keep it in sync when
+public routes are added, removed or archived.
 
 **SSR error handling (Lovable-specific plumbing — treat carefully).** There's a layered fallback
 so a broken SSR render never shows a raw crash:
