@@ -10,8 +10,8 @@
 // is_comp_super_admin / my_admin_name RPCs, admin-create-person /
 // send-access-info functions), now a proper route.
 //
-// Auth is email+password (Supabase Auth), gated server-side by the
-// is_comp_admin() RPC -- anyone can sign in with a Supabase account, but
+// Sign-in is an emailed 6-digit code (AdminCodeSignIn), gated server-side by
+// the is_comp_admin() RPC --
 // only emails on the comp_admins roster pass that check. Session persists
 // via the shared supabase client's default localStorage handling.
 import { useEffect, useState } from "react";
@@ -22,6 +22,7 @@ import { toast } from "sonner";
 import { CheckCircle2, Loader2 } from "lucide-react";
 
 import { supabase } from "@/lib/supabase";
+import { AdminCodeSignIn } from "@/components/site/AdminCodeSignIn";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -192,101 +193,7 @@ const logRequestSchema = z
   );
 type LogRequestValues = z.infer<typeof logRequestSchema>;
 
-function GuideAndSignIn({ onSignedIn }: { onSignedIn: () => void }) {
-  const [mode, setMode] = useState<"signin" | "forgot">("signin");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [busy, setBusy] = useState(false);
-  const [msg, setMsg] = useState("");
-
-  const [fpEmail, setFpEmail] = useState("");
-  const [fpSent, setFpSent] = useState(false);
-  const [fpCode, setFpCode] = useState("");
-  const [fpNewPassword, setFpNewPassword] = useState("");
-  const [fpMsg, setFpMsg] = useState("");
-  const [fpResetMsg, setFpResetMsg] = useState("");
-
-  async function handleSignIn() {
-    if (!email.trim() || !password) {
-      setMsg("Enter both your email and password.");
-      return;
-    }
-    setBusy(true);
-    setMsg("");
-    try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email: email.trim(),
-        password,
-      });
-      if (error) {
-        setMsg(`Error: ${error.message}`);
-        return;
-      }
-      onSignedIn();
-    } finally {
-      setBusy(false);
-    }
-  }
-
-  async function handleSendResetCode() {
-    if (!fpEmail.trim()) {
-      setFpMsg("Enter your email first.");
-      return;
-    }
-    setBusy(true);
-    setFpMsg("");
-    try {
-      const { data, error } = await supabase.functions.invoke("request-admin-password-reset", {
-        body: { email: fpEmail.trim() },
-      });
-      if (error || data?.error) {
-        setFpMsg(
-          data?.error ??
-            (await extractFunctionErrorMessage(error)) ??
-            "Something went wrong. Try again.",
-        );
-      } else {
-        setFpMsg("If that email is registered, a code was sent.");
-        setFpSent(true);
-      }
-    } catch {
-      setFpMsg("Something went wrong. Try again.");
-    } finally {
-      setBusy(false);
-    }
-  }
-
-  async function handleResetPassword() {
-    if (!fpCode.trim() || !fpNewPassword) {
-      setFpResetMsg("Enter the code and a new password.");
-      return;
-    }
-    setBusy(true);
-    setFpResetMsg("");
-    try {
-      const { data, error } = await supabase.functions.invoke("reset-admin-password", {
-        body: { email: fpEmail.trim(), code: fpCode.trim(), newPassword: fpNewPassword },
-      });
-      if (!data?.ok) {
-        setFpResetMsg(
-          data?.error ??
-            (error ? await extractFunctionErrorMessage(error) : null) ??
-            "That didn't work. Try again.",
-        );
-        return;
-      }
-      setFpResetMsg("Password set! Sign in with it now.");
-      setTimeout(() => {
-        setMode("signin");
-        setEmail(fpEmail);
-      }, 1200);
-    } catch {
-      setFpResetMsg("Something went wrong. Try again.");
-    } finally {
-      setBusy(false);
-    }
-  }
-
+function GuideAndSignIn() {
   return (
     <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6">
       <p className="eyebrow">TRC Events · Charly Black — Good Times · Aug 28, 2026</p>
@@ -347,109 +254,16 @@ function GuideAndSignIn({ onSignedIn }: { onSignedIn: () => void }) {
         their behalf — same process, same review, from there.
         <br />
         <br />
-        <strong className="text-foreground">Keep your login to yourself.</strong> Your email and
-        password are personal — please don't forward or share them. Lost your password or need help?
-        Text or call 414-909-3279.
+        <strong className="text-foreground">Keep your sign-in codes to yourself.</strong> Please
+        don't forward or share them. Need help? Text or call 414-909-3279.
       </div>
 
-      <div className="mx-auto mt-10 max-w-sm border-t border-border pt-8 text-center">
-        {mode === "signin" ? (
-          <>
-            <h2 className="font-display text-xl font-bold">Comp Admin Sign-in</h2>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Sign in with the email and password Stephen gave you.
-            </p>
-            <div className="mt-4 space-y-3 text-left">
-              <Input
-                type="email"
-                placeholder="you@example.com"
-                autoComplete="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <Input
-                type="password"
-                placeholder="Password"
-                autoComplete="current-password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <Button variant="gold" className="w-full" onClick={handleSignIn} disabled={busy}>
-                {busy ? <Loader2 className="size-4 animate-spin" /> : null}
-                Sign In
-              </Button>
-              {msg && <p className="text-sm text-destructive">{msg}</p>}
-              <button
-                type="button"
-                className="text-sm text-gold hover:underline"
-                onClick={() => setMode("forgot")}
-              >
-                Forgot password?
-              </button>
-            </div>
-          </>
-        ) : (
-          <>
-            <h2 className="font-display text-xl font-bold">Reset Password</h2>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Enter your email to get a reset code.
-            </p>
-            <div className="mt-4 space-y-3 text-left">
-              <Input
-                type="email"
-                placeholder="you@example.com"
-                autoComplete="email"
-                value={fpEmail}
-                onChange={(e) => setFpEmail(e.target.value)}
-              />
-              <Button
-                variant="goldOutline"
-                className="w-full"
-                onClick={handleSendResetCode}
-                disabled={busy}
-              >
-                Send Reset Code
-              </Button>
-              {fpMsg && <p className="text-sm text-muted-foreground">{fpMsg}</p>}
-
-              {fpSent && (
-                <div className="space-y-3 border-t border-border pt-3">
-                  <Input
-                    placeholder="6-digit code"
-                    inputMode="numeric"
-                    maxLength={6}
-                    value={fpCode}
-                    onChange={(e) => setFpCode(e.target.value)}
-                  />
-                  <Input
-                    type="password"
-                    placeholder="New password (8+ characters)"
-                    autoComplete="new-password"
-                    value={fpNewPassword}
-                    onChange={(e) => setFpNewPassword(e.target.value)}
-                  />
-                  <Button
-                    variant="gold"
-                    className="w-full"
-                    onClick={handleResetPassword}
-                    disabled={busy}
-                  >
-                    Set New Password
-                  </Button>
-                  {fpResetMsg && <p className="text-sm text-muted-foreground">{fpResetMsg}</p>}
-                </div>
-              )}
-
-              <button
-                type="button"
-                className="text-sm text-gold hover:underline"
-                onClick={() => setMode("signin")}
-              >
-                Back to sign in
-              </button>
-            </div>
-          </>
-        )}
+      <div className="mt-10 border-t border-border pt-8">
+        <h2 className="font-display mb-4 text-xl font-bold">Comp Admin Sign-in</h2>
+        <AdminCodeSignIn
+          status="signed-out"
+          prompt="Enter your reviewer email to get a 6-digit sign-in code."
+        />
       </div>
     </div>
   );
@@ -1103,7 +917,7 @@ function ManageTeamPanel() {
         setMsg(`Error: ${message ?? "Something went wrong. Try again."}`);
         return;
       }
-      setMsg(`Added${asAdmin ? " -- they'll get a welcome email to set their password." : "."}`);
+      setMsg(`Added${asAdmin ? " -- they'll get a welcome email with sign-in steps." : "."}`);
       setName("");
       setEmail("");
       setAsAdmin(false);
@@ -1274,7 +1088,7 @@ export function CompAdminPage() {
   }
 
   if (!userEmail) {
-    return <GuideAndSignIn onSignedIn={() => {}} />;
+    return <GuideAndSignIn />;
   }
 
   if (!isAdmin) {

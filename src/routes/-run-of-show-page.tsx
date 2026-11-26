@@ -6,12 +6,8 @@
 // production_schedule table) plus a structured Show/Artist Sets lineup
 // table with per-act status checkboxes (migration 0015, schedule_acts).
 // Anyone can read either with no login, except performer phone and email
-// (migration 0022); seeing those and editing anything needs one shared
-// team password (PRODUCTION_SCHEDULE_PASSWORD), not per-member accounts --
-// Stephen hands that one password to whoever on the team needs to edit.
-// The password field at the top of the page is shared by both the
-// schedule-text editor and every checkbox in the lineup table, rather than
-// asking for it again per action. Last write wins -- no conflict
+// (migration 0022). Seeing those and editing anything needs a comp admin
+// signed in with an emailed 6-digit code. Last write wins -- no conflict
 // resolution if two people save at once, which is an acceptable tradeoff
 // for a small team coordinating one show night, not a general-purpose doc
 // editor.
@@ -20,6 +16,7 @@ import { toast } from "sonner";
 import { CalendarClock, Loader2, Pencil, X } from "lucide-react";
 
 import { supabase } from "@/lib/supabase";
+import { AdminCodeSignIn, useAdminStatus } from "@/components/site/AdminCodeSignIn";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -78,11 +75,11 @@ export function RunOfShowPage() {
   const [editing, setEditing] = useState(false);
   const [busy, setBusy] = useState(false);
 
-  const [teamPassword, setTeamPassword] = useState("");
+  const adminStatus = useAdminStatus();
+  const isAdmin = adminStatus === "admin";
   const [updatedBy, setUpdatedBy] = useState("");
   const [draft, setDraft] = useState("");
   const [contactsUnlocked, setContactsUnlocked] = useState(false);
-  const [unlocking, setUnlocking] = useState(false);
 
   async function load() {
     setLoading(true);
@@ -120,7 +117,7 @@ export function RunOfShowPage() {
     setBusy(true);
     try {
       const { data, error } = await supabase.functions.invoke("update-production-schedule", {
-        body: { password: teamPassword, content: draft, updatedBy: updatedBy.trim() || undefined },
+        body: { content: draft, updatedBy: updatedBy.trim() || undefined },
       });
       if (error || !data?.ok) {
         toast.error(data?.error ?? "Couldn't save. Try again.");
@@ -145,13 +142,10 @@ export function RunOfShowPage() {
     }
   }
 
-  async function unlockContacts(e: React.FormEvent) {
-    e.preventDefault();
-    if (contactsUnlocked) return;
-    setUnlocking(true);
+  async function loadContacts() {
     try {
       const { data, error } = await supabase.functions.invoke("update-schedule-act", {
-        body: { action: "list-contacts", password: teamPassword },
+        body: { action: "list-contacts" },
       });
       if (error || !data?.ok) {
         toast.error(data?.error ?? "Couldn't load contacts. Try again.");
@@ -164,23 +158,34 @@ export function RunOfShowPage() {
       setContactsUnlocked(true);
     } catch {
       toast.error("Something went wrong. Check your connection and try again.");
-    } finally {
-      setUnlocking(false);
     }
   }
+
+  useEffect(() => {
+    if (loading) return;
+    if (isAdmin) {
+      loadContacts();
+    } else if (contactsUnlocked) {
+      // Signed out: drop the contacts from the page.
+      setContactsUnlocked(false);
+      setEditing(false);
+      load();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAdmin, loading]);
 
   async function saveActContact(act: ScheduleAct, field: "phone" | "email", value: string) {
     // The input is uncontrolled (defaultValue) so typing doesn't re-render
     // the table on every keystroke -- that also means there's no visible
     // "revert" to do on failure the way toggleActStatus can flip a checkbox
     // back. A failed save just leaves whatever's typed on screen and tells
-    // the editor to retry (blur the field again after fixing the password).
+    // the editor to retry (blur the field again).
     try {
       const { data, error } = await supabase.functions.invoke("update-schedule-act", {
-        body: { password: teamPassword, id: act.id, field, value },
+        body: { id: act.id, field, value },
       });
       if (error || !data?.ok) {
-        toast.error(data?.error ?? "Couldn't save -- check the team password and try again.");
+        toast.error(data?.error ?? "Couldn't save. Try again.");
         return;
       }
       setActs((prev) => prev.map((a) => (a.id === act.id ? { ...a, [field]: value || null } : a)));
@@ -192,11 +197,11 @@ export function RunOfShowPage() {
 
   async function toggleActStatus(act: ScheduleAct, field: keyof ScheduleAct, value: boolean) {
     // Optimistic -- flip it in the UI immediately, then confirm with the
-    // server. A wrong password or network hiccup reverts it back.
+    // server. A refused save or network hiccup reverts it back.
     setActs((prev) => prev.map((a) => (a.id === act.id ? { ...a, [field]: value } : a)));
     try {
       const { data, error } = await supabase.functions.invoke("update-schedule-act", {
-        body: { password: teamPassword, id: act.id, field, value },
+        body: { id: act.id, field, value },
       });
       if (error || !data?.ok) {
         setActs((prev) => prev.map((a) => (a.id === act.id ? { ...a, [field]: !value } : a)));
@@ -223,32 +228,10 @@ export function RunOfShowPage() {
         </div>
       ) : (
         <div className="space-y-10">
-          <form onSubmit={unlockContacts} className="rounded-xl border border-gold/30 bg-gold/5 p-4">
-            <Label htmlFor="ros-team-password">
-              Team password (needed to see contacts, check off items or edit below)
-            </Label>
-            <div className="mt-1.5 flex flex-wrap items-center gap-2">
-              <Input
-                id="ros-team-password"
-                type="password"
-                value={teamPassword}
-                onChange={(e) => setTeamPassword(e.target.value)}
-                className="max-w-xs"
-                placeholder="Team password"
-              />
-              {!contactsUnlocked && (
-                <Button
-                  type="submit"
-                  variant="goldOutline"
-                  size="sm"
-                  disabled={unlocking || !teamPassword}
-                >
-                  {unlocking ? <Loader2 className="size-4 animate-spin" /> : null}
-                  Show contacts
-                </Button>
-              )}
-            </div>
-          </form>
+          <AdminCodeSignIn
+            status={adminStatus}
+            prompt="Admins: enter your email to get a 6-digit code to see contacts and make changes."
+          />
 
           {acts.length > 0 && (
             <section>
@@ -308,6 +291,7 @@ export function RunOfShowPage() {
                         {STATUS_COLUMNS.map((col) => (
                           <td key={col.field} className="p-3 text-center">
                             <Checkbox
+                              disabled={!isAdmin}
                               checked={act[col.field] as boolean}
                               onCheckedChange={(checked) =>
                                 toggleActStatus(act, col.field, checked === true)
@@ -332,7 +316,7 @@ export function RunOfShowPage() {
                   Last updated {new Date(schedule.updated_at).toLocaleString()}
                   {schedule.updated_by ? ` by ${schedule.updated_by}` : ""}
                 </div>
-                {!editing && (
+                {isAdmin && !editing && (
                   <Button variant="goldOutline" size="sm" onClick={startEditing}>
                     <Pencil className="size-3.5" /> Edit
                   </Button>

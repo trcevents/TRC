@@ -5,10 +5,8 @@
 // Moderation queue for Sing Ova Sundays city admins (DJs/venue contacts).
 // Closes a real gap: sos_pairings has no moderation gate on the public side
 // -- a submission only becomes visible in the public feed once a city
-// admin here approves it. Auth is real Supabase Auth (email+password),
-// cloning charly-black_.comp-admin's pattern exactly (the one deliberate
-// exception to this codebase's usual OTP-per-action pattern -- trusted
-// internal staff get real accounts, the public doesn't). A city admin's
+// admin here approves it. Sign-in is an emailed 6-digit code (AdminCodeSignIn),
+// which creates a normal Supabase Auth session. A city admin's
 // row in sos_city_admins has city_id set to their one city; a super admin
 // (city_id null) can see/manage every city and add other admins.
 //
@@ -22,6 +20,7 @@ import type { Session } from "@supabase/supabase-js";
 import { CheckCircle2, Loader2, LogOut, Music, Trash2 } from "lucide-react";
 
 import { supabase } from "@/lib/supabase";
+import { AdminCodeSignIn } from "@/components/site/AdminCodeSignIn";
 import type {
   FunctionInvokeErrorLike,
   SosAdminProfile,
@@ -78,20 +77,6 @@ async function extractFunctionErrorMessage(
 
 export function SingOvaSundaysAdminPage() {
   const [authSession, setAuthSession] = useState<Session | null | undefined>(undefined); // undefined = still checking
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [signingIn, setSigningIn] = useState(false);
-  const [loginMsg, setLoginMsg] = useState<StatusMessage | null>(null);
-
-  const [showForgot, setShowForgot] = useState(false);
-  const [resetEmail, setResetEmail] = useState("");
-  const [resetCode, setResetCode] = useState("");
-  const [resetNewPassword, setResetNewPassword] = useState("");
-  const [resetCodeSent, setResetCodeSent] = useState(false);
-  const [requestingReset, setRequestingReset] = useState(false);
-  const [resettingPassword, setResettingPassword] = useState(false);
-  const [resetMsg, setResetMsg] = useState<StatusMessage | null>(null);
-
   const [profile, setProfile] = useState<SosAdminProfile | null>(null); // { name, city_id, city_slug }
   const [profileLoading, setProfileLoading] = useState(true);
   const [cities, setCities] = useState<SosCity[]>([]);
@@ -169,69 +154,6 @@ export function SingOvaSundaysAdminPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCityId, statusFilter]);
 
-  async function handleSignIn(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setSigningIn(true);
-    setLoginMsg(null);
-    try {
-      const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
-      if (error) {
-        setLoginMsg({ text: error.message, ok: false });
-      }
-    } finally {
-      setSigningIn(false);
-    }
-  }
-
-  async function handleRequestReset() {
-    if (!resetEmail.trim()) {
-      setResetMsg({ text: "Enter your email first.", ok: false });
-      return;
-    }
-    setRequestingReset(true);
-    setResetMsg(null);
-    try {
-      const { data, error } = await supabase.functions.invoke("request-sos-admin-password-reset", {
-        body: { email: resetEmail.trim() },
-      });
-      if (error || data?.error) {
-        const message = data?.error ?? (await extractFunctionErrorMessage(error)) ?? "try again";
-        setResetMsg({ text: message, ok: false });
-        return;
-      }
-      setResetCodeSent(true);
-      setResetMsg({ text: "If that email is on file, a code has been sent.", ok: true });
-    } finally {
-      setRequestingReset(false);
-    }
-  }
-
-  async function handleResetPassword() {
-    if (!resetCode.trim() || resetNewPassword.length < 8) {
-      setResetMsg({ text: "Enter the code and a new password (8+ characters).", ok: false });
-      return;
-    }
-    setResettingPassword(true);
-    setResetMsg(null);
-    try {
-      const { data, error } = await supabase.functions.invoke("reset-admin-password", {
-        body: { email: resetEmail.trim(), code: resetCode.trim(), newPassword: resetNewPassword },
-      });
-      if (!data?.ok) {
-        const message = data?.error ?? (error ? await extractFunctionErrorMessage(error) : null);
-        setResetMsg({ text: message ?? "Something went wrong.", ok: false });
-        return;
-      }
-      setResetMsg({ text: "Password updated -- sign in with it now.", ok: true });
-      setShowForgot(false);
-      setResetCodeSent(false);
-      setResetCode("");
-      setResetNewPassword("");
-    } finally {
-      setResettingPassword(false);
-    }
-  }
-
   async function handleSignOut() {
     await supabase.auth.signOut();
   }
@@ -270,7 +192,7 @@ export function SingOvaSundaysAdminPage() {
       setNewAdminName("");
       setNewAdminEmail("");
       setNewAdminCityId("all");
-      setAddAdminMsg({ text: "Admin added -- they'll get a welcome email to set their password.", ok: true });
+      setAddAdminMsg({ text: "Admin added -- they'll get a welcome email with sign-in steps.", ok: true });
     } finally {
       setAddingAdmin(false);
     }
@@ -286,117 +208,9 @@ export function SingOvaSundaysAdminPage() {
 
   if (!authSession) {
     return (
-      <div className="mx-auto max-w-sm px-4 py-16 sm:px-6">
-        <h1 className="font-display text-2xl font-bold">Sing Ova Sundays Admin</h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Sign in with the email and password you were given.
-        </p>
-
-        {!showForgot ? (
-          <form onSubmit={handleSignIn} className="mt-6 space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="admin-email">Email</Label>
-              <Input
-                id="admin-email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="admin-password">Password</Label>
-              <Input
-                id="admin-password"
-                type="password"
-                autoComplete="current-password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            {loginMsg && (
-              <p className={`text-xs ${loginMsg.ok ? "text-gold" : "text-destructive"}`}>{loginMsg.text}</p>
-            )}
-            <Button type="submit" variant="gold" className="w-full" disabled={signingIn}>
-              {signingIn ? <Loader2 className="size-4 animate-spin" /> : null}
-              Sign In
-            </Button>
-            <button
-              type="button"
-              onClick={() => setShowForgot(true)}
-              className="text-xs text-muted-foreground hover:text-gold"
-            >
-              Forgot password?
-            </button>
-          </form>
-        ) : (
-          <div className="mt-6 space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="reset-email">Email</Label>
-              <Input
-                id="reset-email"
-                type="email"
-                value={resetEmail}
-                onChange={(e) => setResetEmail(e.target.value)}
-              />
-            </div>
-            <Button
-              type="button"
-              variant="goldOutline"
-              size="sm"
-              onClick={handleRequestReset}
-              disabled={requestingReset}
-            >
-              {requestingReset ? <Loader2 className="size-4 animate-spin" /> : null}
-              {resetCodeSent ? "Resend code" : "Send reset code"}
-            </Button>
-            {resetCodeSent && (
-              <>
-                <div className="space-y-2">
-                  <Label htmlFor="reset-code">Code</Label>
-                  <Input
-                    id="reset-code"
-                    inputMode="numeric"
-                    maxLength={6}
-                    value={resetCode}
-                    onChange={(e) => setResetCode(e.target.value.replace(/\D/g, "").slice(0, 6))}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="reset-new-password">New password (8+ characters)</Label>
-                  <Input
-                    id="reset-new-password"
-                    type="password"
-                    autoComplete="new-password"
-                    value={resetNewPassword}
-                    onChange={(e) => setResetNewPassword(e.target.value)}
-                  />
-                </div>
-                <Button
-                  type="button"
-                  variant="gold"
-                  className="w-full"
-                  onClick={handleResetPassword}
-                  disabled={resettingPassword}
-                >
-                  {resettingPassword ? <Loader2 className="size-4 animate-spin" /> : null}
-                  Set New Password
-                </Button>
-              </>
-            )}
-            {resetMsg && (
-              <p className={`text-xs ${resetMsg.ok ? "text-gold" : "text-destructive"}`}>{resetMsg.text}</p>
-            )}
-            <button
-              type="button"
-              onClick={() => setShowForgot(false)}
-              className="text-xs text-muted-foreground hover:text-gold"
-            >
-              Back to sign in
-            </button>
-          </div>
-        )}
+      <div className="mx-auto max-w-lg px-4 py-16 sm:px-6">
+        <h1 className="font-display mb-6 text-2xl font-bold">Sing Ova Sundays Admin</h1>
+        <AdminCodeSignIn status="signed-out" prompt="Enter your admin email to get a 6-digit sign-in code." />
       </div>
     );
   }

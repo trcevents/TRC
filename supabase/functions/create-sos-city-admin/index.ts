@@ -2,10 +2,8 @@
 // (super admin only -- city_id is null on their sos_city_admins row).
 // Clone of admin-create-person's account-provisioning half, retargeted at
 // sos_city_admins and scoped to a specific city (or null for another
-// super admin). New admin accounts get a random unusable initial password
-// and are immediately sent a "set your password" code, reusing the same
-// admin_password_resets table and reset-admin-password function already
-// shared with the comp-admin roster.
+// super admin). New admin accounts get a random unused password; they sign in
+// with an emailed 6-digit code (admin-login-code).
 import { createClient } from "npm:@supabase/supabase-js@2";
 
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
@@ -13,7 +11,6 @@ const SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
 const ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY");
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 const FROM = "TRC Events <hello@selassiefest.com>";
-const CODE_TTL_MINUTES = 10;
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -21,12 +18,6 @@ const corsHeaders = {
   "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
 const jsonHeaders = { ...corsHeaders, "Content-Type": "application/json" };
-
-async function sha256(text) {
-  const data = new TextEncoder().encode(text);
-  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
-  return Array.from(new Uint8Array(hashBuffer)).map((b) => b.toString(16).padStart(2, "0")).join("");
-}
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
@@ -88,14 +79,7 @@ Deno.serve(async (req) => {
     user = created.user;
   }
 
-  // Send them a "set your password" code -- same mechanism as forgot-password.
-  const code = String(Math.floor(100000 + Math.random() * 900000));
-  const codeHash = await sha256(code);
-  const expiresAt = new Date(Date.now() + CODE_TTL_MINUTES * 60 * 1000).toISOString();
-  await admin.from("admin_password_resets").upsert(
-    { email: normalizedEmail, code_hash: codeHash, attempts: 0, expires_at: expiresAt },
-    { onConflict: "email" },
-  );
+  // Tell them how to sign in: they request a 6-digit code themselves.
   await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { Authorization: `Bearer ${RESEND_API_KEY}`, "Content-Type": "application/json" },
@@ -105,9 +89,8 @@ Deno.serve(async (req) => {
       subject: "You've been added to the Sing Ova Sundays admin team",
       html: `
         <p>Hi ${name.trim()},</p>
-        <p>You've been added as an admin on the Sing Ova Sundays page. Set your password with this code:</p>
-        <p style="font-size:28px;font-weight:700;letter-spacing:4px;">${code}</p>
-        <p>Go to <a href="https://trcevent.com/sing-ova-sundays-admin/">the sign-in page</a>, click "Forgot password?", enter this email and code, and set a password. It expires in ${CODE_TTL_MINUTES} minutes.</p>
+        <p>You've been added as an admin on the Sing Ova Sundays page.</p>
+        <p>To sign in, go to <a href="https://trcevent.com/sing-ova-sundays-admin/">the sign-in page</a> and enter this email address. We'll email you a 6-digit code. There's no password.</p>
       `,
     }),
   });

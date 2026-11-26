@@ -38,7 +38,13 @@ export function useAdminStatus(): AdminStatus {
   return status;
 }
 
-export function AdminCodeSignIn({ status }: { status: AdminStatus }) {
+export function AdminCodeSignIn({
+  status,
+  prompt = "View only. Admins: enter your email to get a 6-digit sign-in code.",
+}: {
+  status: AdminStatus;
+  prompt?: string;
+}) {
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
   const [codeSent, setCodeSent] = useState(false);
@@ -104,9 +110,7 @@ export function AdminCodeSignIn({ status }: { status: AdminStatus }) {
   return (
     <form onSubmit={handleSubmit} className={box}>
       <p className="font-medium">
-        {codeSent
-          ? "Enter the 6-digit code from your email."
-          : "View only. Admins: enter your email to get a 6-digit sign-in code."}
+        {codeSent ? "Enter the 6-digit code from your email." : prompt}
       </p>
       <div className="mt-2 flex flex-wrap items-center gap-2">
         {codeSent ? (

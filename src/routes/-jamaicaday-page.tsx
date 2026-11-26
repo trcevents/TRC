@@ -1,5 +1,6 @@
 // Shared by src/routes/jamaicaday.tsx. The "-" prefix excludes this file from
 // route generation (TanStack Router convention) — see src/routes/README.md.
+import { ArchivedEventBanner } from "@/components/site/ArchivedEventBanner";
 import { useEffect, useState } from "react";
 import {
   CalendarDays,
@@ -159,6 +160,8 @@ export function JamaicadayPage() {
         suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
       />
+
+      <ArchivedEventBanner date="on Sunday, August 9, 2026" />
 
       {/* Hero */}
       <section className="relative overflow-hidden">

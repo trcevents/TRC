@@ -5,18 +5,15 @@
 // that matters.
 //
 // Migrated from selassiefest.com/dancehall101/checkin/index.html -- door
-// staff tool. Auth is email+password (Supabase Auth), same as comp-admin;
-// unlike comp-admin there's no roster RPC gate here -- anyone with a
-// Supabase account for this project can sign in (see dh101_check_in_ticket /
-// dh101_door_checkin grants in schema.sql, both scoped to `authenticated`).
-// A shared door-staff password is the kind of credential that ends up
-// screenshotted/texted around, which is exactly why the base dh101_signups
-// table stays locked down to security-definer RPCs/views even for
-// authenticated staff -- see schema.sql's comment on dh101_check_in_ticket.
+// staff tool. Sign-in is an emailed 6-digit code (AdminCodeSignIn), sent only
+// to active comp admins and Sing Ova admins. dh101_check_in_ticket and
+// dh101_door_checkin themselves are granted to any `authenticated` user; the
+// base dh101_signups table stays locked down to those RPCs/views.
 import { useEffect, useState } from "react";
 import { Loader2 } from "lucide-react";
 
 import { supabase } from "@/lib/supabase";
+import { AdminCodeSignIn } from "@/components/site/AdminCodeSignIn";
 import {
   checkInDh101Ticket,
   fetchDh101CheckedInCount,
@@ -59,69 +56,11 @@ const STATUS_COLOR: Record<Dh101CheckInResult["status"], string> = {
   not_found: "#e08585",
 };
 
-function StaffLogin({ onSignedIn }: { onSignedIn: () => void }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [busy, setBusy] = useState(false);
-  const [msg, setMsg] = useState("");
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setBusy(true);
-    setMsg("");
-    try {
-      const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
-      if (error) {
-        setMsg("Incorrect email or password.");
-        return;
-      }
-      onSignedIn();
-    } finally {
-      setBusy(false);
-    }
-  }
-
+function StaffLogin() {
   return (
-    <div
-      className="mx-auto mt-15 max-w-[380px] rounded-2xl border p-8"
-      style={{ background: DH101_CARD, borderColor: DH101_BORDER }}
-    >
+    <div className="mx-auto mt-15 max-w-[420px]">
       <h2 className="mb-4.5 text-center text-[1.1rem]">Staff Login</h2>
-      <form onSubmit={handleSubmit} className="space-y-3">
-        <input
-          type="email"
-          placeholder="Email"
-          autoComplete="username"
-          required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full rounded-lg border bg-white/5 px-3.5 py-2.5 text-[0.95rem] outline-none"
-          style={{ borderColor: DH101_BORDER, color: DH101_TEXT }}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          autoComplete="current-password"
-          required
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="w-full rounded-lg border bg-white/5 px-3.5 py-2.5 text-[0.95rem] outline-none"
-          style={{ borderColor: DH101_BORDER, color: DH101_TEXT }}
-        />
-        <button
-          type="submit"
-          disabled={busy}
-          className="w-full rounded-lg px-3 py-3 font-bold text-white disabled:opacity-60"
-          style={{ background: "var(--school-primary, #C8102E)" }}
-        >
-          {busy ? <Loader2 className="mx-auto size-4 animate-spin" /> : "Log In"}
-        </button>
-        {msg && (
-          <p className="min-h-[1.2em] text-center text-[0.85rem]" style={{ color: "#e08585" }}>
-            {msg}
-          </p>
-        )}
-      </form>
+      <AdminCodeSignIn status="signed-out" prompt="Enter your staff email to get a 6-digit sign-in code." />
     </div>
   );
 }
@@ -340,7 +279,7 @@ export function Dancehall101CheckinPage() {
         <CheckinPanel />
       ) : (
         <div className="px-5 pb-15">
-          <StaffLogin onSignedIn={() => setSignedIn(true)} />
+          <StaffLogin />
         </div>
       )}
     </div>

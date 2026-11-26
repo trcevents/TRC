@@ -5,14 +5,13 @@
 // Read-only list of signed performer contracts (talent_contracts), each
 // with a link to re-download its PDF. Auth reuses the same comp_admins
 // roster / is_comp_admin() RPC as /charly-black/comp-admin (see
-// admin-list-contracts for why) -- sign in with the same email/password.
-// No separate password-reset UI here; point people back at comp-admin's
-// "Forgot password?" flow instead of duplicating it.
+// admin-list-contracts for why) -- with an emailed 6-digit sign-in code.
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Download, Loader2 } from "lucide-react";
 
 import { supabase } from "@/lib/supabase";
+import { AdminCodeSignIn } from "@/components/site/AdminCodeSignIn";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -91,69 +90,11 @@ function formatDate(dateStr: string | null) {
   });
 }
 
-function SignIn({ onSignedIn }: { onSignedIn: () => void }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [busy, setBusy] = useState(false);
-  const [msg, setMsg] = useState("");
-
-  async function handleSignIn(e: React.FormEvent) {
-    e.preventDefault();
-    if (!email.trim() || !password) {
-      setMsg("Enter both your email and password.");
-      return;
-    }
-    setBusy(true);
-    setMsg("");
-    try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email: email.trim(),
-        password,
-      });
-      if (error) {
-        setMsg(`Error: ${error.message}`);
-        return;
-      }
-      onSignedIn();
-    } finally {
-      setBusy(false);
-    }
-  }
-
+function SignIn() {
   return (
-    <div className="mx-auto max-w-sm px-4 py-24 text-center sm:px-6">
-      <h1 className="font-display text-2xl font-bold">Signed Contracts</h1>
-      <p className="mt-2 text-sm text-muted-foreground">
-        Sign in with the same email and password you use for the comp ticket admin page.
-      </p>
-      <form onSubmit={handleSignIn} className="mt-6 space-y-3 text-left">
-        <Input
-          type="email"
-          placeholder="you@example.com"
-          autoComplete="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <Input
-          type="password"
-          placeholder="Password"
-          autoComplete="current-password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <Button type="submit" variant="gold" className="w-full" disabled={busy}>
-          {busy ? <Loader2 className="size-4 animate-spin" /> : null}
-          Sign In
-        </Button>
-        {msg && <p className="text-sm text-destructive">{msg}</p>}
-      </form>
-      <p className="mt-4 text-xs text-muted-foreground">
-        Forgot your password? Reset it from{" "}
-        <a href="/charly-black/comp-admin" className="text-gold hover:underline">
-          the comp admin sign-in
-        </a>
-        .
-      </p>
+    <div className="mx-auto max-w-lg px-4 py-24 sm:px-6">
+      <h1 className="font-display mb-6 text-center text-2xl font-bold">Signed Contracts</h1>
+      <AdminCodeSignIn status="signed-out" prompt="Enter your admin email to get a 6-digit sign-in code." />
     </div>
   );
 }
@@ -268,7 +209,7 @@ export function ContractAdminPage() {
   }
 
   if (!userEmail) {
-    return <SignIn onSignedIn={() => {}} />;
+    return <SignIn />;
   }
 
   if (!isAdmin) {

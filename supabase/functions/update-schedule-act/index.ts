@@ -1,7 +1,7 @@
 // Updates a single field on one schedule_acts row (see migration 0015;
-// phone/email added 2026-07-20). Gated by the same shared
-// PRODUCTION_SCHEDULE_PASSWORD as update-production-schedule -- one team
-// password, not per-member accounts. field is allowlisted rather than
+// phone/email added 2026-07-20), or with action "list-contacts" returns
+// every act's phone and email (migration 0022). Both need a signed-in comp
+// admin (see admin-login-code). field is allowlisted rather than
 // trusting an arbitrary column name from the client, and validated against
 // the type the client is expected to send for it (checkbox fields are
 // booleans, contact fields are free-text strings).
@@ -9,9 +9,6 @@ import { createClient } from "npm:@supabase/supabase-js@2";
 
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
 const SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
-const PRODUCTION_SCHEDULE_PASSWORD = Deno.env.get(
-  "PRODUCTION_SCHEDULE_PASSWORD",
-);
 
 const BOOLEAN_FIELDS = [
   "online_promo",
@@ -41,20 +38,21 @@ Deno.serve(async (req) => {
     });
   }
 
-  const { action, password, id, field, value } = await req.json();
+  const { action, id, field, value } = await req.json();
 
-  // The first check keeps an unset secret from matching a missing password.
-  if (
-    !PRODUCTION_SCHEDULE_PASSWORD ||
-    password !== PRODUCTION_SCHEDULE_PASSWORD
-  ) {
-    return new Response(JSON.stringify({ error: "Wrong password." }), {
+  // Checked with the caller's own session.
+  const caller = createClient(SUPABASE_URL, Deno.env.get("SUPABASE_ANON_KEY"), {
+    global: { headers: { Authorization: req.headers.get("Authorization") ?? "" } },
+  });
+  const { data: isAdmin, error: adminError } = await caller.rpc("is_comp_admin");
+  if (adminError || !isAdmin) {
+    return new Response(JSON.stringify({ error: "Sign in as an admin first." }), {
       status: 200,
       headers: jsonHeaders,
     });
   }
   // Phone and email aren't readable by visitors (migration 0022), so the
-  // page asks for them here once the team password has been entered.
+  // page asks for them here once an admin is signed in.
   if (action === "list-contacts") {
     const admin = createClient(SUPABASE_URL, SERVICE_ROLE_KEY);
     const { data: contacts, error: listError } = await admin

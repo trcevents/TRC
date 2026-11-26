@@ -8,6 +8,7 @@
 // is the party name, "St. Catherine Link-Up" is the community tagline under
 // it. Keep that hierarchy (headline + tagline) everywhere this event is
 // referenced, rather than picking one and dropping the other.
+import { ArchivedEventBanner } from "@/components/site/ArchivedEventBanner";
 import { useEffect, useState } from "react";
 import {
   CalendarDays,
@@ -208,6 +209,8 @@ export function StCatherineLinkupPage() {
         suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
       />
+
+      <ArchivedEventBanner date="on Saturday, August 22, 2026" />
 
       {/* Hero */}
       <section className="relative overflow-hidden">

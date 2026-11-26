@@ -1,4 +1,4 @@
-// Password-free sign-in for TRC comp admins.
+// Password-free sign-in for TRC admins (comp admins and Sing Ova city admins).
 //   { action: "request", email }       emails a 6-digit code to an active admin
 //   { action: "verify", email, code }  checks it and returns a one-time token the
 //                                      browser exchanges for a normal session
@@ -64,12 +64,13 @@ Deno.serve(async (req) => {
   }
 
   const supabase = createClient(SUPABASE_URL!, SERVICE_ROLE_KEY!);
-  const { data: admin } = await supabase
-    .from("comp_admins")
-    .select("email")
-    .eq("email", email)
-    .eq("active", true)
-    .maybeSingle();
+  const [comp, sos] = await Promise.all([
+    supabase.from("comp_admins").select("email").eq("active", true),
+    supabase.from("sos_city_admins").select("email").eq("active", true),
+  ]);
+  const admin = [...(comp.data ?? []), ...(sos.data ?? [])].some(
+    (row) => String(row.email ?? "").toLowerCase() === email,
+  );
 
   if (action === "request") {
     if (!admin) return reply(REQUEST_OK);
