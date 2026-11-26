@@ -1,0 +1,105 @@
+// Shared by src/routes/events.tsx. The "-" prefix excludes this file from
+// route generation (TanStack Router convention) — see src/routes/README.md.
+//
+// A dedicated landing page for the nav's "Events" link: just the full Irie
+// Jerk weekly lineup grid (see IrieJerkLineupGrid), without Dinner in
+// Jamaica's dinner-specific narrative/hero/notify-me signup. That page still
+// carries its own hook and Culture Card story around Sunday's food; this one
+// is the plain "what's on, every day" index.
+import { CalendarDays, UtensilsCrossed } from "lucide-react";
+import { IrieJerkLineupGrid } from "@/components/site/IrieJerkLineupGrid";
+import ijjFlyer from "@/assets/irie-jerk-juggling-flyer-560.webp";
+
+const SITE_URL = "https://trcevent.com";
+
+export function eventsHead() {
+  return {
+    meta: [
+      { title: "Events at Irie Jerk | TRC Events" },
+      {
+        name: "description",
+        content:
+          "Every event at Irie Jerk Bar and Grill, day by day — a different vibe every night, 100% alcohol-free. Presented by TRC Events.",
+      },
+      { property: "og:title", content: "Events at Irie Jerk | TRC Events" },
+      {
+        property: "og:description",
+        content: "Every event at Irie Jerk Bar and Grill, day by day — a different vibe every night.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE_URL}/events` },
+      { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "Events at Irie Jerk | TRC Events" },
+    ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/events` }],
+  };
+}
+
+export function EventsPage() {
+  return (
+    <div>
+      <section className="border-b border-border bg-card">
+        <div className="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 sm:py-20">
+          <p className="eyebrow mb-3">Presented by TRC Events</p>
+          <h1 className="font-display text-5xl font-extrabold tracking-tight sm:text-6xl">
+            Events at <span className="text-gradient-gold">Irie Jerk</span>
+          </h1>
+          <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+            A different vibe every day and night — 100% alcohol-free.
+          </p>
+          <div className="mx-auto mt-6 flex max-w-xl flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
+            <span className="inline-flex items-center gap-1.5">
+              <CalendarDays className="size-4 text-gold" /> 7 days a week
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <UtensilsCrossed className="size-4 text-gold" /> Irie Jerk Bar and Grill, Calumet Park, IL
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
+        <a
+          href="/irie-jerk-and-juggling"
+          className="mb-12 flex flex-col items-center gap-6 rounded-xl border border-gold/40 bg-card p-6 transition-colors hover:border-gold sm:flex-row"
+        >
+          <img
+            src={ijjFlyer}
+            alt="Irie Jerk & Juggling flyer"
+            className="w-40 shrink-0 rounded-lg border border-gold/30"
+          />
+          <div className="text-center sm:text-left">
+            <p className="eyebrow mb-2">Featured · Starts Thursday, Dec 3</p>
+            <h2 className="font-display text-3xl font-extrabold">
+              Irie Jerk <span className="text-gradient-gold">&amp; Juggling</span>
+            </h2>
+            <p className="mt-2 text-muted-foreground">
+              Free Thursday dancehall party, 5–9 PM, with Jamaican cooking from Irie Jerk in
+              Calumet Park.
+            </p>
+            <span className="mt-3 inline-block text-sm font-medium text-gold">
+              See the event →
+            </span>
+          </div>
+        </a>
+
+        <IrieJerkLineupGrid />
+
+        <p className="mt-14 text-center text-sm text-muted-foreground">
+          Curious about the story behind Sunday's food?{" "}
+          <a href="/dinner-in-jamaica" className="font-medium text-gold hover:underline">
+            Read about the Dinner Riddim
+          </a>
+          . Presented by TRC Events, at{" "}
+          <a
+            href="/irie-jerk-and-juggling"
+            className="font-medium text-foreground hover:text-gold hover:underline"
+          >
+            Irie Jerk
+          </a>
+          .
+        </p>
+      </div>
+    </div>
+  );
+}

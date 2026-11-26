@@ -1,0 +1,58 @@
+name: Deploy trcevent.com
+
+# This repo is both the source and the live site. Every push to main builds the
+# static export and publishes it to GitHub Pages (Pages source: GitHub Actions).
+# If the build fails, the previous deploy stays live.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time; a newer push waits for the running one instead of cancelling it.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build static export
+        run: bun run build
+
+      - name: Check the export
+        run: |
+          test -f dist/client/index.html
+          test -f dist/client/CNAME
+          echo "pages: $(find dist/client -name index.html | wc -l)"
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist/client
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

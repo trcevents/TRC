@@ -1,0 +1,188 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+  Outlet,
+  Link,
+  createRootRouteWithContext,
+  useRouter,
+  HeadContent,
+  Scripts,
+} from "@tanstack/react-router";
+import { useEffect, type ReactNode } from "react";
+
+import appCss from "../styles.css?url";
+import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Navbar } from "../components/site/Navbar";
+import { Footer } from "../components/site/Footer";
+import { Toaster } from "@/components/ui/sonner";
+
+function NotFoundComponent() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+      <div className="max-w-md text-center">
+        <h1 className="text-7xl font-bold text-foreground">404</h1>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          The page you're looking for doesn't exist or has been moved.
+        </p>
+        <div className="mt-6">
+          <Link
+            to="/"
+            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            Go home
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+  console.error(error);
+  const router = useRouter();
+  useEffect(() => {
+    reportLovableError(error, { boundary: "tanstack_root_error_component" });
+  }, [error]);
+
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+      <div className="max-w-md text-center">
+        <h1 className="text-xl font-semibold tracking-tight text-foreground">
+          This page didn't load
+        </h1>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Something went wrong on our end. You can try refreshing or head back home.
+        </p>
+        <div className="mt-6 flex flex-wrap justify-center gap-2">
+          <button
+            onClick={() => {
+              router.invalidate();
+              reset();
+            }}
+            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            Try again
+          </button>
+          <a
+            href="/"
+            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+          >
+            Go home
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  head: () => ({
+    meta: [
+      { charSet: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { title: "TRC Events — The Right Connection. The Reggae Connection." },
+      {
+        name: "description",
+        content:
+          "TRC Events — Chicago's platform connecting reggae DJs, promoters, venues, and community. Find the right night, the right selector, the right room.",
+      },
+      { name: "author", content: "TRC Events" },
+      {
+        property: "og:title",
+        content: "TRC Events — The Right Connection. The Reggae Connection.",
+      },
+      {
+        property: "og:description",
+        content: "Chicago's home for reggae DJs, promoters, venues, and the community.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:site", content: "@TRCEvents" },
+      {
+        name: "twitter:title",
+        content: "TRC Events — The Right Connection. The Reggae Connection.",
+      },
+      {
+        name: "twitter:description",
+        content: "Chicago's home for reggae DJs, promoters, venues, and the community.",
+      },
+      // Self-hosted default share image (public/og-image.png). Pages with their own
+      // flyer override og:image/twitter:image in their head().
+      { property: "og:image", content: "https://trcevent.com/og-image.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "TRC Events — The Right Connection. The Reggae Connection." },
+      { name: "twitter:image", content: "https://trcevent.com/og-image.png" },
+    ],
+    links: [
+      { rel: "icon", href: "/favicon.ico", sizes: "48x48" },
+      { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
+      { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
+      {
+        rel: "stylesheet",
+        href: appCss,
+      },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800;900&family=Jost:wght@400;500;600;700&display=swap",
+      },
+    ],
+  }),
+  shellComponent: RootShell,
+  component: RootComponent,
+  notFoundComponent: NotFoundComponent,
+  errorComponent: ErrorComponent,
+});
+
+function RootShell({ children }: { children: ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <HeadContent />
+      </head>
+      <body>
+        {children}
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+
+// Recovers from public/404.html's redirect: GitHub Pages has no server-side
+// routing, so any path with no matching static file lands on 404.html, which
+// bounces here with the originally-requested path in `?_redirect=`. Once this
+// component has actually mounted (post-hydration, not during it), hand that
+// path to the router's own history so it re-matches normally -- either the
+// real route (a dynamic page that just wasn't prerendered) or, for a
+// genuinely nonexistent path, the app's own notFoundComponent. Doing this via
+// router.history.replace (not a raw history.pushState) is what makes the
+// router actually notice the location changed and re-match.
+function useRedirectRecovery() {
+  const router = useRouter();
+  useEffect(() => {
+    const target = new URLSearchParams(window.location.search).get("_redirect");
+    if (!target) return;
+    router.history.replace(target);
+  }, [router]);
+}
+
+function RootComponent() {
+  const { queryClient } = Route.useRouteContext();
+  useRedirectRecovery();
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <div className="flex min-h-screen flex-col">
+        <Navbar />
+        <main className="flex-1">
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
+      <Toaster />
+    </QueryClientProvider>
+  );
+}
