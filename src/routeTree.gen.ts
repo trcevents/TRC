@@ -16,6 +16,7 @@ import { Route as SingOvaSundaysAdminRouteImport } from './routes/sing-ova-sunda
 import { Route as SingOvaSundaysRouteImport } from './routes/sing-ova-sundays'
 import { Route as SingOvaRouteImport } from './routes/sing-ova'
 import { Route as RunOfShowRouteImport } from './routes/run-of-show'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PlateCostRouteImport } from './routes/plate-cost'
 import { Route as PastEventsRouteImport } from './routes/past-events'
 import { Route as MinglesTuesdaysBrainstormRouteImport } from './routes/mingles-tuesdays-brainstorm'
@@ -86,6 +87,11 @@ const SingOvaRoute = SingOvaRouteImport.update({
 const RunOfShowRoute = RunOfShowRouteImport.update({
   id: '/run-of-show',
   path: '/run-of-show',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PlateCostRoute = PlateCostRouteImport.update({
@@ -296,6 +302,7 @@ export interface FileRoutesByFullPath {
   '/mingles-tuesdays-brainstorm': typeof MinglesTuesdaysBrainstormRoute
   '/past-events': typeof PastEventsRoute
   '/plate-cost': typeof PlateCostRoute
+  '/privacy': typeof PrivacyRoute
   '/run-of-show': typeof RunOfShowRoute
   '/sing-ova': typeof SingOvaRoute
   '/sing-ova-sundays': typeof SingOvaSundaysRoute
@@ -341,6 +348,7 @@ export interface FileRoutesByTo {
   '/mingles-tuesdays-brainstorm': typeof MinglesTuesdaysBrainstormRoute
   '/past-events': typeof PastEventsRoute
   '/plate-cost': typeof PlateCostRoute
+  '/privacy': typeof PrivacyRoute
   '/run-of-show': typeof RunOfShowRoute
   '/sing-ova': typeof SingOvaRoute
   '/sing-ova-sundays': typeof SingOvaSundaysRoute
@@ -387,6 +395,7 @@ export interface FileRoutesById {
   '/mingles-tuesdays-brainstorm': typeof MinglesTuesdaysBrainstormRoute
   '/past-events': typeof PastEventsRoute
   '/plate-cost': typeof PlateCostRoute
+  '/privacy': typeof PrivacyRoute
   '/run-of-show': typeof RunOfShowRoute
   '/sing-ova': typeof SingOvaRoute
   '/sing-ova-sundays': typeof SingOvaSundaysRoute
@@ -434,6 +443,7 @@ export interface FileRouteTypes {
     | '/mingles-tuesdays-brainstorm'
     | '/past-events'
     | '/plate-cost'
+    | '/privacy'
     | '/run-of-show'
     | '/sing-ova'
     | '/sing-ova-sundays'
@@ -479,6 +489,7 @@ export interface FileRouteTypes {
     | '/mingles-tuesdays-brainstorm'
     | '/past-events'
     | '/plate-cost'
+    | '/privacy'
     | '/run-of-show'
     | '/sing-ova'
     | '/sing-ova-sundays'
@@ -524,6 +535,7 @@ export interface FileRouteTypes {
     | '/mingles-tuesdays-brainstorm'
     | '/past-events'
     | '/plate-cost'
+    | '/privacy'
     | '/run-of-show'
     | '/sing-ova'
     | '/sing-ova-sundays'
@@ -570,6 +582,7 @@ export interface RootRouteChildren {
   MinglesTuesdaysBrainstormRoute: typeof MinglesTuesdaysBrainstormRoute
   PastEventsRoute: typeof PastEventsRoute
   PlateCostRoute: typeof PlateCostRoute
+  PrivacyRoute: typeof PrivacyRoute
   RunOfShowRoute: typeof RunOfShowRoute
   SingOvaRoute: typeof SingOvaRoute
   SingOvaSundaysRoute: typeof SingOvaSundaysRoute
@@ -645,6 +658,13 @@ declare module '@tanstack/react-router' {
       path: '/run-of-show'
       fullPath: '/run-of-show'
       preLoaderRoute: typeof RunOfShowRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/plate-cost': {
@@ -922,6 +942,7 @@ const rootRouteChildren: RootRouteChildren = {
   MinglesTuesdaysBrainstormRoute: MinglesTuesdaysBrainstormRoute,
   PastEventsRoute: PastEventsRoute,
   PlateCostRoute: PlateCostRoute,
+  PrivacyRoute: PrivacyRoute,
   RunOfShowRoute: RunOfShowRoute,
   SingOvaRoute: SingOvaRoute,
   SingOvaSundaysRoute: SingOvaSundaysRoute,
