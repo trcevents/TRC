@@ -26,6 +26,7 @@ const ARCHIVED_PATHS = [
   "/st-catherine-linkup",
   "/jamaicaday",
   "/jamaica64",
+  "/dancehall-fridays",
 ];
 
 export function Footer() {
