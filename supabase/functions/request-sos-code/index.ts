@@ -10,7 +10,6 @@ const SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 const FROM = "TRC Events <hello@selassiefest.com>";
 const CODE_TTL_MINUTES = 10;
-const COOLDOWN_SECONDS = 60;
 
 // Called cross-origin (trcevent.com -> supabase.co) from a browser, so the
 // browser sends a CORS preflight OPTIONS request first -- without these
@@ -45,18 +44,17 @@ Deno.serve(async (req) => {
   const normalizedEmail = email.trim().toLowerCase();
   const supabase = createClient(SUPABASE_URL, SERVICE_ROLE_KEY);
 
-  const { data: existing } = await supabase
-    .from("sos_verifications")
-    .select("created_at")
-    .eq("email", normalizedEmail)
-    .single();
-
-  if (existing) {
-    const secondsSince = (Date.now() - new Date(existing.created_at).getTime()) / 1000;
-    if (secondsSince < COOLDOWN_SECONDS) {
-      const wait = Math.ceil(COOLDOWN_SECONDS - secondsSince);
-      return new Response(JSON.stringify({ error: `Please wait ${wait}s before requesting another code.` }), { status: 200, headers: jsonHeaders });
-    }
+  // Limits from migration 0027. If the check itself fails, nothing is sent.
+  const { data: allowed, error: limitError } = await supabase.rpc("code_send_allowed", {
+    p_kind: "sos",
+    p_target: normalizedEmail,
+  });
+  if (limitError || !allowed) {
+    if (limitError) console.error("code_send_allowed failed:", limitError);
+    return new Response(
+      JSON.stringify({ error: "Please wait a while before requesting another code." }),
+      { status: 200, headers: jsonHeaders },
+    );
   }
 
   const code = String(Math.floor(100000 + Math.random() * 900000));

@@ -81,6 +81,19 @@ Deno.serve(async (req) => {
     );
   }
 
+  // Limits from migration 0027. If the check itself fails, nothing is sent.
+  const { data: allowed, error: limitError } = await supabase.rpc("code_send_allowed", {
+    p_kind: "invite",
+    p_target: actSlug,
+  });
+  if (limitError || !allowed) {
+    if (limitError) console.error("code_send_allowed failed:", limitError);
+    return new Response(
+      JSON.stringify({ error: "Please wait a while before requesting another code." }),
+      { status: 200, headers: jsonHeaders },
+    );
+  }
+
   const statusNote =
     invite.status === "signed"
       ? " Your contract is already signed — this code still works for the tech rider form."
