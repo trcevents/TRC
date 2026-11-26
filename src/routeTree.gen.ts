@@ -9,188 +9,56 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as WorkFiDiBeachRouteImport } from './routes/work-fi-di-beach'
-import { Route as TermsRouteImport } from './routes/terms'
-import { Route as TechRiderRouteImport } from './routes/tech-rider'
-import { Route as StCatherineLinkupRouteImport } from './routes/st-catherine-linkup'
-import { Route as SingOvaSundaysAdminRouteImport } from './routes/sing-ova-sundays-admin'
-import { Route as SingOvaSundaysRouteImport } from './routes/sing-ova-sundays'
-import { Route as SingOvaRouteImport } from './routes/sing-ova'
-import { Route as RunOfShowRouteImport } from './routes/run-of-show'
-import { Route as PrivacyRouteImport } from './routes/privacy'
-import { Route as PlateCostRouteImport } from './routes/plate-cost'
-import { Route as PastEventsRouteImport } from './routes/past-events'
-import { Route as MinglesTuesdaysBrainstormRouteImport } from './routes/mingles-tuesdays-brainstorm'
-import { Route as JustLaughWednesdayBrainstormRouteImport } from './routes/just-laugh-wednesday-brainstorm'
-import { Route as JayReblRouteImport } from './routes/jay-rebl'
-import { Route as JamaicadayRouteImport } from './routes/jamaicaday'
-import { Route as Jamaica64RouteImport } from './routes/jamaica64'
-import { Route as IrieJerkAndJugglingRouteImport } from './routes/irie-jerk-and-juggling'
-import { Route as GetStartedRouteImport } from './routes/get-started'
-import { Route as EventsRouteImport } from './routes/events'
-import { Route as DinnerInJamaicaRouteImport } from './routes/dinner-in-jamaica'
-import { Route as DancehallFridaysRouteImport } from './routes/dancehall-fridays'
-import { Route as Dancehall101RouteImport } from './routes/dancehall-101'
-import { Route as ContractAdminRouteImport } from './routes/contract-admin'
-import { Route as ContractRouteImport } from './routes/contract'
-import { Route as ChicagoVybezRouteImport } from './routes/chicago-vybez'
-import { Route as CharlyBlackRouteImport } from './routes/charly-black'
-import { Route as BobMarleyLiveForeverRouteImport } from './routes/bob-marley-live-forever'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as SingOvaSundaysCityRouteImport } from './routes/sing-ova-sundays_.$city'
-import { Route as PitchSlugRouteImport } from './routes/pitch.$slug'
-import { Route as JerkyJerkSlugRouteImport } from './routes/jerky-jerk.$slug'
-import { Route as JayReblSongFactoryRouteImport } from './routes/jay-rebl_.song-factory'
-import { Route as JayReblRiddimVaultRouteImport } from './routes/jay-rebl_.riddim-vault'
-import { Route as JayReblReggaeDayProposalRouteImport } from './routes/jay-rebl_.reggae-day-proposal'
-import { Route as JayReblReggaeDayProductionRouteImport } from './routes/jay-rebl_.reggae-day-production'
-import { Route as JayReblNapIdeaSubmissionRouteImport } from './routes/jay-rebl_.nap-idea-submission'
-import { Route as JayReblDollyPartonTributeRouteImport } from './routes/jay-rebl_.dolly-parton-tribute'
-import { Route as IrieJerkSlugRouteImport } from './routes/irie-jerk.$slug'
-import { Route as IrieJerkAndJugglingEditionRouteImport } from './routes/irie-jerk-and-juggling_.$edition'
-import { Route as Dancehall101TicketRouteImport } from './routes/dancehall-101_.ticket'
-import { Route as Dancehall101LeaderboardRouteImport } from './routes/dancehall-101_.leaderboard'
-import { Route as Dancehall101CheckinRouteImport } from './routes/dancehall-101_.checkin'
-import { Route as CharlyBlackStreetTeamRouteImport } from './routes/charly-black_.street-team'
-import { Route as CharlyBlackCompAdminRouteImport } from './routes/charly-black_.comp-admin'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as BobMarleyLiveForeverRouteImport } from './routes/bob-marley-live-forever'
+import { Route as CharlyBlackRouteImport } from './routes/charly-black'
+import { Route as ChicagoVybezRouteImport } from './routes/chicago-vybez'
+import { Route as ContractRouteImport } from './routes/contract'
+import { Route as ContractAdminRouteImport } from './routes/contract-admin'
+import { Route as Dancehall101RouteImport } from './routes/dancehall-101'
+import { Route as DancehallFridaysRouteImport } from './routes/dancehall-fridays'
+import { Route as DinnerInJamaicaRouteImport } from './routes/dinner-in-jamaica'
+import { Route as EventsRouteImport } from './routes/events'
+import { Route as GetStartedRouteImport } from './routes/get-started'
+import { Route as IrieJerkAndJugglingRouteImport } from './routes/irie-jerk-and-juggling'
+import { Route as Jamaica64RouteImport } from './routes/jamaica64'
+import { Route as JamaicadayRouteImport } from './routes/jamaicaday'
+import { Route as JayReblRouteImport } from './routes/jay-rebl'
+import { Route as JustLaughWednesdayBrainstormRouteImport } from './routes/just-laugh-wednesday-brainstorm'
+import { Route as MinglesTuesdaysBrainstormRouteImport } from './routes/mingles-tuesdays-brainstorm'
+import { Route as PastEventsRouteImport } from './routes/past-events'
+import { Route as PlateCostRouteImport } from './routes/plate-cost'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as RunOfShowRouteImport } from './routes/run-of-show'
+import { Route as SingOvaRouteImport } from './routes/sing-ova'
+import { Route as SingOvaSundaysRouteImport } from './routes/sing-ova-sundays'
+import { Route as SingOvaSundaysAdminRouteImport } from './routes/sing-ova-sundays-admin'
+import { Route as StCatherineLinkupRouteImport } from './routes/st-catherine-linkup'
+import { Route as TechRiderRouteImport } from './routes/tech-rider'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as WorkFiDiBeachRouteImport } from './routes/work-fi-di-beach'
 import { Route as CharlyBlackCompRouteImport } from './routes/charly-black_.comp'
+import { Route as CharlyBlackCompAdminRouteImport } from './routes/charly-black_.comp-admin'
+import { Route as CharlyBlackStreetTeamRouteImport } from './routes/charly-black_.street-team'
+import { Route as Dancehall101CheckinRouteImport } from './routes/dancehall-101_.checkin'
+import { Route as Dancehall101LeaderboardRouteImport } from './routes/dancehall-101_.leaderboard'
+import { Route as Dancehall101TicketRouteImport } from './routes/dancehall-101_.ticket'
+import { Route as IrieJerkAndJugglingEditionRouteImport } from './routes/irie-jerk-and-juggling_.$edition'
+import { Route as IrieJerkSlugRouteImport } from './routes/irie-jerk.$slug'
+import { Route as JayReblDollyPartonTributeRouteImport } from './routes/jay-rebl_.dolly-parton-tribute'
+import { Route as JayReblNapIdeaSubmissionRouteImport } from './routes/jay-rebl_.nap-idea-submission'
+import { Route as JayReblReggaeDayProductionRouteImport } from './routes/jay-rebl_.reggae-day-production'
+import { Route as JayReblReggaeDayProposalRouteImport } from './routes/jay-rebl_.reggae-day-proposal'
+import { Route as JayReblRiddimVaultRouteImport } from './routes/jay-rebl_.riddim-vault'
+import { Route as JayReblSongFactoryRouteImport } from './routes/jay-rebl_.song-factory'
+import { Route as JerkyJerkSlugRouteImport } from './routes/jerky-jerk.$slug'
+import { Route as PitchSlugRouteImport } from './routes/pitch.$slug'
+import { Route as SingOvaSundaysCityRouteImport } from './routes/sing-ova-sundays_.$city'
 
-const WorkFiDiBeachRoute = WorkFiDiBeachRouteImport.update({
-  id: '/work-fi-di-beach',
-  path: '/work-fi-di-beach',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TermsRoute = TermsRouteImport.update({
-  id: '/terms',
-  path: '/terms',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TechRiderRoute = TechRiderRouteImport.update({
-  id: '/tech-rider',
-  path: '/tech-rider',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const StCatherineLinkupRoute = StCatherineLinkupRouteImport.update({
-  id: '/st-catherine-linkup',
-  path: '/st-catherine-linkup',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SingOvaSundaysAdminRoute = SingOvaSundaysAdminRouteImport.update({
-  id: '/sing-ova-sundays-admin',
-  path: '/sing-ova-sundays-admin',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SingOvaSundaysRoute = SingOvaSundaysRouteImport.update({
-  id: '/sing-ova-sundays',
-  path: '/sing-ova-sundays',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SingOvaRoute = SingOvaRouteImport.update({
-  id: '/sing-ova',
-  path: '/sing-ova',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RunOfShowRoute = RunOfShowRouteImport.update({
-  id: '/run-of-show',
-  path: '/run-of-show',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PrivacyRoute = PrivacyRouteImport.update({
-  id: '/privacy',
-  path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PlateCostRoute = PlateCostRouteImport.update({
-  id: '/plate-cost',
-  path: '/plate-cost',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PastEventsRoute = PastEventsRouteImport.update({
-  id: '/past-events',
-  path: '/past-events',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MinglesTuesdaysBrainstormRoute =
-  MinglesTuesdaysBrainstormRouteImport.update({
-    id: '/mingles-tuesdays-brainstorm',
-    path: '/mingles-tuesdays-brainstorm',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const JustLaughWednesdayBrainstormRoute =
-  JustLaughWednesdayBrainstormRouteImport.update({
-    id: '/just-laugh-wednesday-brainstorm',
-    path: '/just-laugh-wednesday-brainstorm',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const JayReblRoute = JayReblRouteImport.update({
-  id: '/jay-rebl',
-  path: '/jay-rebl',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const JamaicadayRoute = JamaicadayRouteImport.update({
-  id: '/jamaicaday',
-  path: '/jamaicaday',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Jamaica64Route = Jamaica64RouteImport.update({
-  id: '/jamaica64',
-  path: '/jamaica64',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IrieJerkAndJugglingRoute = IrieJerkAndJugglingRouteImport.update({
-  id: '/irie-jerk-and-juggling',
-  path: '/irie-jerk-and-juggling',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GetStartedRoute = GetStartedRouteImport.update({
-  id: '/get-started',
-  path: '/get-started',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EventsRoute = EventsRouteImport.update({
-  id: '/events',
-  path: '/events',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DinnerInJamaicaRoute = DinnerInJamaicaRouteImport.update({
-  id: '/dinner-in-jamaica',
-  path: '/dinner-in-jamaica',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DancehallFridaysRoute = DancehallFridaysRouteImport.update({
-  id: '/dancehall-fridays',
-  path: '/dancehall-fridays',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Dancehall101Route = Dancehall101RouteImport.update({
-  id: '/dancehall-101',
-  path: '/dancehall-101',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContractAdminRoute = ContractAdminRouteImport.update({
-  id: '/contract-admin',
-  path: '/contract-admin',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContractRoute = ContractRouteImport.update({
-  id: '/contract',
-  path: '/contract',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ChicagoVybezRoute = ChicagoVybezRouteImport.update({
-  id: '/chicago-vybez',
-  path: '/chicago-vybez',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CharlyBlackRoute = CharlyBlackRouteImport.update({
-  id: '/charly-black',
-  path: '/charly-black',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BobMarleyLiveForeverRoute = BobMarleyLiveForeverRouteImport.update({
-  id: '/bob-marley-live-forever',
-  path: '/bob-marley-live-forever',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -198,63 +66,171 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const BobMarleyLiveForeverRoute = BobMarleyLiveForeverRouteImport.update({
+  id: '/bob-marley-live-forever',
+  path: '/bob-marley-live-forever',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SingOvaSundaysCityRoute = SingOvaSundaysCityRouteImport.update({
-  id: '/sing-ova-sundays_/$city',
-  path: '/sing-ova-sundays/$city',
+const CharlyBlackRoute = CharlyBlackRouteImport.update({
+  id: '/charly-black',
+  path: '/charly-black',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PitchSlugRoute = PitchSlugRouteImport.update({
-  id: '/pitch/$slug',
-  path: '/pitch/$slug',
+const ChicagoVybezRoute = ChicagoVybezRouteImport.update({
+  id: '/chicago-vybez',
+  path: '/chicago-vybez',
   getParentRoute: () => rootRouteImport,
 } as any)
-const JerkyJerkSlugRoute = JerkyJerkSlugRouteImport.update({
-  id: '/jerky-jerk/$slug',
-  path: '/jerky-jerk/$slug',
+const ContractRoute = ContractRouteImport.update({
+  id: '/contract',
+  path: '/contract',
   getParentRoute: () => rootRouteImport,
 } as any)
-const JayReblSongFactoryRoute = JayReblSongFactoryRouteImport.update({
-  id: '/jay-rebl_/song-factory',
-  path: '/jay-rebl/song-factory',
+const ContractAdminRoute = ContractAdminRouteImport.update({
+  id: '/contract-admin',
+  path: '/contract-admin',
   getParentRoute: () => rootRouteImport,
 } as any)
-const JayReblRiddimVaultRoute = JayReblRiddimVaultRouteImport.update({
-  id: '/jay-rebl_/riddim-vault',
-  path: '/jay-rebl/riddim-vault',
+const Dancehall101Route = Dancehall101RouteImport.update({
+  id: '/dancehall-101',
+  path: '/dancehall-101',
   getParentRoute: () => rootRouteImport,
 } as any)
-const JayReblReggaeDayProposalRoute =
-  JayReblReggaeDayProposalRouteImport.update({
-    id: '/jay-rebl_/reggae-day-proposal',
-    path: '/jay-rebl/reggae-day-proposal',
+const DancehallFridaysRoute = DancehallFridaysRouteImport.update({
+  id: '/dancehall-fridays',
+  path: '/dancehall-fridays',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DinnerInJamaicaRoute = DinnerInJamaicaRouteImport.update({
+  id: '/dinner-in-jamaica',
+  path: '/dinner-in-jamaica',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsRoute = EventsRouteImport.update({
+  id: '/events',
+  path: '/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GetStartedRoute = GetStartedRouteImport.update({
+  id: '/get-started',
+  path: '/get-started',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IrieJerkAndJugglingRoute = IrieJerkAndJugglingRouteImport.update({
+  id: '/irie-jerk-and-juggling',
+  path: '/irie-jerk-and-juggling',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Jamaica64Route = Jamaica64RouteImport.update({
+  id: '/jamaica64',
+  path: '/jamaica64',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JamaicadayRoute = JamaicadayRouteImport.update({
+  id: '/jamaicaday',
+  path: '/jamaicaday',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JayReblRoute = JayReblRouteImport.update({
+  id: '/jay-rebl',
+  path: '/jay-rebl',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JustLaughWednesdayBrainstormRoute =
+  JustLaughWednesdayBrainstormRouteImport.update({
+    id: '/just-laugh-wednesday-brainstorm',
+    path: '/just-laugh-wednesday-brainstorm',
     getParentRoute: () => rootRouteImport,
   } as any)
-const JayReblReggaeDayProductionRoute =
-  JayReblReggaeDayProductionRouteImport.update({
-    id: '/jay-rebl_/reggae-day-production',
-    path: '/jay-rebl/reggae-day-production',
+const MinglesTuesdaysBrainstormRoute =
+  MinglesTuesdaysBrainstormRouteImport.update({
+    id: '/mingles-tuesdays-brainstorm',
+    path: '/mingles-tuesdays-brainstorm',
     getParentRoute: () => rootRouteImport,
   } as any)
-const JayReblNapIdeaSubmissionRoute =
-  JayReblNapIdeaSubmissionRouteImport.update({
-    id: '/jay-rebl_/nap-idea-submission',
-    path: '/jay-rebl/nap-idea-submission',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const JayReblDollyPartonTributeRoute =
-  JayReblDollyPartonTributeRouteImport.update({
-    id: '/jay-rebl_/dolly-parton-tribute',
-    path: '/jay-rebl/dolly-parton-tribute',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const IrieJerkSlugRoute = IrieJerkSlugRouteImport.update({
-  id: '/irie-jerk/$slug',
-  path: '/irie-jerk/$slug',
+const PastEventsRoute = PastEventsRouteImport.update({
+  id: '/past-events',
+  path: '/past-events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlateCostRoute = PlateCostRouteImport.update({
+  id: '/plate-cost',
+  path: '/plate-cost',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RunOfShowRoute = RunOfShowRouteImport.update({
+  id: '/run-of-show',
+  path: '/run-of-show',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SingOvaRoute = SingOvaRouteImport.update({
+  id: '/sing-ova',
+  path: '/sing-ova',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SingOvaSundaysRoute = SingOvaSundaysRouteImport.update({
+  id: '/sing-ova-sundays',
+  path: '/sing-ova-sundays',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SingOvaSundaysAdminRoute = SingOvaSundaysAdminRouteImport.update({
+  id: '/sing-ova-sundays-admin',
+  path: '/sing-ova-sundays-admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StCatherineLinkupRoute = StCatherineLinkupRouteImport.update({
+  id: '/st-catherine-linkup',
+  path: '/st-catherine-linkup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TechRiderRoute = TechRiderRouteImport.update({
+  id: '/tech-rider',
+  path: '/tech-rider',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkFiDiBeachRoute = WorkFiDiBeachRouteImport.update({
+  id: '/work-fi-di-beach',
+  path: '/work-fi-di-beach',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CharlyBlackCompRoute = CharlyBlackCompRouteImport.update({
+  id: '/charly-black_/comp',
+  path: '/charly-black/comp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CharlyBlackCompAdminRoute = CharlyBlackCompAdminRouteImport.update({
+  id: '/charly-black_/comp-admin',
+  path: '/charly-black/comp-admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CharlyBlackStreetTeamRoute = CharlyBlackStreetTeamRouteImport.update({
+  id: '/charly-black_/street-team',
+  path: '/charly-black/street-team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Dancehall101CheckinRoute = Dancehall101CheckinRouteImport.update({
+  id: '/dancehall-101_/checkin',
+  path: '/dancehall-101/checkin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Dancehall101LeaderboardRoute = Dancehall101LeaderboardRouteImport.update({
+  id: '/dancehall-101_/leaderboard',
+  path: '/dancehall-101/leaderboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Dancehall101TicketRoute = Dancehall101TicketRouteImport.update({
+  id: '/dancehall-101_/ticket',
+  path: '/dancehall-101/ticket',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IrieJerkAndJugglingEditionRoute =
@@ -263,34 +239,58 @@ const IrieJerkAndJugglingEditionRoute =
     path: '/irie-jerk-and-juggling/$edition',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Dancehall101TicketRoute = Dancehall101TicketRouteImport.update({
-  id: '/dancehall-101_/ticket',
-  path: '/dancehall-101/ticket',
+const IrieJerkSlugRoute = IrieJerkSlugRouteImport.update({
+  id: '/irie-jerk/$slug',
+  path: '/irie-jerk/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Dancehall101LeaderboardRoute = Dancehall101LeaderboardRouteImport.update({
-  id: '/dancehall-101_/leaderboard',
-  path: '/dancehall-101/leaderboard',
+const JayReblDollyPartonTributeRoute =
+  JayReblDollyPartonTributeRouteImport.update({
+    id: '/jay-rebl_/dolly-parton-tribute',
+    path: '/jay-rebl/dolly-parton-tribute',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const JayReblNapIdeaSubmissionRoute =
+  JayReblNapIdeaSubmissionRouteImport.update({
+    id: '/jay-rebl_/nap-idea-submission',
+    path: '/jay-rebl/nap-idea-submission',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const JayReblReggaeDayProductionRoute =
+  JayReblReggaeDayProductionRouteImport.update({
+    id: '/jay-rebl_/reggae-day-production',
+    path: '/jay-rebl/reggae-day-production',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const JayReblReggaeDayProposalRoute =
+  JayReblReggaeDayProposalRouteImport.update({
+    id: '/jay-rebl_/reggae-day-proposal',
+    path: '/jay-rebl/reggae-day-proposal',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const JayReblRiddimVaultRoute = JayReblRiddimVaultRouteImport.update({
+  id: '/jay-rebl_/riddim-vault',
+  path: '/jay-rebl/riddim-vault',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Dancehall101CheckinRoute = Dancehall101CheckinRouteImport.update({
-  id: '/dancehall-101_/checkin',
-  path: '/dancehall-101/checkin',
+const JayReblSongFactoryRoute = JayReblSongFactoryRouteImport.update({
+  id: '/jay-rebl_/song-factory',
+  path: '/jay-rebl/song-factory',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CharlyBlackStreetTeamRoute = CharlyBlackStreetTeamRouteImport.update({
-  id: '/charly-black_/street-team',
-  path: '/charly-black/street-team',
+const JerkyJerkSlugRoute = JerkyJerkSlugRouteImport.update({
+  id: '/jerky-jerk/$slug',
+  path: '/jerky-jerk/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CharlyBlackCompAdminRoute = CharlyBlackCompAdminRouteImport.update({
-  id: '/charly-black_/comp-admin',
-  path: '/charly-black/comp-admin',
+const PitchSlugRoute = PitchSlugRouteImport.update({
+  id: '/pitch/$slug',
+  path: '/pitch/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CharlyBlackCompRoute = CharlyBlackCompRouteImport.update({
-  id: '/charly-black_/comp',
-  path: '/charly-black/comp',
+const SingOvaSundaysCityRoute = SingOvaSundaysCityRouteImport.update({
+  id: '/sing-ova-sundays_/$city',
+  path: '/sing-ova-sundays/$city',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -637,193 +637,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/work-fi-di-beach': {
-      id: '/work-fi-di-beach'
-      path: '/work-fi-di-beach'
-      fullPath: '/work-fi-di-beach'
-      preLoaderRoute: typeof WorkFiDiBeachRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/terms': {
-      id: '/terms'
-      path: '/terms'
-      fullPath: '/terms'
-      preLoaderRoute: typeof TermsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tech-rider': {
-      id: '/tech-rider'
-      path: '/tech-rider'
-      fullPath: '/tech-rider'
-      preLoaderRoute: typeof TechRiderRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/st-catherine-linkup': {
-      id: '/st-catherine-linkup'
-      path: '/st-catherine-linkup'
-      fullPath: '/st-catherine-linkup'
-      preLoaderRoute: typeof StCatherineLinkupRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sing-ova-sundays-admin': {
-      id: '/sing-ova-sundays-admin'
-      path: '/sing-ova-sundays-admin'
-      fullPath: '/sing-ova-sundays-admin'
-      preLoaderRoute: typeof SingOvaSundaysAdminRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sing-ova-sundays': {
-      id: '/sing-ova-sundays'
-      path: '/sing-ova-sundays'
-      fullPath: '/sing-ova-sundays'
-      preLoaderRoute: typeof SingOvaSundaysRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sing-ova': {
-      id: '/sing-ova'
-      path: '/sing-ova'
-      fullPath: '/sing-ova'
-      preLoaderRoute: typeof SingOvaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/run-of-show': {
-      id: '/run-of-show'
-      path: '/run-of-show'
-      fullPath: '/run-of-show'
-      preLoaderRoute: typeof RunOfShowRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/privacy': {
-      id: '/privacy'
-      path: '/privacy'
-      fullPath: '/privacy'
-      preLoaderRoute: typeof PrivacyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/plate-cost': {
-      id: '/plate-cost'
-      path: '/plate-cost'
-      fullPath: '/plate-cost'
-      preLoaderRoute: typeof PlateCostRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/past-events': {
-      id: '/past-events'
-      path: '/past-events'
-      fullPath: '/past-events'
-      preLoaderRoute: typeof PastEventsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/mingles-tuesdays-brainstorm': {
-      id: '/mingles-tuesdays-brainstorm'
-      path: '/mingles-tuesdays-brainstorm'
-      fullPath: '/mingles-tuesdays-brainstorm'
-      preLoaderRoute: typeof MinglesTuesdaysBrainstormRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/just-laugh-wednesday-brainstorm': {
-      id: '/just-laugh-wednesday-brainstorm'
-      path: '/just-laugh-wednesday-brainstorm'
-      fullPath: '/just-laugh-wednesday-brainstorm'
-      preLoaderRoute: typeof JustLaughWednesdayBrainstormRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/jay-rebl': {
-      id: '/jay-rebl'
-      path: '/jay-rebl'
-      fullPath: '/jay-rebl'
-      preLoaderRoute: typeof JayReblRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/jamaicaday': {
-      id: '/jamaicaday'
-      path: '/jamaicaday'
-      fullPath: '/jamaicaday'
-      preLoaderRoute: typeof JamaicadayRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/jamaica64': {
-      id: '/jamaica64'
-      path: '/jamaica64'
-      fullPath: '/jamaica64'
-      preLoaderRoute: typeof Jamaica64RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/irie-jerk-and-juggling': {
-      id: '/irie-jerk-and-juggling'
-      path: '/irie-jerk-and-juggling'
-      fullPath: '/irie-jerk-and-juggling'
-      preLoaderRoute: typeof IrieJerkAndJugglingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/get-started': {
-      id: '/get-started'
-      path: '/get-started'
-      fullPath: '/get-started'
-      preLoaderRoute: typeof GetStartedRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/events': {
-      id: '/events'
-      path: '/events'
-      fullPath: '/events'
-      preLoaderRoute: typeof EventsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/dinner-in-jamaica': {
-      id: '/dinner-in-jamaica'
-      path: '/dinner-in-jamaica'
-      fullPath: '/dinner-in-jamaica'
-      preLoaderRoute: typeof DinnerInJamaicaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/dancehall-fridays': {
-      id: '/dancehall-fridays'
-      path: '/dancehall-fridays'
-      fullPath: '/dancehall-fridays'
-      preLoaderRoute: typeof DancehallFridaysRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/dancehall-101': {
-      id: '/dancehall-101'
-      path: '/dancehall-101'
-      fullPath: '/dancehall-101'
-      preLoaderRoute: typeof Dancehall101RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contract-admin': {
-      id: '/contract-admin'
-      path: '/contract-admin'
-      fullPath: '/contract-admin'
-      preLoaderRoute: typeof ContractAdminRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contract': {
-      id: '/contract'
-      path: '/contract'
-      fullPath: '/contract'
-      preLoaderRoute: typeof ContractRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/chicago-vybez': {
-      id: '/chicago-vybez'
-      path: '/chicago-vybez'
-      fullPath: '/chicago-vybez'
-      preLoaderRoute: typeof ChicagoVybezRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/charly-black': {
-      id: '/charly-black'
-      path: '/charly-black'
-      fullPath: '/charly-black'
-      preLoaderRoute: typeof CharlyBlackRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/bob-marley-live-forever': {
-      id: '/bob-marley-live-forever'
-      path: '/bob-marley-live-forever'
-      fullPath: '/bob-marley-live-forever'
-      preLoaderRoute: typeof BobMarleyLiveForeverRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -833,116 +651,200 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/bob-marley-live-forever': {
+      id: '/bob-marley-live-forever'
+      path: '/bob-marley-live-forever'
+      fullPath: '/bob-marley-live-forever'
+      preLoaderRoute: typeof BobMarleyLiveForeverRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sing-ova-sundays_/$city': {
-      id: '/sing-ova-sundays_/$city'
-      path: '/sing-ova-sundays/$city'
-      fullPath: '/sing-ova-sundays/$city'
-      preLoaderRoute: typeof SingOvaSundaysCityRouteImport
+    '/charly-black': {
+      id: '/charly-black'
+      path: '/charly-black'
+      fullPath: '/charly-black'
+      preLoaderRoute: typeof CharlyBlackRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/pitch/$slug': {
-      id: '/pitch/$slug'
-      path: '/pitch/$slug'
-      fullPath: '/pitch/$slug'
-      preLoaderRoute: typeof PitchSlugRouteImport
+    '/chicago-vybez': {
+      id: '/chicago-vybez'
+      path: '/chicago-vybez'
+      fullPath: '/chicago-vybez'
+      preLoaderRoute: typeof ChicagoVybezRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/jerky-jerk/$slug': {
-      id: '/jerky-jerk/$slug'
-      path: '/jerky-jerk/$slug'
-      fullPath: '/jerky-jerk/$slug'
-      preLoaderRoute: typeof JerkyJerkSlugRouteImport
+    '/contract': {
+      id: '/contract'
+      path: '/contract'
+      fullPath: '/contract'
+      preLoaderRoute: typeof ContractRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/jay-rebl_/song-factory': {
-      id: '/jay-rebl_/song-factory'
-      path: '/jay-rebl/song-factory'
-      fullPath: '/jay-rebl/song-factory'
-      preLoaderRoute: typeof JayReblSongFactoryRouteImport
+    '/contract-admin': {
+      id: '/contract-admin'
+      path: '/contract-admin'
+      fullPath: '/contract-admin'
+      preLoaderRoute: typeof ContractAdminRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/jay-rebl_/riddim-vault': {
-      id: '/jay-rebl_/riddim-vault'
-      path: '/jay-rebl/riddim-vault'
-      fullPath: '/jay-rebl/riddim-vault'
-      preLoaderRoute: typeof JayReblRiddimVaultRouteImport
+    '/dancehall-101': {
+      id: '/dancehall-101'
+      path: '/dancehall-101'
+      fullPath: '/dancehall-101'
+      preLoaderRoute: typeof Dancehall101RouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/jay-rebl_/reggae-day-proposal': {
-      id: '/jay-rebl_/reggae-day-proposal'
-      path: '/jay-rebl/reggae-day-proposal'
-      fullPath: '/jay-rebl/reggae-day-proposal'
-      preLoaderRoute: typeof JayReblReggaeDayProposalRouteImport
+    '/dancehall-fridays': {
+      id: '/dancehall-fridays'
+      path: '/dancehall-fridays'
+      fullPath: '/dancehall-fridays'
+      preLoaderRoute: typeof DancehallFridaysRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/jay-rebl_/reggae-day-production': {
-      id: '/jay-rebl_/reggae-day-production'
-      path: '/jay-rebl/reggae-day-production'
-      fullPath: '/jay-rebl/reggae-day-production'
-      preLoaderRoute: typeof JayReblReggaeDayProductionRouteImport
+    '/dinner-in-jamaica': {
+      id: '/dinner-in-jamaica'
+      path: '/dinner-in-jamaica'
+      fullPath: '/dinner-in-jamaica'
+      preLoaderRoute: typeof DinnerInJamaicaRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/jay-rebl_/nap-idea-submission': {
-      id: '/jay-rebl_/nap-idea-submission'
-      path: '/jay-rebl/nap-idea-submission'
-      fullPath: '/jay-rebl/nap-idea-submission'
-      preLoaderRoute: typeof JayReblNapIdeaSubmissionRouteImport
+    '/events': {
+      id: '/events'
+      path: '/events'
+      fullPath: '/events'
+      preLoaderRoute: typeof EventsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/jay-rebl_/dolly-parton-tribute': {
-      id: '/jay-rebl_/dolly-parton-tribute'
-      path: '/jay-rebl/dolly-parton-tribute'
-      fullPath: '/jay-rebl/dolly-parton-tribute'
-      preLoaderRoute: typeof JayReblDollyPartonTributeRouteImport
+    '/get-started': {
+      id: '/get-started'
+      path: '/get-started'
+      fullPath: '/get-started'
+      preLoaderRoute: typeof GetStartedRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/irie-jerk/$slug': {
-      id: '/irie-jerk/$slug'
-      path: '/irie-jerk/$slug'
-      fullPath: '/irie-jerk/$slug'
-      preLoaderRoute: typeof IrieJerkSlugRouteImport
+    '/irie-jerk-and-juggling': {
+      id: '/irie-jerk-and-juggling'
+      path: '/irie-jerk-and-juggling'
+      fullPath: '/irie-jerk-and-juggling'
+      preLoaderRoute: typeof IrieJerkAndJugglingRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/irie-jerk-and-juggling_/$edition': {
-      id: '/irie-jerk-and-juggling_/$edition'
-      path: '/irie-jerk-and-juggling/$edition'
-      fullPath: '/irie-jerk-and-juggling/$edition'
-      preLoaderRoute: typeof IrieJerkAndJugglingEditionRouteImport
+    '/jamaica64': {
+      id: '/jamaica64'
+      path: '/jamaica64'
+      fullPath: '/jamaica64'
+      preLoaderRoute: typeof Jamaica64RouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/dancehall-101_/ticket': {
-      id: '/dancehall-101_/ticket'
-      path: '/dancehall-101/ticket'
-      fullPath: '/dancehall-101/ticket'
-      preLoaderRoute: typeof Dancehall101TicketRouteImport
+    '/jamaicaday': {
+      id: '/jamaicaday'
+      path: '/jamaicaday'
+      fullPath: '/jamaicaday'
+      preLoaderRoute: typeof JamaicadayRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/dancehall-101_/leaderboard': {
-      id: '/dancehall-101_/leaderboard'
-      path: '/dancehall-101/leaderboard'
-      fullPath: '/dancehall-101/leaderboard'
-      preLoaderRoute: typeof Dancehall101LeaderboardRouteImport
+    '/jay-rebl': {
+      id: '/jay-rebl'
+      path: '/jay-rebl'
+      fullPath: '/jay-rebl'
+      preLoaderRoute: typeof JayReblRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/dancehall-101_/checkin': {
-      id: '/dancehall-101_/checkin'
-      path: '/dancehall-101/checkin'
-      fullPath: '/dancehall-101/checkin'
-      preLoaderRoute: typeof Dancehall101CheckinRouteImport
+    '/just-laugh-wednesday-brainstorm': {
+      id: '/just-laugh-wednesday-brainstorm'
+      path: '/just-laugh-wednesday-brainstorm'
+      fullPath: '/just-laugh-wednesday-brainstorm'
+      preLoaderRoute: typeof JustLaughWednesdayBrainstormRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/charly-black_/street-team': {
-      id: '/charly-black_/street-team'
-      path: '/charly-black/street-team'
-      fullPath: '/charly-black/street-team'
-      preLoaderRoute: typeof CharlyBlackStreetTeamRouteImport
+    '/mingles-tuesdays-brainstorm': {
+      id: '/mingles-tuesdays-brainstorm'
+      path: '/mingles-tuesdays-brainstorm'
+      fullPath: '/mingles-tuesdays-brainstorm'
+      preLoaderRoute: typeof MinglesTuesdaysBrainstormRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/past-events': {
+      id: '/past-events'
+      path: '/past-events'
+      fullPath: '/past-events'
+      preLoaderRoute: typeof PastEventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/plate-cost': {
+      id: '/plate-cost'
+      path: '/plate-cost'
+      fullPath: '/plate-cost'
+      preLoaderRoute: typeof PlateCostRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/run-of-show': {
+      id: '/run-of-show'
+      path: '/run-of-show'
+      fullPath: '/run-of-show'
+      preLoaderRoute: typeof RunOfShowRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sing-ova': {
+      id: '/sing-ova'
+      path: '/sing-ova'
+      fullPath: '/sing-ova'
+      preLoaderRoute: typeof SingOvaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sing-ova-sundays': {
+      id: '/sing-ova-sundays'
+      path: '/sing-ova-sundays'
+      fullPath: '/sing-ova-sundays'
+      preLoaderRoute: typeof SingOvaSundaysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sing-ova-sundays-admin': {
+      id: '/sing-ova-sundays-admin'
+      path: '/sing-ova-sundays-admin'
+      fullPath: '/sing-ova-sundays-admin'
+      preLoaderRoute: typeof SingOvaSundaysAdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/st-catherine-linkup': {
+      id: '/st-catherine-linkup'
+      path: '/st-catherine-linkup'
+      fullPath: '/st-catherine-linkup'
+      preLoaderRoute: typeof StCatherineLinkupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tech-rider': {
+      id: '/tech-rider'
+      path: '/tech-rider'
+      fullPath: '/tech-rider'
+      preLoaderRoute: typeof TechRiderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/work-fi-di-beach': {
+      id: '/work-fi-di-beach'
+      path: '/work-fi-di-beach'
+      fullPath: '/work-fi-di-beach'
+      preLoaderRoute: typeof WorkFiDiBeachRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/charly-black_/comp': {
+      id: '/charly-black_/comp'
+      path: '/charly-black/comp'
+      fullPath: '/charly-black/comp'
+      preLoaderRoute: typeof CharlyBlackCompRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/charly-black_/comp-admin': {
@@ -952,11 +854,109 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CharlyBlackCompAdminRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/charly-black_/comp': {
-      id: '/charly-black_/comp'
-      path: '/charly-black/comp'
-      fullPath: '/charly-black/comp'
-      preLoaderRoute: typeof CharlyBlackCompRouteImport
+    '/charly-black_/street-team': {
+      id: '/charly-black_/street-team'
+      path: '/charly-black/street-team'
+      fullPath: '/charly-black/street-team'
+      preLoaderRoute: typeof CharlyBlackStreetTeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dancehall-101_/checkin': {
+      id: '/dancehall-101_/checkin'
+      path: '/dancehall-101/checkin'
+      fullPath: '/dancehall-101/checkin'
+      preLoaderRoute: typeof Dancehall101CheckinRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dancehall-101_/leaderboard': {
+      id: '/dancehall-101_/leaderboard'
+      path: '/dancehall-101/leaderboard'
+      fullPath: '/dancehall-101/leaderboard'
+      preLoaderRoute: typeof Dancehall101LeaderboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dancehall-101_/ticket': {
+      id: '/dancehall-101_/ticket'
+      path: '/dancehall-101/ticket'
+      fullPath: '/dancehall-101/ticket'
+      preLoaderRoute: typeof Dancehall101TicketRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/irie-jerk-and-juggling_/$edition': {
+      id: '/irie-jerk-and-juggling_/$edition'
+      path: '/irie-jerk-and-juggling/$edition'
+      fullPath: '/irie-jerk-and-juggling/$edition'
+      preLoaderRoute: typeof IrieJerkAndJugglingEditionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/irie-jerk/$slug': {
+      id: '/irie-jerk/$slug'
+      path: '/irie-jerk/$slug'
+      fullPath: '/irie-jerk/$slug'
+      preLoaderRoute: typeof IrieJerkSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jay-rebl_/dolly-parton-tribute': {
+      id: '/jay-rebl_/dolly-parton-tribute'
+      path: '/jay-rebl/dolly-parton-tribute'
+      fullPath: '/jay-rebl/dolly-parton-tribute'
+      preLoaderRoute: typeof JayReblDollyPartonTributeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jay-rebl_/nap-idea-submission': {
+      id: '/jay-rebl_/nap-idea-submission'
+      path: '/jay-rebl/nap-idea-submission'
+      fullPath: '/jay-rebl/nap-idea-submission'
+      preLoaderRoute: typeof JayReblNapIdeaSubmissionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jay-rebl_/reggae-day-production': {
+      id: '/jay-rebl_/reggae-day-production'
+      path: '/jay-rebl/reggae-day-production'
+      fullPath: '/jay-rebl/reggae-day-production'
+      preLoaderRoute: typeof JayReblReggaeDayProductionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jay-rebl_/reggae-day-proposal': {
+      id: '/jay-rebl_/reggae-day-proposal'
+      path: '/jay-rebl/reggae-day-proposal'
+      fullPath: '/jay-rebl/reggae-day-proposal'
+      preLoaderRoute: typeof JayReblReggaeDayProposalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jay-rebl_/riddim-vault': {
+      id: '/jay-rebl_/riddim-vault'
+      path: '/jay-rebl/riddim-vault'
+      fullPath: '/jay-rebl/riddim-vault'
+      preLoaderRoute: typeof JayReblRiddimVaultRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jay-rebl_/song-factory': {
+      id: '/jay-rebl_/song-factory'
+      path: '/jay-rebl/song-factory'
+      fullPath: '/jay-rebl/song-factory'
+      preLoaderRoute: typeof JayReblSongFactoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jerky-jerk/$slug': {
+      id: '/jerky-jerk/$slug'
+      path: '/jerky-jerk/$slug'
+      fullPath: '/jerky-jerk/$slug'
+      preLoaderRoute: typeof JerkyJerkSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pitch/$slug': {
+      id: '/pitch/$slug'
+      path: '/pitch/$slug'
+      fullPath: '/pitch/$slug'
+      preLoaderRoute: typeof PitchSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sing-ova-sundays_/$city': {
+      id: '/sing-ova-sundays_/$city'
+      path: '/sing-ova-sundays/$city'
+      fullPath: '/sing-ova-sundays/$city'
+      preLoaderRoute: typeof SingOvaSundaysCityRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
