@@ -2,13 +2,12 @@
 // from route generation (TanStack Router convention) — see
 // src/routes/README.md.
 //
-// Archive index for one-off events whose date has passed. These pages still
-// exist and are still reachable directly (Charly Black keeps its street-team
-// / comp / comp-admin tooling live at /charly-black/*), they're just no
-// longer linked from the Navbar — see Navbar.tsx's EVENT_LINKS. Recurring
-// series (Dancehall Fridays, Dinner in Jamaica, Dancehall 101, Sing Ova
-// Sundays) don't belong here even once a given week's date passes, since the
-// series itself is still live.
+// Archive index for events that are over. These pages still exist and are still
+// reachable directly (Charly Black keeps its street-team / comp / comp-admin
+// tooling live at /charly-black/*), they're just no longer linked from the
+// Navbar — see Navbar.tsx's EVENT_LINKS. A recurring series belongs here only
+// once the whole series has ended (Dancehall Fridays), not when one week's date
+// passes.
 //
 // The list lives in Supabase (public.trc_past_events, see
 // supabase/sql/trc_past_events_and_irie_jerk_rename.sql). To archive an event,
@@ -25,6 +24,7 @@ import workFiDiBeachFlyer from "@/assets/work-fi-di-beach-flyer.jpg";
 import stCatherineFlyer from "@/assets/st-catherine-linkup-flyer.jpg";
 import jamaicadayFlyer from "@/assets/jamaicaday-flyer.jpg";
 import jamaica64Flyer from "@/assets/jamaica64-flyer.jpg";
+import dancehallFridaysFlyer from "@/assets/dancehall-fridays-flyer.jpg";
 
 const SITE_URL = "https://trcevent.com";
 
@@ -36,6 +36,7 @@ const BUNDLED_FLYERS: Record<string, string> = {
   "st-catherine-linkup": stCatherineFlyer,
   jamaicaday: jamaicadayFlyer,
   jamaica64: jamaica64Flyer,
+  "dancehall-fridays": dancehallFridaysFlyer,
 };
 
 type PastEvent = {
@@ -49,6 +50,15 @@ type PastEvent = {
 
 // Newest first.
 const FALLBACK_EVENTS: PastEvent[] = [
+  {
+    slug: "dancehall-fridays",
+    name: "Dancehall Fridays — Girls Night Out",
+    date: "Fridays from September 25, 2026",
+    to: "/dancehall-fridays",
+    image: dancehallFridaysFlyer,
+    description:
+      "Girls Night Out with DJ Bad Chargie, presented by Dougiefresh & One Draw Crew at Banquet Hall – A Place for You.",
+  },
   {
     slug: "chicago-vybez",
     name: "Chicago Vybez — Prestige In The Park",

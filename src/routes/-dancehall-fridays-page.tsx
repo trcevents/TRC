@@ -2,12 +2,9 @@
 // file from route generation (TanStack Router convention) — see
 // src/routes/README.md.
 //
-// Recurring weekly party (every Friday), not a one-off show like Charly Black
-// or St. Catherine Link-Up. The countdown/hero treats the Sept 25, 2026
-// opening night as the featured launch date since that's the one with a
-// unique promo (ladies free all night + free jerk dinner for the first 25),
-// while copy throughout makes clear the series continues every Friday after.
-import { useEffect, useState } from "react";
+// Archived: the Friday series that opened Sept 25, 2026 has ended. The page
+// stays up as a record and is listed on /past-events.
+import { ArchivedEventBanner } from "@/components/site/ArchivedEventBanner";
 import {
   CalendarDays,
   Clock,
@@ -29,8 +26,6 @@ import flyerImg from "@/assets/dancehall-fridays-flyer.jpg";
 const SITE_URL = "https://trcevent.com";
 const VENUE_NAME = "Banquet Hall – A Place for You";
 const VENUE_ADDRESS = "12746 South Halsted Street, Chicago, IL";
-// Opening night — every Friday after follows the same 9 PM start.
-const EVENT_START = new Date("2026-09-25T21:00:00");
 const HOST_DJ = "DJ Bad Chargie";
 
 export function dancehallFridaysHead() {
@@ -41,13 +36,13 @@ export function dancehallFridaysHead() {
       {
         name: "description",
         content:
-          "Dancehall Fridays — Girls Night Out with DJ Bad Chargie. Starting Friday, Sept 25, 2026 and every Friday night after at Banquet Hall – A Place for You, Chicago. Ladies free opening night, $20 general admission, free parking.",
+          "Dancehall Fridays — Girls Night Out with DJ Bad Chargie, a Friday series that opened September 25, 2026 at Banquet Hall – A Place for You, Chicago.",
       },
       { property: "og:title", content: "Dancehall Fridays — Girls Night Out | TRC Events" },
       {
         property: "og:description",
         content:
-          "Every Friday Night. Ladies free opening night — Sept 25, 2026 — Chicago. Presented by Dougiefresh & One Draw Crew.",
+          "A past Friday series, opened Sept 25, 2026 in Chicago. Presented by Dougiefresh & One Draw Crew.",
       },
       { property: "og:type", content: "article" },
       { property: "og:image", content: imageUrl },
@@ -57,55 +52,12 @@ export function dancehallFridaysHead() {
       {
         name: "twitter:description",
         content:
-          "Every Friday Night. Ladies free opening night — Sept 25, 2026 — Chicago. Presented by Dougiefresh & One Draw Crew.",
+          "A past Friday series, opened Sept 25, 2026 in Chicago. Presented by Dougiefresh & One Draw Crew.",
       },
       { name: "twitter:image", content: imageUrl },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/dancehall-fridays/` }],
   };
-}
-
-function useCountdown(target: Date) {
-  const [remainingMs, setRemainingMs] = useState<number | null>(null);
-
-  useEffect(() => {
-    const tick = () => setRemainingMs(Math.max(0, target.getTime() - Date.now()));
-    tick();
-    const id = setInterval(tick, 1000);
-    return () => clearInterval(id);
-  }, [target]);
-
-  return remainingMs;
-}
-
-function CountdownStrip() {
-  const remainingMs = useCountdown(EVENT_START);
-  const totalSeconds = remainingMs == null ? null : Math.floor(remainingMs / 1000);
-
-  const units = [
-    { label: "Days", value: totalSeconds == null ? null : Math.floor(totalSeconds / 86400) },
-    {
-      label: "Hours",
-      value: totalSeconds == null ? null : Math.floor((totalSeconds % 86400) / 3600),
-    },
-    { label: "Min", value: totalSeconds == null ? null : Math.floor((totalSeconds % 3600) / 60) },
-    { label: "Sec", value: totalSeconds == null ? null : totalSeconds % 60 },
-  ];
-
-  return (
-    <div className="flex justify-center gap-6 sm:gap-10">
-      {units.map((u) => (
-        <div key={u.label} className="text-center">
-          <p className="font-display text-3xl font-extrabold tabular-nums text-gold sm:text-4xl">
-            {u.value == null ? "--" : String(u.value).padStart(2, "0")}
-          </p>
-          <p className="mt-1 text-[0.65rem] uppercase tracking-wider text-muted-foreground">
-            {u.label}
-          </p>
-        </div>
-      ))}
-    </div>
-  );
 }
 
 export function DancehallFridaysPage() {
@@ -133,14 +85,6 @@ export function DancehallFridaysPage() {
       name: "TRC Events",
       url: SITE_URL,
     },
-    offers: {
-      "@type": "Offer",
-      url: `${SITE_URL}/dancehall-fridays#tickets`,
-      priceCurrency: "USD",
-      price: "20",
-      availability: "https://schema.org/InStock",
-      description: "$20 general admission; ladies free per current promo",
-    },
   };
 
   return (
@@ -151,6 +95,8 @@ export function DancehallFridaysPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
       />
 
+      <ArchivedEventBanner date="as a Friday series from September 25, 2026" />
+
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-4xl px-4 py-12 text-center sm:px-6 sm:py-16">
@@ -159,7 +105,6 @@ export function DancehallFridaysPage() {
             <Badge variant="outline" className="border-gold/40 text-gold">
               Every Friday Night
             </Badge>
-            <Badge variant="destructive">Opening Night: Ladies Free All Night</Badge>
           </div>
           <p className="eyebrow mb-2">Presented by TRC Events</p>
           <h1 className="font-display text-5xl font-extrabold tracking-tight sm:text-7xl">
@@ -185,23 +130,10 @@ export function DancehallFridaysPage() {
           </div>
 
           <div className="mt-7 flex flex-wrap justify-center gap-3">
-            <Button asChild variant="gold" size="xl">
-              <a href="#tickets">
-                <Ticket className="size-4" /> Entry Info
-              </a>
-            </Button>
             <Button asChild variant="goldOutline" size="xl">
               <a href="#venue">Venue Info</a>
             </Button>
           </div>
-        </div>
-      </section>
-
-      {/* Countdown */}
-      <section className="border-y border-border bg-card">
-        <div className="mx-auto max-w-4xl px-4 py-10 text-center sm:px-6">
-          <p className="eyebrow mb-6">Opening Night Starts In</p>
-          <CountdownStrip />
         </div>
       </section>
 
@@ -321,13 +253,6 @@ export function DancehallFridaysPage() {
             </div>
           </div>
 
-          <div className="mt-6 flex flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-gold/30 bg-card px-6 py-8 text-center">
-            <Ticket className="size-6 text-gold" />
-            <p className="font-display font-semibold">Ticket outlet link coming soon</p>
-            <p className="max-w-md text-sm text-muted-foreground">
-              No pre-sale required to attend — walk-ins welcome, doors at 9 PM.
-            </p>
-          </div>
         </section>
 
         {/* Share */}
