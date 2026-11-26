@@ -41,10 +41,33 @@ Deno.serve(async (req) => {
     });
   }
 
-  const { password, id, field, value } = await req.json();
+  const { action, password, id, field, value } = await req.json();
 
-  if (password !== PRODUCTION_SCHEDULE_PASSWORD) {
+  // The first check keeps an unset secret from matching a missing password.
+  if (
+    !PRODUCTION_SCHEDULE_PASSWORD ||
+    password !== PRODUCTION_SCHEDULE_PASSWORD
+  ) {
     return new Response(JSON.stringify({ error: "Wrong password." }), {
+      status: 200,
+      headers: jsonHeaders,
+    });
+  }
+  // Phone and email aren't readable by visitors (migration 0022), so the
+  // page asks for them here once the team password has been entered.
+  if (action === "list-contacts") {
+    const admin = createClient(SUPABASE_URL, SERVICE_ROLE_KEY);
+    const { data: contacts, error: listError } = await admin
+      .from("schedule_acts")
+      .select("id, phone, email");
+    if (listError) {
+      console.error("schedule_acts contact list failed:", listError);
+      return new Response(
+        JSON.stringify({ error: "Couldn't load contacts. Try again." }),
+        { status: 500, headers: jsonHeaders },
+      );
+    }
+    return new Response(JSON.stringify({ ok: true, contacts }), {
       status: 200,
       headers: jsonHeaders,
     });

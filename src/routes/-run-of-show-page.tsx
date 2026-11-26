@@ -5,7 +5,8 @@
 // Live, team-editable master production schedule (see migration 0013,
 // production_schedule table) plus a structured Show/Artist Sets lineup
 // table with per-act status checkboxes (migration 0015, schedule_acts).
-// Anyone can read either with no login; editing either needs one shared
+// Anyone can read either with no login, except performer phone and email
+// (migration 0022); seeing those and editing anything needs one shared
 // team password (PRODUCTION_SCHEDULE_PASSWORD), not per-member accounts --
 // Stephen hands that one password to whoever on the team needs to edit.
 // The password field at the top of the page is shared by both the
@@ -50,15 +51,20 @@ type ScheduleAct = {
   position: number;
   time_slot: string;
   act_name: string;
-  phone: string | null;
-  email: string | null;
+  // Only present after the team password unlocks contacts.
+  phone?: string | null;
+  email?: string | null;
   online_promo: boolean;
   social_media_received: boolean;
   contract_signed: boolean;
   tickets_ordered: boolean;
 };
 
-const STATUS_COLUMNS: { field: keyof ScheduleAct; label: string }[] = [
+// Everything visitors may read. Phone and email are loaded separately.
+const PUBLIC_ACT_COLUMNS =
+  "id, position, time_slot, act_name, online_promo, social_media_received, contract_signed, tickets_ordered";
+
+const STATUS_COLUMNS:{ field: keyof ScheduleAct; label: string }[] = [
   { field: "online_promo", label: "Online Promo" },
   { field: "social_media_received", label: "Social Media Received" },
   { field: "contract_signed", label: "Contract Signed" },
@@ -75,6 +81,8 @@ export function RunOfShowPage() {
   const [teamPassword, setTeamPassword] = useState("");
   const [updatedBy, setUpdatedBy] = useState("");
   const [draft, setDraft] = useState("");
+  const [contactsUnlocked, setContactsUnlocked] = useState(false);
+  const [unlocking, setUnlocking] = useState(false);
 
   async function load() {
     setLoading(true);
@@ -83,7 +91,7 @@ export function RunOfShowPage() {
         .from("production_schedule")
         .select("event_name, content, updated_at, updated_by")
         .single(),
-      supabase.from("schedule_acts").select("*").order("position"),
+      supabase.from("schedule_acts").select(PUBLIC_ACT_COLUMNS).order("position"),
     ]);
     if (scheduleRes.error) {
       toast.error("Couldn't load the schedule.");
@@ -134,6 +142,30 @@ export function RunOfShowPage() {
       toast.error("Something went wrong. Check your connection and try again.");
     } finally {
       setBusy(false);
+    }
+  }
+
+  async function unlockContacts(e: React.FormEvent) {
+    e.preventDefault();
+    if (contactsUnlocked) return;
+    setUnlocking(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("update-schedule-act", {
+        body: { action: "list-contacts", password: teamPassword },
+      });
+      if (error || !data?.ok) {
+        toast.error(data?.error ?? "Couldn't load contacts. Try again.");
+        return;
+      }
+      const byId = new Map(
+        (data.contacts as Pick<ScheduleAct, "id" | "phone" | "email">[]).map((c) => [c.id, c]),
+      );
+      setActs((prev) => prev.map((a) => ({ ...a, ...byId.get(a.id) })));
+      setContactsUnlocked(true);
+    } catch {
+      toast.error("Something went wrong. Check your connection and try again.");
+    } finally {
+      setUnlocking(false);
     }
   }
 
@@ -191,19 +223,32 @@ export function RunOfShowPage() {
         </div>
       ) : (
         <div className="space-y-10">
-          <div className="rounded-xl border border-gold/30 bg-gold/5 p-4">
+          <form onSubmit={unlockContacts} className="rounded-xl border border-gold/30 bg-gold/5 p-4">
             <Label htmlFor="ros-team-password">
-              Team password (needed to check off items or edit below)
+              Team password (needed to see contacts, check off items or edit below)
             </Label>
-            <Input
-              id="ros-team-password"
-              type="password"
-              value={teamPassword}
-              onChange={(e) => setTeamPassword(e.target.value)}
-              className="mt-1.5 max-w-xs"
-              placeholder="Only needed to make changes"
-            />
-          </div>
+            <div className="mt-1.5 flex flex-wrap items-center gap-2">
+              <Input
+                id="ros-team-password"
+                type="password"
+                value={teamPassword}
+                onChange={(e) => setTeamPassword(e.target.value)}
+                className="max-w-xs"
+                placeholder="Team password"
+              />
+              {!contactsUnlocked && (
+                <Button
+                  type="submit"
+                  variant="goldOutline"
+                  size="sm"
+                  disabled={unlocking || !teamPassword}
+                >
+                  {unlocking ? <Loader2 className="size-4 animate-spin" /> : null}
+                  Show contacts
+                </Button>
+              )}
+            </div>
+          </form>
 
           {acts.length > 0 && (
             <section>
@@ -230,6 +275,8 @@ export function RunOfShowPage() {
                         <td className="p-3 font-medium">{act.act_name}</td>
                         <td className="p-2">
                           <Input
+                            key={String(contactsUnlocked)}
+                            disabled={!contactsUnlocked}
                             type="tel"
                             defaultValue={act.phone ?? ""}
                             onBlur={(e) => {
@@ -237,13 +284,15 @@ export function RunOfShowPage() {
                                 saveActContact(act, "phone", e.target.value);
                               }
                             }}
-                            placeholder="—"
+                            placeholder={contactsUnlocked ? "—" : "Locked"}
                             className="min-w-[130px]"
                             aria-label={`Phone — ${act.act_name}`}
                           />
                         </td>
                         <td className="p-2">
                           <Input
+                            key={String(contactsUnlocked)}
+                            disabled={!contactsUnlocked}
                             type="email"
                             defaultValue={act.email ?? ""}
                             onBlur={(e) => {
@@ -251,7 +300,7 @@ export function RunOfShowPage() {
                                 saveActContact(act, "email", e.target.value);
                               }
                             }}
-                            placeholder="—"
+                            placeholder={contactsUnlocked ? "—" : "Locked"}
                             className="min-w-[160px]"
                             aria-label={`Email — ${act.act_name}`}
                           />
