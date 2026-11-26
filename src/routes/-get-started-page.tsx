@@ -3,20 +3,17 @@
 // src/routes/README.md.
 //
 // Self-service entry point: performers click their own promo photo, which
-// calls request-invite-access with that act's public-safe slug. If Stephen
-// already has their email on file (known_email), the code is emailed
-// immediately with zero input from them. Otherwise this shows an inline
-// email field for just that tile and retries once they submit it. Either
-// way, they then check their email and enter the code at /contract
-// themselves -- this page only gets them their code, it doesn't collect
-// any contract info itself.
+// calls request-invite-access with that act's public-safe slug. The code is
+// emailed only to the address Stephen has on file (known_email); acts with
+// none are told to contact TRC Events. They then check their email and
+// enter the code at /contract themselves -- this page only gets them their
+// code, it doesn't collect any contract info itself.
 import { useState } from "react";
 import { toast } from "sonner";
-import { CheckCircle2, Loader2, Mail } from "lucide-react";
+import { CheckCircle2, Loader2 } from "lucide-react";
 
 import { supabase } from "@/lib/supabase";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 
 import badChargieImg from "@/assets/dj-bad-chargie.jpg";
 import djPoyoImg from "@/assets/dj-poyo.jpg";
@@ -62,7 +59,6 @@ const ACTS = [
 type TileState =
   | { status: "idle" }
   | { status: "busy" }
-  | { status: "needsEmail"; email: string }
   | { status: "sent"; sentTo: string };
 
 export function GetStartedPage() {
@@ -74,19 +70,15 @@ export function GetStartedPage() {
     setTiles((prev) => ({ ...prev, [slug]: state }));
   }
 
-  async function requestAccess(slug: string, email?: string) {
+  async function requestAccess(slug: string) {
     setTile(slug, { status: "busy" });
     try {
       const { data, error } = await supabase.functions.invoke("request-invite-access", {
-        body: { actSlug: slug, email },
+        body: { actSlug: slug },
       });
       if (error || data?.error) {
         toast.error(data?.error ?? "Couldn't send the code. Try again.");
         setTile(slug, { status: "idle" });
-        return;
-      }
-      if (data?.needsEmail) {
-        setTile(slug, { status: "needsEmail", email: "" });
         return;
       }
       setTile(slug, { status: "sent", sentTo: data.sentTo });
@@ -144,32 +136,6 @@ export function GetStartedPage() {
                   <div className="flex justify-center py-1.5">
                     <Loader2 className="size-4 animate-spin text-gold" />
                   </div>
-                )}
-
-                {tile.status === "needsEmail" && (
-                  <form
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      if (tile.status === "needsEmail" && tile.email.trim()) {
-                        requestAccess(act.slug, tile.email.trim());
-                      }
-                    }}
-                    className="space-y-2"
-                  >
-                    <Input
-                      type="email"
-                      required
-                      placeholder="Your email"
-                      value={tile.email}
-                      onChange={(e) =>
-                        setTile(act.slug, { status: "needsEmail", email: e.target.value })
-                      }
-                      className="h-8 text-xs"
-                    />
-                    <Button type="submit" variant="gold" size="sm" className="w-full">
-                      <Mail className="size-3.5" /> Send code
-                    </Button>
-                  </form>
                 )}
 
                 {tile.status === "sent" && (

@@ -1,15 +1,11 @@
 // Powers the "click your photo to get started" gallery page. Looks up an
 // invite by its public-safe act_slug (never the real access code or its
 // hash) and emails the existing plaintext code (see migration 0017 for
-// why storing it is safe here) to:
-//   - known_email, if Stephen already has it on file for this performer
-//     -- no email input shown on the page at all in that case, and any
-//     client-supplied email is ignored so it can't be redirected; or
-//   - the email the client provides, if there's no known_email yet.
-//
-// Returns { needsEmail: true } (not an error) when there's no known_email
-// and none was supplied, so the page knows to show an inline email field
-// and retry, rather than treating it as a failure.
+// why storing it is safe here) only to known_email, the address Stephen
+// has on file for this performer. The caller can't choose or supply the
+// address: the code unlocks the deal terms and contract signing, so an
+// act with no email on file has to contact TRC Events (Stephen adds it
+// with update-invite-known-email).
 import { createClient } from "npm:@supabase/supabase-js@2";
 
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
@@ -43,7 +39,7 @@ Deno.serve(async (req) => {
     });
   }
 
-  const { actSlug, email } = await req.json();
+  const { actSlug } = await req.json();
   if (!actSlug) {
     return new Response(JSON.stringify({ error: "Missing actSlug." }), {
       status: 400,
@@ -75,12 +71,14 @@ Deno.serve(async (req) => {
     );
   }
 
-  const targetEmail = invite.known_email || email?.trim();
+  const targetEmail = invite.known_email;
   if (!targetEmail) {
-    return new Response(JSON.stringify({ needsEmail: true }), {
-      status: 200,
-      headers: jsonHeaders,
-    });
+    return new Response(
+      JSON.stringify({
+        error: "No email on file for this act. Contact TRC Events.",
+      }),
+      { status: 200, headers: jsonHeaders },
+    );
   }
 
   const statusNote =
