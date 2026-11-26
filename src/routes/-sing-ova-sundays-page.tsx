@@ -66,6 +66,7 @@ import {
 } from "lucide-react";
 
 import { supabase } from "@/lib/supabase";
+import { IRIE_JERK_JUGGLING } from "@/lib/thursday/irie-jerk-juggling-event";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -94,7 +95,7 @@ import type {
 } from "@/lib/sing-ova-types";
 
 const SITE_URL = "https://trcevent.com";
-const CONTACT_PHONE = "(414) 301-2457";
+const CONTACT_PHONE = IRIE_JERK_JUGGLING.venue.phone;
 const HERO_AUTOPLAY_MS = 7000;
 
 // Overrides the design system's CSS custom properties for this page only —
@@ -996,10 +997,10 @@ export function SingOvaSundaysPage({ citySlug }: { citySlug: string }) {
               <div className="flex items-start gap-3">
                 <Phone className="mt-0.5 size-5 shrink-0 text-secondary" />
                 <a
-                  href={`tel:${CONTACT_PHONE.replace(/[^\d+]/g, "")}`}
+                  href={`tel:${CONTACT_PHONE.tel}`}
                   className="text-sm text-muted-foreground underline decoration-dotted hover:text-secondary"
                 >
-                  {CONTACT_PHONE}
+                  {CONTACT_PHONE.display}
                 </a>
               </div>
               <p className="text-xs text-muted-foreground">
@@ -1018,10 +1019,10 @@ export function SingOvaSundaysPage({ citySlug }: { citySlug: string }) {
           </p>
           <div className="mx-auto mt-6 flex max-w-md flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm">
             <a
-              href={`tel:${CONTACT_PHONE.replace(/[^\d+]/g, "")}`}
+              href={`tel:${CONTACT_PHONE.tel}`}
               className="inline-flex items-center gap-1.5 hover:text-gold"
             >
-              <Phone className="size-4 text-gold" /> {CONTACT_PHONE}
+              <Phone className="size-4 text-gold" /> {CONTACT_PHONE.display}
             </a>
             <a href={SITE_URL} className="inline-flex items-center gap-1.5 hover:text-gold">
               <Globe className="size-4 text-gold" /> trcevent.com
