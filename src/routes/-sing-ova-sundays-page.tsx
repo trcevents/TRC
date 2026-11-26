@@ -46,9 +46,10 @@
 // scanners), via request-sos-code / verify-sos-code. The one difference:
 // this session is meant to last the whole week, not just one immediate
 // submit, so verify-sos-code extends the verified window server-side to 30
-// days. The client only remembers { email, displayName } in localStorage as
-// a UX shortcut to skip the login form on return visits -- the real gate is
-// always the server-side RLS check on sos_pairings / sos_pairing_hearts.
+// days. The client remembers { email, displayName, token } in localStorage to
+// skip the login form on return visits. The real gate is server-side: the
+// sos_feed / sos_toggle_heart / sos_submit_pairing functions check the token
+// (migration 0025), and visitors can't read or write those tables directly.
 import { useEffect, useState } from "react";
 import type { FormEvent } from "react";
 import {
@@ -87,7 +88,7 @@ import type {
   SosCity,
   SosFeedPairing,
   SosHeroSlide,
-  SosPairing,
+  SosFeedRow,
   StatusMessage,
   VerifyCodeResult,
 } from "@/lib/sing-ova-types";
@@ -178,7 +179,7 @@ export function SingOvaSundaysPage({ citySlug }: { citySlug: string }) {
   const [verifyingCode, setVerifyingCode] = useState(false);
   const [verifyMsg, setVerifyMsg] = useState<StatusMessage | null>(null);
 
-  const [pairings, setPairings] = useState<SosPairing[]>([]);
+  const [pairings, setPairings] = useState<SosFeedRow[]>([]);
   // Submissions are moderated -- a fresh pairing is `pending` and invisible
   // in the public feed (loadFeed only selects approved/played) until a city
   // admin approves it. Without this, hitting "Submit" feels like it did
@@ -254,42 +255,22 @@ export function SingOvaSundaysPage({ citySlug }: { citySlug: string }) {
   async function loadFeed() {
     if (!city) return;
     setLoadingFeed(true);
-    const { data: pairingRows } = await supabase
-      .from("sos_pairings")
-      .select("*")
-      .eq("city_id", city.id)
-      .order("created_at", { ascending: false })
-      .limit(100);
-    const rows = pairingRows ?? [];
+    const { data } = await supabase.rpc("sos_feed", {
+      p_token: session?.token ?? null,
+      p_city_id: city.id,
+      p_limit: 100,
+    });
+    const rows: SosFeedRow[] = data ?? [];
     setPairings(rows);
-
-    if (rows.length > 0) {
-      const ids = rows.map((r) => r.id);
-      const { data: heartRows } = await supabase
-        .from("sos_pairing_hearts")
-        .select("pairing_id, email")
-        .in("pairing_id", ids);
-      const counts: Record<string, number> = {};
-      const mine = new Set<string>();
-      for (const h of heartRows ?? []) {
-        counts[h.pairing_id] = (counts[h.pairing_id] ?? 0) + 1;
-        if (session && h.email.toLowerCase() === session.email.toLowerCase()) {
-          mine.add(h.pairing_id);
-        }
-      }
-      setHeartCounts(counts);
-      setMyHearts(mine);
-    } else {
-      setHeartCounts({});
-      setMyHearts(new Set());
-    }
+    setHeartCounts(Object.fromEntries(rows.map((r) => [r.id, r.heart_count])));
+    setMyHearts(new Set(rows.filter((r) => r.mine).map((r) => r.id)));
     setLoadingFeed(false);
   }
 
   useEffect(() => {
     loadFeed();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [city?.id, session?.email]);
+  }, [city?.id, session?.token]);
 
   async function handleSendCode() {
     const trimmedEmail = emailInput.trim();
@@ -329,7 +310,7 @@ export function SingOvaSundaysPage({ citySlug }: { citySlug: string }) {
     const { data, error } = await supabase.functions.invoke("verify-sos-code", {
       body: { email: trimmedEmail, code: trimmedCode, displayName: trimmedName },
     });
-    if (data?.valid) return { valid: true };
+    if (data?.valid) return { valid: true, token: data.token };
     const message = data?.error ?? (error ? await extractFunctionErrorMessage(error) : null);
     return { valid: false, message };
   }
@@ -351,8 +332,12 @@ export function SingOvaSundaysPage({ citySlug }: { citySlug: string }) {
       if (!result.valid && !result.message) {
         result = await callVerifyCode(trimmedEmail, trimmedCode, trimmedName);
       }
-      if (result.valid) {
-        const newSession = { email: trimmedEmail.toLowerCase(), displayName: trimmedName };
+      if (result.valid && result.token) {
+        const newSession = {
+          email: trimmedEmail.toLowerCase(),
+          displayName: trimmedName,
+          token: result.token,
+        };
         saveSession(newSession);
         setSession(newSession);
         setCodeSent(false);
@@ -398,23 +383,24 @@ export function SingOvaSundaysPage({ citySlug }: { citySlug: string }) {
       const trimmedNote = note.trim();
       const submittedWeekTheme = weekTheme === "any" ? null : weekTheme;
 
-      const { error } = await supabase.from("sos_pairings").insert({
-        city_id: city.id,
-        email: session.email,
-        display_name: session.displayName,
-        original_artist: trimmedOriginalArtist,
-        original_title: trimmedOriginalTitle,
-        reggae_artist: trimmedReggaeArtist,
-        reggae_title: trimmedReggaeTitle,
-        direction,
-        note: trimmedNote || null,
-        week_theme: submittedWeekTheme,
+      const { error } = await supabase.rpc("sos_submit_pairing", {
+        p_token: session.token,
+        p_city_id: city.id,
+        p_display_name: session.displayName,
+        p_original_artist: trimmedOriginalArtist,
+        p_original_title: trimmedOriginalTitle,
+        p_reggae_artist: trimmedReggaeArtist,
+        p_reggae_title: trimmedReggaeTitle,
+        p_direction: direction,
+        p_note: trimmedNote || null,
+        p_week_theme: submittedWeekTheme,
       });
       if (error) {
-        setSubmitMsg({
-          text: "Your session may have expired -- try logging in again.",
-          ok: false,
-        });
+        if (error.message.includes("sos_session_expired")) {
+          handleLogOut();
+          return;
+        }
+        setSubmitMsg({ text: "Couldn't submit your pairing. Try again.", ok: false });
         return;
       }
       // The real row is `pending` and invisible to the public feed until a
@@ -424,7 +410,6 @@ export function SingOvaSundaysPage({ citySlug }: { citySlug: string }) {
       setMyPendingSubmissions((prev) => [
         {
           id: `local-${crypto.randomUUID()}`,
-          email: session.email,
           display_name: session.displayName,
           original_artist: trimmedOriginalArtist,
           original_title: trimmedOriginalTitle,
@@ -458,16 +443,13 @@ export function SingOvaSundaysPage({ citySlug }: { citySlug: string }) {
     if (!session) return;
     setHeartBusyId(pairingId);
     try {
-      if (myHearts.has(pairingId)) {
-        await supabase
-          .from("sos_pairing_hearts")
-          .delete()
-          .eq("pairing_id", pairingId)
-          .eq("email", session.email);
-      } else {
-        await supabase
-          .from("sos_pairing_hearts")
-          .insert({ pairing_id: pairingId, email: session.email });
+      const { error } = await supabase.rpc("sos_toggle_heart", {
+        p_token: session.token,
+        p_pairing_id: pairingId,
+      });
+      if (error?.message.includes("sos_session_expired")) {
+        handleLogOut();
+        return;
       }
       await loadFeed();
     } finally {
@@ -515,7 +497,7 @@ export function SingOvaSundaysPage({ citySlug }: { citySlug: string }) {
     (local) =>
       !pairings.some(
         (real) =>
-          real.email === local.email &&
+          real.display_name === local.display_name &&
           real.original_artist === local.original_artist &&
           real.original_title === local.original_title &&
           real.reggae_artist === local.reggae_artist &&

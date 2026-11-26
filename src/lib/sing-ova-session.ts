@@ -12,7 +12,8 @@ export function loadSession(): SosSession | null {
     const raw = localStorage.getItem(SESSION_STORAGE_KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw);
-    if (parsed?.email && parsed?.displayName) return parsed;
+    // Logins saved before tokens existed have to verify again.
+    if (parsed?.email && parsed?.displayName && parsed?.token) return parsed;
     return null;
   } catch {
     return null;

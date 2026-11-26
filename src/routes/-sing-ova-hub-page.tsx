@@ -37,6 +37,7 @@ import { SOS_THEME_VARS, SOS_LABEL_CLASS as LABEL_CLASS } from "@/lib/sing-ova-t
 import type {
   FunctionInvokeErrorLike,
   SosCityPublic,
+  SosFeedRow,
   SosPairingWithCity,
   StatusMessage,
   VerifyCodeResult,
@@ -400,46 +401,26 @@ export function SingOvaHubPage() {
 
   async function loadTrending() {
     setLoadingTrending(true);
-    const { data: pairingRows } = await supabase
-      .from("sos_pairings")
-      .select("*, sos_cities(name, slug)")
-      .in("status", ["approved", "played"])
-      .order("created_at", { ascending: false })
-      .limit(200);
-    const rows: SosPairingWithCity[] = pairingRows ?? [];
-
-    if (rows.length === 0) {
-      setTrending([]);
-      setHeartCounts({});
-      setMyHearts(new Set());
-      setLoadingTrending(false);
-      return;
-    }
-
-    const ids = rows.map((r) => r.id);
-    const { data: heartRows } = await supabase
-      .from("sos_pairing_hearts")
-      .select("pairing_id, email")
-      .in("pairing_id", ids);
-    const counts: Record<string, number> = {};
-    const mine = new Set<string>();
-    for (const h of heartRows ?? []) {
-      counts[h.pairing_id] = (counts[h.pairing_id] ?? 0) + 1;
-      if (session && h.email.toLowerCase() === session.email.toLowerCase()) {
-        mine.add(h.pairing_id);
-      }
-    }
-    const ranked = [...rows].sort((a, b) => (counts[b.id] ?? 0) - (counts[a.id] ?? 0));
+    const { data } = await supabase.rpc("sos_feed", {
+      p_token: session?.token ?? null,
+      p_limit: 200,
+    });
+    const rows: SosPairingWithCity[] = ((data ?? []) as SosFeedRow[]).map((r) => ({
+      ...r,
+      sos_cities:
+        r.city_name && r.city_slug ? { name: r.city_name, slug: r.city_slug } : null,
+    }));
+    const ranked = [...rows].sort((a, b) => b.heart_count - a.heart_count);
     setTrending(ranked.slice(0, 8));
-    setHeartCounts(counts);
-    setMyHearts(mine);
+    setHeartCounts(Object.fromEntries(rows.map((r) => [r.id, r.heart_count])));
+    setMyHearts(new Set(rows.filter((r) => r.mine).map((r) => r.id)));
     setLoadingTrending(false);
   }
 
   useEffect(() => {
     loadTrending();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [session?.email]);
+  }, [session?.token]);
 
   async function handleSendCode() {
     const trimmedEmail = emailInput.trim();
@@ -479,7 +460,7 @@ export function SingOvaHubPage() {
     const { data, error } = await supabase.functions.invoke("verify-sos-code", {
       body: { email: trimmedEmail, code: trimmedCode, displayName: trimmedName },
     });
-    if (data?.valid) return { valid: true };
+    if (data?.valid) return { valid: true, token: data.token };
     const message = data?.error ?? (error ? await extractFunctionErrorMessage(error) : null);
     return { valid: false, message };
   }
@@ -498,8 +479,12 @@ export function SingOvaHubPage() {
       if (!result.valid && !result.message) {
         result = await callVerifyCode(trimmedEmail, trimmedCode, trimmedName);
       }
-      if (result.valid) {
-        const newSession = { email: trimmedEmail.toLowerCase(), displayName: trimmedName };
+      if (result.valid && result.token) {
+        const newSession = {
+          email: trimmedEmail.toLowerCase(),
+          displayName: trimmedName,
+          token: result.token,
+        };
         saveSession(newSession);
         setSession(newSession);
         setCodeSent(false);
@@ -532,16 +517,13 @@ export function SingOvaHubPage() {
     if (!session) return;
     setHeartBusyId(pairingId);
     try {
-      if (myHearts.has(pairingId)) {
-        await supabase
-          .from("sos_pairing_hearts")
-          .delete()
-          .eq("pairing_id", pairingId)
-          .eq("email", session.email);
-      } else {
-        await supabase
-          .from("sos_pairing_hearts")
-          .insert({ pairing_id: pairingId, email: session.email });
+      const { error } = await supabase.rpc("sos_toggle_heart", {
+        p_token: session.token,
+        p_pairing_id: pairingId,
+      });
+      if (error?.message.includes("sos_session_expired")) {
+        handleLogOut();
+        return;
       }
       await loadTrending();
     } finally {

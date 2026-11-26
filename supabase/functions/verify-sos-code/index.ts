@@ -66,14 +66,43 @@ Deno.serve(async (req) => {
     return new Response(JSON.stringify({ valid: false, error: "That code expired -- request a new one" }), { status: 200, headers: jsonHeaders });
   }
 
+  if (row.verified) {
+    return new Response(JSON.stringify({ valid: false, error: "That code was already used -- request a new one" }), { status: 200, headers: jsonHeaders });
+  }
+
+  // Count the guess before comparing it. The update only succeeds if nobody
+  // else counted one in the meantime, so parallel requests can't get extra tries.
+  const { data: counted } = await supabase
+    .from("sos_verifications")
+    .update({ attempts: row.attempts + 1 })
+    .eq("email", normalizedEmail)
+    .eq("attempts", row.attempts)
+    .select("email");
+  if (!counted?.length) {
+    return new Response(JSON.stringify({ valid: false, error: "Please try that code again" }), { status: 200, headers: jsonHeaders });
+  }
+
   const codeHash = await sha256(String(code).trim());
 
   if (codeHash !== row.code_hash) {
-    await supabase.from("sos_verifications").update({ attempts: row.attempts + 1 }).eq("email", normalizedEmail);
     return new Response(JSON.stringify({ valid: false, error: "That code doesn't match" }), { status: 200, headers: jsonHeaders });
   }
 
   const sessionExpiresAt = new Date(Date.now() + SESSION_DAYS * 24 * 60 * 60 * 1000).toISOString();
+
+  // The browser keeps this token to prove who it is; only its hash is stored
+  // (see migration 0025).
+  const token = Array.from(crypto.getRandomValues(new Uint8Array(32)))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+  const { error: sessionError } = await supabase
+    .from("sos_sessions")
+    .insert({ token_hash: await sha256(token), email: normalizedEmail, expires_at: sessionExpiresAt });
+  if (sessionError) {
+    console.error("sos_sessions insert failed:", sessionError);
+    return new Response(JSON.stringify({ valid: false, error: "Couldn't log you in. Request a new code." }), { status: 200, headers: jsonHeaders });
+  }
+
   await supabase
     .from("sos_verifications")
     .update({ verified: true, expires_at: sessionExpiresAt })
@@ -88,5 +117,5 @@ Deno.serve(async (req) => {
       );
   }
 
-  return new Response(JSON.stringify({ valid: true }), { status: 200, headers: jsonHeaders });
+  return new Response(JSON.stringify({ valid: true, token }), { status: 200, headers: jsonHeaders });
 });

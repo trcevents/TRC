@@ -6,11 +6,12 @@
 // those pages if columns are added.
 
 // The client-side "remembered login" kept in localStorage by
-// src/lib/sing-ova-session.ts. Only a UX shortcut -- the real gate is the
-// server-side RLS check.
+// src/lib/sing-ova-session.ts. The token comes from verify-sos-code and is
+// what the database functions check (migration 0025).
 export interface SosSession {
   email: string;
   displayName: string;
+  token: string;
 }
 
 // Inline success/failure message shown under a form.
@@ -59,7 +60,6 @@ export interface SosHeroSlide {
 // city_id) fits the same shape.
 export interface SosPairingBase {
   id: string;
-  email: string;
   display_name: string;
   original_artist: string;
   original_title: string;
@@ -72,13 +72,23 @@ export interface SosPairingBase {
   created_at: string;
 }
 
-// A real sos_pairings row.
+// A full sos_pairings row, as city admins read it.
 export interface SosPairing extends SosPairingBase {
   city_id: string;
+  email: string;
 }
 
-// A sos_pairings row selected with the embedded city: `*, sos_cities(name, slug)`.
-export interface SosPairingWithCity extends SosPairing {
+// A row of the sos_feed() function the public pages use: no email.
+export interface SosFeedRow extends SosPairingBase {
+  city_id: string;
+  city_name: string | null;
+  city_slug: string | null;
+  heart_count: number;
+  mine: boolean;
+}
+
+// A feed row with the city nested, as the hub renders it.
+export interface SosPairingWithCity extends SosFeedRow {
   sos_cities: { name: string; slug: string } | null;
 }
 
@@ -105,5 +115,6 @@ export interface FunctionInvokeErrorLike {
 // Result of the verify-sos-code edge function call.
 export interface VerifyCodeResult {
   valid: boolean;
+  token?: string;
   message?: string | null;
 }
