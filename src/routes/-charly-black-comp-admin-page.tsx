@@ -92,7 +92,7 @@ export function compAdminHead() {
       { title: "Comp Request Admin — Charly Black | TRC Events" },
       { name: "robots", content: "noindex, nofollow" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/charly-black/comp-admin` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/charly-black/comp-admin/` }],
   };
 }
 

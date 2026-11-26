@@ -34,7 +34,7 @@ export function runOfShowHead() {
       { name: "description", content: "Live show-night run of show for TRC Events." },
       { name: "robots", content: "noindex" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/run-of-show` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/run-of-show/` }],
   };
 }
 

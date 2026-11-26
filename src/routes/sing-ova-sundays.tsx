@@ -12,7 +12,7 @@ const DEFAULT_CITY = "chicago";
 // e.g. comp-page.tsx's ?ref= parsing).
 function RedirectToChicago() {
   useEffect(() => {
-    window.location.replace(`/sing-ova-sundays/${DEFAULT_CITY}`);
+    window.location.replace(`/sing-ova-sundays/${DEFAULT_CITY}/`);
   }, []);
   return null;
 }

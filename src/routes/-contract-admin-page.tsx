@@ -24,7 +24,7 @@ export function contractAdminHead() {
       { title: "Signed Contracts Admin | TRC Events" },
       { name: "robots", content: "noindex, nofollow" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/contract-admin` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/contract-admin/` }],
   };
 }
 

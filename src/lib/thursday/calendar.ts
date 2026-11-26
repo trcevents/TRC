@@ -6,7 +6,8 @@ const SITE_URL = "https://trcevent.com";
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 export function pageUrl(event: ThursdayEvent): string {
-  return `${SITE_URL}/${event.slug}`;
+  // Trailing slash: GitHub Pages serves each page at /slug/ and redirects /slug there.
+  return `${SITE_URL}/${event.slug}/`;
 }
 
 /** "Every Thursday from Dec 3": stays true after launch, unlike "Starts Dec 3". */

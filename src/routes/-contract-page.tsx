@@ -65,7 +65,7 @@ export function contractHead() {
       },
       { name: "robots", content: "noindex" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/contract` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/contract/` }],
   };
 }
 

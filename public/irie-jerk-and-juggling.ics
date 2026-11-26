@@ -22,7 +22,7 @@ END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
 UID:irie-jerk-and-juggling-thursdays@trcevent.com
-DTSTAMP:20261126T051319Z
+DTSTAMP:20261126T061529Z
 DTSTART;TZID=America/Chicago:20261203T170000
 DTEND;TZID=America/Chicago:20261203T210000
 RRULE:FREQ=WEEKLY;BYDAY=TH
@@ -33,6 +33,6 @@ LOCATION:Irie Jerk Bar and Grill\, 1413 W 127th St\, Calumet Park\, IL 6082
 DESCRIPTION:Irie Jerk & Juggling is a Thursday evening dancehall party in C
  alumet Park. Jamaican cooking\, familiar hooks\, and free admission from 5
   to 9 PM.
-URL:https://trcevent.com/irie-jerk-and-juggling
+URL:https://trcevent.com/irie-jerk-and-juggling/
 END:VEVENT
 END:VCALENDAR

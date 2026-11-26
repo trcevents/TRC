@@ -27,7 +27,7 @@ export function pitchHead() {
       { title: "Partnership Proposal | TRC Events" },
       { name: "robots", content: "noindex, nofollow" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/pitch` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/pitch/` }],
   };
 }
 

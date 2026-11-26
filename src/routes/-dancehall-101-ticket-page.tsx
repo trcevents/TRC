@@ -34,7 +34,7 @@ export function dancehall101TicketHead() {
       { title: "Your Dancehall 101 Ticket" },
       { name: "robots", content: "noindex, nofollow" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/dancehall-101/ticket` }, ...DH101_FONT_LINKS],
+    links: [{ rel: "canonical", href: `${SITE_URL}/dancehall-101/ticket/` }, ...DH101_FONT_LINKS],
   };
 }
 

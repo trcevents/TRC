@@ -117,7 +117,7 @@ export function singOvaSundaysHead() {
       },
       { name: "robots", content: "noindex, nofollow" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/sing-ova-sundays` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/sing-ova-sundays/` }],
   };
 }
 
@@ -546,7 +546,7 @@ export function SingOvaSundaysPage({ citySlug }: { citySlug: string }) {
         },
         offers: {
           "@type": "Offer",
-          url: `${SITE_URL}/sing-ova-sundays/${city.slug}`,
+          url: `${SITE_URL}/sing-ova-sundays/${city.slug}/`,
           priceCurrency: "USD",
           price: "0",
           availability: "https://schema.org/InStock",

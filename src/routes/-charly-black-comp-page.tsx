@@ -96,7 +96,7 @@ export function compHead() {
       { title: "Comp / Sellable Ticket Request — Charly Black | TRC Events" },
       { name: "robots", content: "noindex, nofollow" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/charly-black/comp` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/charly-black/comp/` }],
   };
 }
 

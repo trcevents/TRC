@@ -15,7 +15,7 @@ export function minglesTuesdaysBrainstormHead() {
       { title: "Mingles Tuesdays Brainstorm | TRC Events" },
       { name: "robots", content: "noindex, nofollow" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/mingles-tuesdays-brainstorm` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/mingles-tuesdays-brainstorm/` }],
   };
 }
 

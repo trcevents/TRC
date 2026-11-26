@@ -83,7 +83,7 @@ export function jamaica64Head() {
       },
       { property: "og:type", content: "article" },
       { property: "og:image", content: imageUrl },
-      { property: "og:url", content: `${SITE_URL}/jamaica64` },
+      { property: "og:url", content: `${SITE_URL}/jamaica64/` },
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
@@ -96,7 +96,7 @@ export function jamaica64Head() {
       },
       { name: "twitter:image", content: imageUrl },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/jamaica64` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/jamaica64/` }],
   };
 }
 

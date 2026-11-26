@@ -48,14 +48,14 @@ export function dinnerInJamaicaHead() {
           "A New Track Every Day. Same Riddim All Week. The weekly Jamaican dinner rotation at Irie Jerk.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: `${SITE_URL}/dinner-in-jamaica` },
+      { property: "og:url", content: `${SITE_URL}/dinner-in-jamaica/` },
       { name: "twitter:card", content: "summary" },
       {
         name: "twitter:title",
         content: "Dinner in Jamaica — The Dinner Riddim | Irie Jerk x TRC Events",
       },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/dinner-in-jamaica` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/dinner-in-jamaica/` }],
   };
 }
 

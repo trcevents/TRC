@@ -53,7 +53,7 @@ export function dancehall101Head() {
           "Friday nights at Irie Jerk, Chicago. 21+ college students get 100% free entry with a verified .edu email.",
       },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/dancehall-101` }, ...DH101_FONT_LINKS],
+    links: [{ rel: "canonical", href: `${SITE_URL}/dancehall-101/` }, ...DH101_FONT_LINKS],
   };
 }
 

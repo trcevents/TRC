@@ -197,12 +197,12 @@ export function jayReblHead() {
       },
       { property: "og:type", content: "profile" },
       { property: "og:image", content: imageUrl },
-      { property: "og:url", content: `${SITE_URL}/jay-rebl` },
+      { property: "og:url", content: `${SITE_URL}/jay-rebl/` },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Jay RebL | TRC Events" },
       { name: "twitter:image", content: imageUrl },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/jay-rebl` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/jay-rebl/` }],
   };
 }
 
@@ -213,7 +213,7 @@ export function JayReblPage() {
     name: "Jay RebL",
     genre: GENRES,
     image: `${SITE_URL}${jayReblImg}`,
-    url: `${SITE_URL}/jay-rebl`,
+    url: `${SITE_URL}/jay-rebl/`,
     sameAs: SOCIALS.map((s) => s.href),
   };
 

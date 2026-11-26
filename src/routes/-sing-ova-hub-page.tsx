@@ -55,7 +55,7 @@ export function singOvaHubHead() {
       },
       { name: "robots", content: "noindex, nofollow" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/sing-ova` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/sing-ova/` }],
   };
 }
 

@@ -116,7 +116,7 @@ export function workFiDiBeachHead() {
       },
       { property: "og:type", content: "article" },
       { property: "og:image", content: imageUrl },
-      { property: "og:url", content: `${SITE_URL}/work-fi-di-beach` },
+      { property: "og:url", content: `${SITE_URL}/work-fi-di-beach/` },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Work Fi Di Beach — Labour Day Weekend | TRC Events" },
       {
@@ -125,7 +125,7 @@ export function workFiDiBeachHead() {
       },
       { name: "twitter:image", content: imageUrl },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/work-fi-di-beach` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/work-fi-di-beach/` }],
   };
 }
 

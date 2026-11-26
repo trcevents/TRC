@@ -78,7 +78,7 @@ export function streetTeamHead() {
       { title: "Street Team Sign-Up — Charly Black | TRC Events" },
       { name: "robots", content: "noindex, nofollow" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/charly-black/street-team` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/charly-black/street-team/` }],
   };
 }
 

@@ -41,7 +41,7 @@ export function plateCostHead() {
       { title: "Plate Cost Worksheet | TRC Events" },
       { name: "robots", content: "noindex, nofollow" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/plate-cost` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/plate-cost/` }],
   };
 }
 

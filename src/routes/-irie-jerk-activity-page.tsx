@@ -34,7 +34,7 @@ const ACTIVITY_SEO: Record<string, { name: string; day: string; blurb: string }>
 
 export function irieJerkActivityHead({ params }: { params: { slug: string } }) {
   const seo = ACTIVITY_SEO[params.slug];
-  const url = `${SITE_URL}/irie-jerk/${params.slug}`;
+  const url = `${SITE_URL}/irie-jerk/${params.slug}/`;
   const title = seo
     ? `${seo.name} | ${seo.day} at Irie Jerk | TRC Events`
     : "This Week at Irie Jerk | TRC Events";

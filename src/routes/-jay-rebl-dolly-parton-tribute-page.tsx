@@ -39,7 +39,7 @@ export function dollyPartonTributeHead() {
       },
       { name: "robots", content: "noindex" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/jay-rebl/dolly-parton-tribute` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/jay-rebl/dolly-parton-tribute/` }],
   };
 }
 

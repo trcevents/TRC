@@ -15,7 +15,7 @@ export function justLaughWednesdayBrainstormHead() {
       { title: "Just Laugh Wednesday Brainstorm | TRC Events" },
       { name: "robots", content: "noindex, nofollow" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/just-laugh-wednesday-brainstorm` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/just-laugh-wednesday-brainstorm/` }],
   };
 }
 

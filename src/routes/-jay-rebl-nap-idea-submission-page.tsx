@@ -150,7 +150,7 @@ export function napIdeaSubmissionHead() {
       },
       { name: "robots", content: "noindex" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/jay-rebl/nap-idea-submission` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/jay-rebl/nap-idea-submission/` }],
   };
 }
 

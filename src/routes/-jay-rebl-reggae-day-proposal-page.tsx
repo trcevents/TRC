@@ -95,7 +95,7 @@ export function reggaeDayProposalHead() {
       },
       { name: "robots", content: "noindex" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/jay-rebl/reggae-day-proposal` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/jay-rebl/reggae-day-proposal/` }],
   };
 }
 

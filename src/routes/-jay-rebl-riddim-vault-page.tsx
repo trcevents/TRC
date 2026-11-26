@@ -334,11 +334,11 @@ export function riddimVaultHead() {
           "Twenty foundational dancehall riddims, one table, written for songwriting — not history for its own sake.",
       },
       { property: "og:type", content: "article" },
-      { property: "og:url", content: `${SITE_URL}/jay-rebl/riddim-vault` },
+      { property: "og:url", content: `${SITE_URL}/jay-rebl/riddim-vault/` },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:title", content: "The Riddim Vault — Jay RebL's Songwriting Reference" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/jay-rebl/riddim-vault` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/jay-rebl/riddim-vault/` }],
   };
 }
 

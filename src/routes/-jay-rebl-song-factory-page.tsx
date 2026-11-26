@@ -258,11 +258,11 @@ export function songFactoryHead() {
           "One song, ten angles, fifty videos, one flywheel. The plan behind Jay RebL's next cycle.",
       },
       { property: "og:type", content: "article" },
-      { property: "og:url", content: `${SITE_URL}/jay-rebl/song-factory` },
+      { property: "og:url", content: `${SITE_URL}/jay-rebl/song-factory/` },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:title", content: "The Song Factory — Jay RebL's Content Strategy" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/jay-rebl/song-factory` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/jay-rebl/song-factory/` }],
   };
 }
 

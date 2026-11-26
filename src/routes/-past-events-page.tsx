@@ -140,11 +140,11 @@ export function pastEventsHead() {
       },
       { property: "og:title", content: "Past Events | TRC Events" },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: `${SITE_URL}/past-events` },
+      { property: "og:url", content: `${SITE_URL}/past-events/` },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:title", content: "Past Events | TRC Events" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/past-events` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/past-events/` }],
   };
 }
 

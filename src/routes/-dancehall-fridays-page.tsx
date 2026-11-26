@@ -51,7 +51,7 @@ export function dancehallFridaysHead() {
       },
       { property: "og:type", content: "article" },
       { property: "og:image", content: imageUrl },
-      { property: "og:url", content: `${SITE_URL}/dancehall-fridays` },
+      { property: "og:url", content: `${SITE_URL}/dancehall-fridays/` },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Dancehall Fridays — Girls Night Out | TRC Events" },
       {
@@ -61,7 +61,7 @@ export function dancehallFridaysHead() {
       },
       { name: "twitter:image", content: imageUrl },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/dancehall-fridays` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/dancehall-fridays/` }],
   };
 }
 

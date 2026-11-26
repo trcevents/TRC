@@ -124,7 +124,7 @@ export function chicagoVybezHead() {
       },
       { name: "twitter:image", content: imageUrl },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/chicago-vybez` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/chicago-vybez/` }],
   };
 }
 

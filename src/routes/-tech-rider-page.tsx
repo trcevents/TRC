@@ -32,7 +32,7 @@ export function techRiderHead() {
       },
       { name: "robots", content: "noindex" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/tech-rider` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/tech-rider/` }],
   };
 }
 

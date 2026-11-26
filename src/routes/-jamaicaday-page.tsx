@@ -52,7 +52,7 @@ export function jamaicadayHead() {
       },
       { property: "og:type", content: "article" },
       { property: "og:image", content: imageUrl },
-      { property: "og:url", content: `${SITE_URL}/jamaicaday` },
+      { property: "og:url", content: `${SITE_URL}/jamaicaday/` },
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
@@ -65,7 +65,7 @@ export function jamaicadayHead() {
       },
       { name: "twitter:image", content: imageUrl },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/jamaicaday` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/jamaicaday/` }],
   };
 }
 

@@ -41,7 +41,7 @@ export function dancehall101CheckinHead() {
       { title: "Dancehall 101 — Door Check-In" },
       { name: "robots", content: "noindex, nofollow" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/dancehall-101/checkin` }, ...DH101_FONT_LINKS],
+    links: [{ rel: "canonical", href: `${SITE_URL}/dancehall-101/checkin/` }, ...DH101_FONT_LINKS],
   };
 }
 

@@ -34,7 +34,7 @@ export function dancehall101LeaderboardHead() {
       },
     ],
     links: [
-      { rel: "canonical", href: `${SITE_URL}/dancehall-101/leaderboard` },
+      { rel: "canonical", href: `${SITE_URL}/dancehall-101/leaderboard/` },
       ...DH101_FONT_LINKS,
     ],
   };

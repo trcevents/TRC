@@ -107,7 +107,7 @@ export function stCatherineLinkupHead() {
       },
       { property: "og:type", content: "article" },
       { property: "og:image", content: imageUrl },
-      { property: "og:url", content: `${SITE_URL}/st-catherine-linkup` },
+      { property: "og:url", content: `${SITE_URL}/st-catherine-linkup/` },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Bad Like Di 90's — St. Catherine Link-Up | TRC Events" },
       {
@@ -117,7 +117,7 @@ export function stCatherineLinkupHead() {
       },
       { name: "twitter:image", content: imageUrl },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/st-catherine-linkup` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/st-catherine-linkup/` }],
   };
 }
 

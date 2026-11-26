@@ -153,7 +153,7 @@ export function reggaeDayProductionHead() {
       },
       { name: "robots", content: "noindex" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/jay-rebl/reggae-day-production` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/jay-rebl/reggae-day-production/` }],
   };
 }
 

@@ -174,7 +174,7 @@ export function bobMarleyLiveForeverHead() {
       },
       { property: "og:type", content: "article" },
       { property: "og:image", content: imageUrl },
-      { property: "og:url", content: `${SITE_URL}/bob-marley-live-forever` },
+      { property: "og:url", content: `${SITE_URL}/bob-marley-live-forever/` },
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
@@ -182,7 +182,7 @@ export function bobMarleyLiveForeverHead() {
       },
       { name: "twitter:image", content: imageUrl },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/bob-marley-live-forever` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/bob-marley-live-forever/` }],
   };
 }
 

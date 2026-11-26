@@ -160,7 +160,7 @@ export function charlyBlackHead() {
       },
       { name: "twitter:image", content: imageUrl },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/charly-black` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/charly-black/` }],
   };
 }
 

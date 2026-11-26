@@ -27,11 +27,11 @@ export function eventsHead() {
         content: "Every event at Irie Jerk Bar and Grill, day by day — a different vibe every night.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: `${SITE_URL}/events` },
+      { property: "og:url", content: `${SITE_URL}/events/` },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:title", content: "Events at Irie Jerk | TRC Events" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/events` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/events/` }],
   };
 }
 

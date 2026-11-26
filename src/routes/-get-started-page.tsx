@@ -42,7 +42,7 @@ export function getStartedHead() {
       },
       { name: "robots", content: "noindex" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/get-started` }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/get-started/` }],
   };
 }
 
