@@ -2,8 +2,15 @@
 // Mingles Tuesdays / Just Laugh Wednesday) once Marlon is done talking
 // through an idea. Sends the raw transcript to Claude and returns a
 // fleshed-out event concept -- no DB access needed here, the client saves
-// the result itself.
+// the result itself. Only signed-in comp admins may call it, since every call
+// is billed to the Anthropic account.
+import { createClient } from "npm:@supabase/supabase-js@2";
+
 const ANTHROPIC_API_KEY = Deno.env.get("ANTHROPIC_API_KEY");
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
+const SUPABASE_ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY");
+const MAX_TRANSCRIPT_CHARS = 20000;
+const MAX_EVENT_NAME_CHARS = 100;
 
 // Called cross-origin (trcevent.com -> supabase.co) from a browser, so the
 // browser sends a CORS preflight OPTIONS request first -- without these
@@ -47,8 +54,26 @@ Deno.serve(async (req) => {
     return new Response("Method not allowed", { status: 405, headers: corsHeaders });
   }
 
+  // Checked with the caller's own session.
+  const caller = createClient(SUPABASE_URL!, SUPABASE_ANON_KEY!, {
+    global: { headers: { Authorization: req.headers.get("Authorization") ?? "" } },
+  });
+  const { data: isAdmin, error: adminError } = await caller.rpc("is_comp_admin");
+  if (adminError || !isAdmin) {
+    return new Response(JSON.stringify({ error: "Sign in as an admin first." }), {
+      status: 403,
+      headers: jsonHeaders,
+    });
+  }
+
   const { eventName, transcript } = await req.json();
-  if (!eventName || typeof eventName !== "string") {
+  if (typeof transcript === "string" && transcript.length > MAX_TRANSCRIPT_CHARS) {
+    return new Response(JSON.stringify({ error: "Transcript is too long." }), {
+      status: 400,
+      headers: jsonHeaders,
+    });
+  }
+  if (!eventName || typeof eventName !== "string" || eventName.length > MAX_EVENT_NAME_CHARS) {
     return new Response(JSON.stringify({ error: "Missing eventName" }), {
       status: 400,
       headers: jsonHeaders,

@@ -5,12 +5,9 @@
 // Live, editable plate-cost worksheet for Irie Jerk (catering the Charly
 // Black "Good Times" show): ingredient-level case-cost -> per-plate-cost
 // build for Jerk Chicken, Curry Chicken, Escovitch Fish, and Mannish Water.
-// Unlike the other admin pages in this repo (comp-admin, contract-admin),
-// this one is intentionally NOT behind a Supabase Auth login -- it's meant
-// to be edited by an outside vendor with no account, like a shared
-// spreadsheet. The unlisted URL is the only gate; RLS on
-// plate_cost_ingredients/plate_cost_settings allows anon full CRUD on just
-// those two tables (see supabase/sql/plate_cost_schema.sql).
+// Anyone with the link can read it. Editing needs a comp admin signed in with
+// an emailed 6-digit code (AdminCodeSignIn); Row Level Security enforces that
+// (migration 0024).
 //
 // Styling is intentionally hardcoded to black-on-white with a 16px+ floor,
 // overriding the site's dark-first theme tokens -- this page is a working
@@ -20,6 +17,7 @@ import { toast } from "sonner";
 import { Loader2, Plus, RefreshCw, Trash2 } from "lucide-react";
 
 import { supabase } from "@/lib/supabase";
+import { AdminCodeSignIn, useAdminStatus } from "@/components/site/AdminCodeSignIn";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -877,6 +875,7 @@ function BeverageWorksheet() {
 
 export function PlateCostPage() {
   const [tab, setTab] = useState<TabKey>(TABS[0].key);
+  const adminStatus = useAdminStatus();
 
   return (
     <div className="min-h-screen bg-white text-black [color-scheme:light]">
@@ -887,10 +886,14 @@ export function PlateCostPage() {
         <p className="mt-1 text-base text-gray-700">
           Shared, live worksheet for pricing one plate each of Jerk Chicken, Curry Chicken,
           Escovitch Fish, and Mannish Water, plus the event's beverage budget. Add or remove rows as
-          needed — everything calculates automatically as you fill in the editable fields. Changes
-          save as soon as you leave a field, so anyone with this link (including Irie Jerk) is
-          editing the same live sheet.
+          needed — everything calculates automatically as you fill in the editable fields. Anyone with
+          this link can view the live sheet. Signed-in admins can edit it, and changes save as soon
+          as they leave a field.
         </p>
+
+        <div className="mt-4">
+          <AdminCodeSignIn status={adminStatus} />
+        </div>
 
         <Tabs value={tab} onValueChange={(v) => setTab(v as TabKey)} className="mt-6">
           <TabsList className="flex-wrap bg-gray-100 text-gray-700">
@@ -906,7 +909,9 @@ export function PlateCostPage() {
           </TabsList>
           {TABS.map((t) => (
             <TabsContent key={t.key} value={t.key}>
-              {t.key === "beverages" ? <BeverageWorksheet /> : <DishWorksheet dishKey={t.key} />}
+              <fieldset disabled={adminStatus !== "admin"} className="min-w-0">
+                {t.key === "beverages" ? <BeverageWorksheet /> : <DishWorksheet dishKey={t.key} />}
+              </fieldset>
             </TabsContent>
           ))}
         </Tabs>

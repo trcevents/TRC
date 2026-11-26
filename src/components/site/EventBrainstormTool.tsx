@@ -12,8 +12,8 @@
 // screen mid-answer. Free-form typing/talking below still works if he'd
 // rather just riff without the guided structure.
 //
-// Backed by event_brainstorm_sessions (open anon RLS, same "unlisted URL is
-// the gate" model as plate-cost -- see supabase/sql/event_brainstorm_schema.sql)
+// Backed by event_brainstorm_sessions (anyone can read; changing it needs a
+// comp admin signed in with an emailed 6-digit code, see migration 0024)
 // and the generate-event-concept Edge Function, which calls Claude to turn
 // the raw transcript into a fleshed-out event concept.
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -21,6 +21,7 @@ import { toast } from "sonner";
 import { Copy, Loader2, Mic, MicOff, Save, Sparkles, Square, Wand2 } from "lucide-react";
 
 import { supabase } from "@/lib/supabase";
+import { AdminCodeSignIn, useAdminStatus } from "@/components/site/AdminCodeSignIn";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -91,6 +92,7 @@ export function EventBrainstormTool({
   eventSlug: EventSlug;
   eventName: string;
 }) {
+  const adminStatus = useAdminStatus();
   const [transcript, setTranscript] = useState("");
   const [concept, setConcept] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -389,6 +391,10 @@ export function EventBrainstormTool({
         </p>
       </div>
 
+      <AdminCodeSignIn status={adminStatus} />
+
+      <fieldset disabled={adminStatus !== "admin"} className="min-w-0 space-y-6">
+
       <Card>
         <CardHeader>
           <CardTitle className="text-lg">Guided Brainstorm</CardTitle>
@@ -496,6 +502,8 @@ export function EventBrainstormTool({
           </p>
         </CardContent>
       </Card>
+
+      </fieldset>
 
       {concept && (
         <Card>
