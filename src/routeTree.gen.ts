@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WorkFiDiBeachRouteImport } from './routes/work-fi-di-beach'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TechRiderRouteImport } from './routes/tech-rider'
 import { Route as StCatherineLinkupRouteImport } from './routes/st-catherine-linkup'
 import { Route as SingOvaSundaysAdminRouteImport } from './routes/sing-ova-sundays-admin'
@@ -35,6 +36,7 @@ import { Route as ContractRouteImport } from './routes/contract'
 import { Route as ChicagoVybezRouteImport } from './routes/chicago-vybez'
 import { Route as CharlyBlackRouteImport } from './routes/charly-black'
 import { Route as BobMarleyLiveForeverRouteImport } from './routes/bob-marley-live-forever'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SingOvaSundaysCityRouteImport } from './routes/sing-ova-sundays_.$city'
 import { Route as PitchSlugRouteImport } from './routes/pitch.$slug'
@@ -57,6 +59,11 @@ import { Route as CharlyBlackCompRouteImport } from './routes/charly-black_.comp
 const WorkFiDiBeachRoute = WorkFiDiBeachRouteImport.update({
   id: '/work-fi-di-beach',
   path: '/work-fi-di-beach',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TechRiderRoute = TechRiderRouteImport.update({
@@ -186,6 +193,11 @@ const BobMarleyLiveForeverRoute = BobMarleyLiveForeverRouteImport.update({
   path: '/bob-marley-live-forever',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -284,6 +296,7 @@ const CharlyBlackCompRoute = CharlyBlackCompRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/bob-marley-live-forever': typeof BobMarleyLiveForeverRoute
   '/charly-black': typeof CharlyBlackRoute
   '/chicago-vybez': typeof ChicagoVybezRoute
@@ -309,6 +322,7 @@ export interface FileRoutesByFullPath {
   '/sing-ova-sundays-admin': typeof SingOvaSundaysAdminRoute
   '/st-catherine-linkup': typeof StCatherineLinkupRoute
   '/tech-rider': typeof TechRiderRoute
+  '/terms': typeof TermsRoute
   '/work-fi-di-beach': typeof WorkFiDiBeachRoute
   '/charly-black/comp': typeof CharlyBlackCompRoute
   '/charly-black/comp-admin': typeof CharlyBlackCompAdminRoute
@@ -330,6 +344,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/bob-marley-live-forever': typeof BobMarleyLiveForeverRoute
   '/charly-black': typeof CharlyBlackRoute
   '/chicago-vybez': typeof ChicagoVybezRoute
@@ -355,6 +370,7 @@ export interface FileRoutesByTo {
   '/sing-ova-sundays-admin': typeof SingOvaSundaysAdminRoute
   '/st-catherine-linkup': typeof StCatherineLinkupRoute
   '/tech-rider': typeof TechRiderRoute
+  '/terms': typeof TermsRoute
   '/work-fi-di-beach': typeof WorkFiDiBeachRoute
   '/charly-black/comp': typeof CharlyBlackCompRoute
   '/charly-black/comp-admin': typeof CharlyBlackCompAdminRoute
@@ -377,6 +393,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/bob-marley-live-forever': typeof BobMarleyLiveForeverRoute
   '/charly-black': typeof CharlyBlackRoute
   '/chicago-vybez': typeof ChicagoVybezRoute
@@ -402,6 +419,7 @@ export interface FileRoutesById {
   '/sing-ova-sundays-admin': typeof SingOvaSundaysAdminRoute
   '/st-catherine-linkup': typeof StCatherineLinkupRoute
   '/tech-rider': typeof TechRiderRoute
+  '/terms': typeof TermsRoute
   '/work-fi-di-beach': typeof WorkFiDiBeachRoute
   '/charly-black_/comp': typeof CharlyBlackCompRoute
   '/charly-black_/comp-admin': typeof CharlyBlackCompAdminRoute
@@ -425,6 +443,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/bob-marley-live-forever'
     | '/charly-black'
     | '/chicago-vybez'
@@ -450,6 +469,7 @@ export interface FileRouteTypes {
     | '/sing-ova-sundays-admin'
     | '/st-catherine-linkup'
     | '/tech-rider'
+    | '/terms'
     | '/work-fi-di-beach'
     | '/charly-black/comp'
     | '/charly-black/comp-admin'
@@ -471,6 +491,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/bob-marley-live-forever'
     | '/charly-black'
     | '/chicago-vybez'
@@ -496,6 +517,7 @@ export interface FileRouteTypes {
     | '/sing-ova-sundays-admin'
     | '/st-catherine-linkup'
     | '/tech-rider'
+    | '/terms'
     | '/work-fi-di-beach'
     | '/charly-black/comp'
     | '/charly-black/comp-admin'
@@ -517,6 +539,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/bob-marley-live-forever'
     | '/charly-black'
     | '/chicago-vybez'
@@ -542,6 +565,7 @@ export interface FileRouteTypes {
     | '/sing-ova-sundays-admin'
     | '/st-catherine-linkup'
     | '/tech-rider'
+    | '/terms'
     | '/work-fi-di-beach'
     | '/charly-black_/comp'
     | '/charly-black_/comp-admin'
@@ -564,6 +588,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   BobMarleyLiveForeverRoute: typeof BobMarleyLiveForeverRoute
   CharlyBlackRoute: typeof CharlyBlackRoute
   ChicagoVybezRoute: typeof ChicagoVybezRoute
@@ -589,6 +614,7 @@ export interface RootRouteChildren {
   SingOvaSundaysAdminRoute: typeof SingOvaSundaysAdminRoute
   StCatherineLinkupRoute: typeof StCatherineLinkupRoute
   TechRiderRoute: typeof TechRiderRoute
+  TermsRoute: typeof TermsRoute
   WorkFiDiBeachRoute: typeof WorkFiDiBeachRoute
   CharlyBlackCompRoute: typeof CharlyBlackCompRoute
   CharlyBlackCompAdminRoute: typeof CharlyBlackCompAdminRoute
@@ -616,6 +642,13 @@ declare module '@tanstack/react-router' {
       path: '/work-fi-di-beach'
       fullPath: '/work-fi-di-beach'
       preLoaderRoute: typeof WorkFiDiBeachRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tech-rider': {
@@ -793,6 +826,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BobMarleyLiveForeverRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -924,6 +964,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   BobMarleyLiveForeverRoute: BobMarleyLiveForeverRoute,
   CharlyBlackRoute: CharlyBlackRoute,
   ChicagoVybezRoute: ChicagoVybezRoute,
@@ -949,6 +990,7 @@ const rootRouteChildren: RootRouteChildren = {
   SingOvaSundaysAdminRoute: SingOvaSundaysAdminRoute,
   StCatherineLinkupRoute: StCatherineLinkupRoute,
   TechRiderRoute: TechRiderRoute,
+  TermsRoute: TermsRoute,
   WorkFiDiBeachRoute: WorkFiDiBeachRoute,
   CharlyBlackCompRoute: CharlyBlackCompRoute,
   CharlyBlackCompAdminRoute: CharlyBlackCompAdminRoute,

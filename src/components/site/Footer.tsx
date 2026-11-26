@@ -111,9 +111,9 @@ export function Footer() {
             <h4 className="eyebrow mb-4">Company</h4>
             <ul className="space-y-2.5 text-sm text-muted-foreground">
               <li>
-                <a href="#" className="hover:text-gold">
+                <Link to="/about" className="hover:text-gold">
                   About TRC
-                </a>
+                </Link>
               </li>
               <li>
                 <a href={`mailto:${SOCIAL_LINKS.email}`} className="hover:text-gold">
@@ -126,9 +126,9 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-gold">
+                <Link to="/terms" className="hover:text-gold">
                   Terms of Service
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
