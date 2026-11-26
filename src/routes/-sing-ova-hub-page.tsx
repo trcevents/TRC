@@ -34,6 +34,13 @@ import { SOCIAL_LINKS } from "@/lib/social";
 import { WEEK_THEMES } from "@/lib/sing-ova-week-themes";
 import { loadSession, saveSession, clearSession } from "@/lib/sing-ova-session";
 import { SOS_THEME_VARS, SOS_LABEL_CLASS as LABEL_CLASS } from "@/lib/sing-ova-theme";
+import type {
+  FunctionInvokeErrorLike,
+  SosCityPublic,
+  SosPairingWithCity,
+  StatusMessage,
+  VerifyCodeResult,
+} from "@/lib/sing-ova-types";
 
 const SITE_URL = "https://trcevent.com";
 
@@ -52,7 +59,9 @@ export function singOvaHubHead() {
   };
 }
 
-async function extractFunctionErrorMessage(error) {
+async function extractFunctionErrorMessage(
+  error: FunctionInvokeErrorLike | null | undefined,
+): Promise<string | null> {
   if (!error || typeof error !== "object") return null;
   const context = error.context;
   if (context && typeof context.json === "function") {
@@ -73,7 +82,18 @@ async function extractFunctionErrorMessage(error) {
 // varying by the visitor's browser and OS -- a deliberate tradeoff, not an
 // oversight. HOST_INFO.avatar is a placeholder monogram until real host
 // portraits exist; swapping in an <img> there later is a one-line change.
-const HOST_INFO = {
+type HostKey = "marcus" | "nadine";
+
+interface ScriptLine {
+  speaker: HostKey;
+  text: string;
+}
+
+type ScriptBranch = "conversation" | "sunday";
+
+type ConversationPhase = "idle" | "playing" | "choice" | "done";
+
+const HOST_INFO: Record<HostKey, { name: string; role: string }> = {
   marcus: { name: "Marcus", role: "Selector" },
   nadine: { name: "Nadine", role: "Host" },
 };
@@ -82,7 +102,11 @@ const HOST_INFO = {
 // it read as a real conversation rather than narration split across two
 // voices. The user's only real "input" is which branch to hear next; both
 // branches converge on the same wrap-up either way.
-const HOSTS_SCRIPT = {
+const HOSTS_SCRIPT: {
+  coldOpen: ScriptLine[];
+  branches: Record<ScriptBranch, ScriptLine[]>;
+  wrap: ScriptLine[];
+} = {
   coldOpen: [
     { speaker: "marcus", text: "Every Sunday, somebody in that room hears their pick get played." },
     { speaker: "nadine", text: "And by the time the needle drops, they've already been arguing about it all week." },
@@ -135,10 +159,13 @@ const HOSTS_SCRIPT = {
 };
 
 function HostsConversation() {
-  const [phase, setPhase] = useState("idle"); // idle | playing | choice | done
-  const [currentLine, setCurrentLine] = useState(null);
+  const [phase, setPhase] = useState<ConversationPhase>("idle"); // idle | playing | choice | done
+  const [currentLine, setCurrentLine] = useState<ScriptLine | null>(null);
   const [muted, setMuted] = useState(false);
-  const [voices, setVoices] = useState({ male: null, female: null });
+  const [voices, setVoices] = useState<{
+    male: SpeechSynthesisVoice | null;
+    female: SpeechSynthesisVoice | null;
+  }>({ male: null, female: null });
   const [reducedMotion, setReducedMotion] = useState(false);
   const [ttsSupported, setTtsSupported] = useState(true);
   const cancelledRef = useRef(false);
@@ -157,8 +184,9 @@ function HostsConversation() {
     function pickVoices() {
       const all = window.speechSynthesis.getVoices();
       if (!all.length) return;
-      const isFemale = (v) => /female|zira|samantha|victoria|susan|karen|moira|tessa|fiona|aria/i.test(v.name);
-      const isMale = (v) => /male|david|daniel|alex|fred|george|mark|guy/i.test(v.name);
+      const isFemale = (v: SpeechSynthesisVoice) =>
+        /female|zira|samantha|victoria|susan|karen|moira|tessa|fiona|aria/i.test(v.name);
+      const isMale = (v: SpeechSynthesisVoice) => /male|david|daniel|alex|fred|george|mark|guy/i.test(v.name);
       const english = all.filter((v) => v.lang.startsWith("en"));
       const pool = english.length ? english : all;
       const female = pool.find(isFemale) ?? pool[0];
@@ -177,7 +205,7 @@ function HostsConversation() {
     };
   }, []);
 
-  function speakLine(line, onDone) {
+  function speakLine(line: ScriptLine, onDone: () => void) {
     setCurrentLine(line);
     if (!ttsSupported) {
       // No TTS support -- advance on a timer so captions still tell the story.
@@ -198,7 +226,7 @@ function HostsConversation() {
     window.speechSynthesis.speak(utter);
   }
 
-  function playSequence(lines, onComplete) {
+  function playSequence(lines: ScriptLine[], onComplete: () => void) {
     let i = 0;
     function next() {
       if (cancelledRef.current) return;
@@ -219,7 +247,7 @@ function HostsConversation() {
     playSequence(HOSTS_SCRIPT.coldOpen, () => setPhase("choice"));
   }
 
-  function handleChoice(branch) {
+  function handleChoice(branch: ScriptBranch) {
     setPhase("playing");
     playSequence(HOSTS_SCRIPT.branches[branch], () => {
       playSequence(HOSTS_SCRIPT.wrap, () => setPhase("done"));
@@ -237,7 +265,7 @@ function HostsConversation() {
   return (
     <div className="mx-auto mt-8 max-w-2xl rounded-2xl border border-border bg-card p-6 sm:p-8">
       <div className="flex items-center justify-center gap-8 sm:gap-12">
-        {["marcus", "nadine"].map((key) => {
+        {(["marcus", "nadine"] as const).map((key) => {
           const active = currentLine?.speaker === key;
           return (
             <div key={key} className="flex flex-col items-center gap-2">
@@ -333,16 +361,16 @@ export function SingOvaHubPage() {
   const [code, setCode] = useState("");
   const [sendingCode, setSendingCode] = useState(false);
   const [verifyingCode, setVerifyingCode] = useState(false);
-  const [verifyMsg, setVerifyMsg] = useState(null);
+  const [verifyMsg, setVerifyMsg] = useState<StatusMessage | null>(null);
 
-  const [cities, setCities] = useState([]);
+  const [cities, setCities] = useState<SosCityPublic[]>([]);
   const [citiesLoading, setCitiesLoading] = useState(true);
 
-  const [trending, setTrending] = useState([]);
-  const [heartCounts, setHeartCounts] = useState({});
-  const [myHearts, setMyHearts] = useState(new Set());
+  const [trending, setTrending] = useState<SosPairingWithCity[]>([]);
+  const [heartCounts, setHeartCounts] = useState<Record<string, number>>({});
+  const [myHearts, setMyHearts] = useState<Set<string>>(new Set());
   const [loadingTrending, setLoadingTrending] = useState(true);
-  const [heartBusyId, setHeartBusyId] = useState(null);
+  const [heartBusyId, setHeartBusyId] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -354,7 +382,7 @@ export function SingOvaHubPage() {
         .order("status", { ascending: true }) // 'pending' < 'published' alphabetically -- reorder below
         .order("name", { ascending: true });
       if (!cancelled) {
-        const rows = data ?? [];
+        const rows: SosCityPublic[] = data ?? [];
         // Published chapters first, then pending ones, each alphabetical.
         rows.sort((a, b) => {
           if (a.status !== b.status) return a.status === "published" ? -1 : 1;
@@ -378,7 +406,7 @@ export function SingOvaHubPage() {
       .in("status", ["approved", "played"])
       .order("created_at", { ascending: false })
       .limit(200);
-    const rows = pairingRows ?? [];
+    const rows: SosPairingWithCity[] = pairingRows ?? [];
 
     if (rows.length === 0) {
       setTrending([]);
@@ -393,8 +421,8 @@ export function SingOvaHubPage() {
       .from("sos_pairing_hearts")
       .select("pairing_id, email")
       .in("pairing_id", ids);
-    const counts = {};
-    const mine = new Set();
+    const counts: Record<string, number> = {};
+    const mine = new Set<string>();
     for (const h of heartRows ?? []) {
       counts[h.pairing_id] = (counts[h.pairing_id] ?? 0) + 1;
       if (session && h.email.toLowerCase() === session.email.toLowerCase()) {
@@ -443,7 +471,11 @@ export function SingOvaHubPage() {
     }
   }
 
-  async function callVerifyCode(trimmedEmail, trimmedCode, trimmedName) {
+  async function callVerifyCode(
+    trimmedEmail: string,
+    trimmedCode: string,
+    trimmedName: string,
+  ): Promise<VerifyCodeResult> {
     const { data, error } = await supabase.functions.invoke("verify-sos-code", {
       body: { email: trimmedEmail, code: trimmedCode, displayName: trimmedName },
     });
@@ -496,7 +528,7 @@ export function SingOvaHubPage() {
     setVerifyMsg(null);
   }
 
-  async function handleToggleHeart(pairingId) {
+  async function handleToggleHeart(pairingId: string) {
     if (!session) return;
     setHeartBusyId(pairingId);
     try {

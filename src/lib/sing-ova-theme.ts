@@ -7,6 +7,10 @@
 // without touching src/styles.css or any other page on the site.
 // --gold/--primary are deliberately left untouched so the site's one brand
 // gold stays consistent everywhere it's used.
+// Typed as CSSProperties (React's type has no `--custom-property` keys, hence
+// the cast) so pages can pass it straight to `style={...}`.
+import type { CSSProperties } from "react";
+
 export const SOS_THEME_VARS = {
   "--background": "oklch(0.93 0.028 85)",
   "--foreground": "oklch(0.22 0.025 85)",
@@ -23,6 +27,6 @@ export const SOS_THEME_VARS = {
   "--secondary": "oklch(0.19 0.045 155)",
   "--secondary-foreground": "oklch(0.93 0.02 85)",
   "--ring": "oklch(0.5 0.11 80)",
-};
+} as CSSProperties;
 
 export const SOS_LABEL_CLASS = "text-xs font-semibold uppercase tracking-wide text-secondary";

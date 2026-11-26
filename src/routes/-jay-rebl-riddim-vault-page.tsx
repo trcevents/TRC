@@ -20,7 +20,18 @@ import { JayReblSubNav } from "@/components/site/JayReblSubNav";
 
 const SITE_URL = "https://trcevent.com";
 
-const RIDDIMS = [
+type Riddim = {
+  n: number;
+  name: string;
+  era: string;
+  href?: string;
+  cuts: readonly string[];
+  note: string;
+  essential?: boolean;
+  turningPoint?: boolean;
+};
+
+const RIDDIMS: readonly Riddim[] = [
   {
     n: 1,
     name: "Real Rock",
@@ -274,7 +285,7 @@ const RIDDIMS = [
     note: "One of the defining digital dancehall riddims of the mid-1980s, spawning an enormous number of versions.",
     essential: true,
   },
-] as const;
+];
 
 const PROGRESSION = [
   "Studio One",

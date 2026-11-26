@@ -3,9 +3,11 @@
 // page is recognized on the other, since it's the same localStorage key
 // and the same email-verified session underneath (sos_verifications /
 // sos_members are global by design, not per-city).
+import type { SosSession } from "@/lib/sing-ova-types";
+
 export const SESSION_STORAGE_KEY = "sos_session";
 
-export function loadSession() {
+export function loadSession(): SosSession | null {
   try {
     const raw = localStorage.getItem(SESSION_STORAGE_KEY);
     if (!raw) return null;
@@ -17,7 +19,7 @@ export function loadSession() {
   }
 }
 
-export function saveSession(session) {
+export function saveSession(session: SosSession) {
   localStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(session));
 }
 

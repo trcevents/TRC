@@ -225,6 +225,9 @@ const signFormSchema = z.object({
   agreedTerms: z.literal(true, { message: "You must agree to the terms above to sign." }),
 });
 type SignFormValues = z.infer<typeof signFormSchema>;
+// What the form holds before zod parses it (additionalPeopleCount is coerced
+// and defaulted, so its input type is looser than the parsed output).
+type SignFormInput = z.input<typeof signFormSchema>;
 
 // The tailored ticket-request step after signing -- same underlying flow as
 // the public /charly-black/comp/ form, but name/email/phone are pulled from
@@ -265,7 +268,7 @@ export function ContractPage() {
   const [accessCode, setAccessCode] = useState("");
   const [invite, setInvite] = useState<InviteInfo | null>(null);
 
-  const form = useForm<SignFormValues>({
+  const form = useForm<SignFormInput, unknown, SignFormValues>({
     resolver: zodResolver(signFormSchema),
     defaultValues: {
       signerFullLegalName: "",

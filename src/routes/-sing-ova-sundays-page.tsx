@@ -50,6 +50,7 @@
 // a UX shortcut to skip the login form on return visits -- the real gate is
 // always the server-side RLS check on sos_pairings / sos_pairing_hearts.
 import { useEffect, useState } from "react";
+import type { FormEvent } from "react";
 import {
   CalendarDays,
   Clock,
@@ -81,6 +82,15 @@ import { SOCIAL_LINKS } from "@/lib/social";
 import { WEEK_THEMES } from "@/lib/sing-ova-week-themes";
 import { loadSession, saveSession, clearSession } from "@/lib/sing-ova-session";
 import { SOS_THEME_VARS, SOS_LABEL_CLASS as LABEL_CLASS } from "@/lib/sing-ova-theme";
+import type {
+  FunctionInvokeErrorLike,
+  SosCity,
+  SosFeedPairing,
+  SosHeroSlide,
+  SosPairing,
+  StatusMessage,
+  VerifyCodeResult,
+} from "@/lib/sing-ova-types";
 
 const SITE_URL = "https://trcevent.com";
 const CONTACT_PHONE = "(414) 301-2457";
@@ -115,7 +125,9 @@ export function singOvaSundaysHead() {
 // than `data`, even when the function's JSON body has a perfectly good
 // `.error` message. Without this, a non-2xx failure shows a generic
 // fallback instead of the real reason.
-async function extractFunctionErrorMessage(error) {
+async function extractFunctionErrorMessage(
+  error: FunctionInvokeErrorLike | null | undefined,
+): Promise<string | null> {
   if (!error || typeof error !== "object") return null;
   const context = error.context;
   if (context && typeof context.json === "function") {
@@ -132,7 +144,7 @@ async function extractFunctionErrorMessage(error) {
 // city.launch_date is a plain 'YYYY-MM-DD' calendar date with no time
 // component -- parse it as local, not UTC, or a date like "2026-08-30"
 // can render as "August 29" depending on the reader's timezone offset.
-function formatLaunchDate(dateStr) {
+function formatLaunchDate(dateStr: string | null | undefined) {
   if (!dateStr) return null;
   const [y, m, d] = dateStr.split("-").map(Number);
   return new Date(y, m - 1, d).toLocaleDateString("en-US", {
@@ -143,17 +155,17 @@ function formatLaunchDate(dateStr) {
   });
 }
 
-function prettifySlug(slug) {
+function prettifySlug(slug: string) {
   return slug
     .split("-")
     .map((w) => (w ? w[0].toUpperCase() + w.slice(1) : w))
     .join(" ");
 }
 
-export function SingOvaSundaysPage({ citySlug }) {
-  const [city, setCity] = useState(null);
+export function SingOvaSundaysPage({ citySlug }: { citySlug: string }) {
+  const [city, setCity] = useState<SosCity | null>(null);
   const [cityLoading, setCityLoading] = useState(true);
-  const [heroSlides, setHeroSlides] = useState([]);
+  const [heroSlides, setHeroSlides] = useState<SosHeroSlide[]>([]);
   const [heroSelected, setHeroSelected] = useState(0);
 
   const [session, setSession] = useState(() => loadSession());
@@ -164,9 +176,9 @@ export function SingOvaSundaysPage({ citySlug }) {
   const [code, setCode] = useState("");
   const [sendingCode, setSendingCode] = useState(false);
   const [verifyingCode, setVerifyingCode] = useState(false);
-  const [verifyMsg, setVerifyMsg] = useState(null);
+  const [verifyMsg, setVerifyMsg] = useState<StatusMessage | null>(null);
 
-  const [pairings, setPairings] = useState([]);
+  const [pairings, setPairings] = useState<SosPairing[]>([]);
   // Submissions are moderated -- a fresh pairing is `pending` and invisible
   // in the public feed (loadFeed only selects approved/played) until a city
   // admin approves it. Without this, hitting "Submit" feels like it did
@@ -175,11 +187,11 @@ export function SingOvaSundaysPage({ citySlug }) {
   // optimistic echo of what was just submitted -- not re-fetched from the
   // server, cleared on city change, and deduped against the real feed once
   // an admin approves it and it shows up there for real.
-  const [myPendingSubmissions, setMyPendingSubmissions] = useState([]);
-  const [heartCounts, setHeartCounts] = useState({});
-  const [myHearts, setMyHearts] = useState(new Set());
+  const [myPendingSubmissions, setMyPendingSubmissions] = useState<SosFeedPairing[]>([]);
+  const [heartCounts, setHeartCounts] = useState<Record<string, number>>({});
+  const [myHearts, setMyHearts] = useState<Set<string>>(new Set());
   const [loadingFeed, setLoadingFeed] = useState(true);
-  const [heartBusyId, setHeartBusyId] = useState(null);
+  const [heartBusyId, setHeartBusyId] = useState<string | null>(null);
 
   const [originalArtist, setOriginalArtist] = useState("");
   const [originalTitle, setOriginalTitle] = useState("");
@@ -189,7 +201,7 @@ export function SingOvaSundaysPage({ citySlug }) {
   const [note, setNote] = useState("");
   const [weekTheme, setWeekTheme] = useState("any");
   const [submittingPairing, setSubmittingPairing] = useState(false);
-  const [submitMsg, setSubmitMsg] = useState(null);
+  const [submitMsg, setSubmitMsg] = useState<StatusMessage | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -257,8 +269,8 @@ export function SingOvaSundaysPage({ citySlug }) {
         .from("sos_pairing_hearts")
         .select("pairing_id, email")
         .in("pairing_id", ids);
-      const counts = {};
-      const mine = new Set();
+      const counts: Record<string, number> = {};
+      const mine = new Set<string>();
       for (const h of heartRows ?? []) {
         counts[h.pairing_id] = (counts[h.pairing_id] ?? 0) + 1;
         if (session && h.email.toLowerCase() === session.email.toLowerCase()) {
@@ -309,7 +321,11 @@ export function SingOvaSundaysPage({ citySlug }) {
     }
   }
 
-  async function callVerifyCode(trimmedEmail, trimmedCode, trimmedName) {
+  async function callVerifyCode(
+    trimmedEmail: string,
+    trimmedCode: string,
+    trimmedName: string,
+  ): Promise<VerifyCodeResult> {
     const { data, error } = await supabase.functions.invoke("verify-sos-code", {
       body: { email: trimmedEmail, code: trimmedCode, displayName: trimmedName },
     });
@@ -365,7 +381,7 @@ export function SingOvaSundaysPage({ citySlug }) {
     setVerifyMsg(null);
   }
 
-  async function handleSubmitPairing(e) {
+  async function handleSubmitPairing(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!session || !city) return;
     if (!originalArtist.trim() || !originalTitle.trim() || !reggaeArtist.trim() || !reggaeTitle.trim()) {
@@ -438,7 +454,7 @@ export function SingOvaSundaysPage({ citySlug }) {
     }
   }
 
-  async function handleToggleHeart(pairingId) {
+  async function handleToggleHeart(pairingId: string) {
     if (!session) return;
     setHeartBusyId(pairingId);
     try {
@@ -506,7 +522,7 @@ export function SingOvaSundaysPage({ citySlug }) {
           real.reggae_title === local.reggae_title,
       ),
   );
-  const displayPairings = [...confirmedPending, ...pairings];
+  const displayPairings: SosFeedPairing[] = [...confirmedPending, ...pairings];
 
   const eventSchema = city.launch_date
     ? {
@@ -615,11 +631,11 @@ export function SingOvaSundaysPage({ citySlug }) {
 
       <div className="mx-auto max-w-5xl space-y-20 px-4 py-16 sm:px-6">
         {/* Featuring the music of */}
-        {heroSlides[heroSelected]?.pairings?.length > 0 && (
+        {(heroSlides[heroSelected]?.pairings?.length ?? 0) > 0 && (
           <section className="rounded-xl border border-border bg-card p-6 text-center">
             <p className={`${LABEL_CLASS} mb-4`}>Featuring the Music Of</p>
             <div className="grid gap-6 sm:grid-cols-3">
-              {heroSlides[heroSelected].pairings.map((p) => (
+              {heroSlides[heroSelected].pairings?.map((p) => (
                 <div key={p.rnb} className="rounded-lg border border-border/60 p-4">
                   <p className="font-display text-lg font-semibold sm:text-xl">
                     {p.rnb} <span className="text-secondary">×</span> {p.reggae}

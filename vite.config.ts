@@ -24,7 +24,7 @@ export default defineConfig({
       // prerender that image as if it were an HTML page, and writes back a corrupted
       // (UTF-8-mangled) copy over the real binary asset — silently breaking the image.
       // Only real routes should ever be prerendered, so skip anything under /assets/.
-      filter: ({ path }) => !path.startsWith("/assets/"),
+      filter: ({ path }: { path: string }) => !path.startsWith("/assets/"),
     },
     // /sing-ova-sundays/$city is never linked from anywhere (crawlLinks can't find
     // it), so without this it falls back to GitHub Pages' 404.html -- a raw copy of

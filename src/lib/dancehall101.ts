@@ -45,6 +45,11 @@ export type Dh101LeaderboardRow = {
   school_slug: string;
   school_name: string;
   signup_count: number;
+  // The leaderboard page themes itself with the viewer's school colors via
+  // dh101Vars(). The view may not return these columns; when it doesn't, the
+  // page falls back to the default Dancehall 101 colors.
+  color_primary?: string | null;
+  color_secondary?: string | null;
 };
 
 export type Dh101CheckInResult = {

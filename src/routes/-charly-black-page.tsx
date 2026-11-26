@@ -313,7 +313,7 @@ function Gallery() {
 // Own lightbox state, same pattern as Gallery above but separate -- these
 // are promo flyers to browse, not photos to page through together.
 function OpeningActs() {
-  const [lightbox, setLightbox] = useState(null);
+  const [lightbox, setLightbox] = useState<string | null>(null);
 
   return (
     <>

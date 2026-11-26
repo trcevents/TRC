@@ -17,9 +17,19 @@
 // enforced here client-side -- this page just doesn't show UI for actions
 // the signed-in admin can't perform anyway.
 import { useEffect, useState } from "react";
+import type { FormEvent } from "react";
+import type { Session } from "@supabase/supabase-js";
 import { CheckCircle2, Loader2, LogOut, Music, Trash2 } from "lucide-react";
 
 import { supabase } from "@/lib/supabase";
+import type {
+  FunctionInvokeErrorLike,
+  SosAdminProfile,
+  SosCity,
+  SosPairing,
+  SosPairingStatus,
+  StatusMessage,
+} from "@/lib/sing-ova-types";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -50,7 +60,9 @@ export function singOvaSundaysAdminHead() {
   };
 }
 
-async function extractFunctionErrorMessage(error) {
+async function extractFunctionErrorMessage(
+  error: FunctionInvokeErrorLike | null | undefined,
+): Promise<string | null> {
   if (!error || typeof error !== "object") return null;
   const context = error.context;
   if (context && typeof context.json === "function") {
@@ -65,11 +77,11 @@ async function extractFunctionErrorMessage(error) {
 }
 
 export function SingOvaSundaysAdminPage() {
-  const [authSession, setAuthSession] = useState(undefined); // undefined = still checking
+  const [authSession, setAuthSession] = useState<Session | null | undefined>(undefined); // undefined = still checking
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [signingIn, setSigningIn] = useState(false);
-  const [loginMsg, setLoginMsg] = useState(null);
+  const [loginMsg, setLoginMsg] = useState<StatusMessage | null>(null);
 
   const [showForgot, setShowForgot] = useState(false);
   const [resetEmail, setResetEmail] = useState("");
@@ -78,23 +90,23 @@ export function SingOvaSundaysAdminPage() {
   const [resetCodeSent, setResetCodeSent] = useState(false);
   const [requestingReset, setRequestingReset] = useState(false);
   const [resettingPassword, setResettingPassword] = useState(false);
-  const [resetMsg, setResetMsg] = useState(null);
+  const [resetMsg, setResetMsg] = useState<StatusMessage | null>(null);
 
-  const [profile, setProfile] = useState(null); // { name, city_id, city_slug }
+  const [profile, setProfile] = useState<SosAdminProfile | null>(null); // { name, city_id, city_slug }
   const [profileLoading, setProfileLoading] = useState(true);
-  const [cities, setCities] = useState([]);
-  const [selectedCityId, setSelectedCityId] = useState(null);
+  const [cities, setCities] = useState<SosCity[]>([]);
+  const [selectedCityId, setSelectedCityId] = useState<string | null>(null);
 
-  const [statusFilter, setStatusFilter] = useState("pending");
-  const [queue, setQueue] = useState([]);
+  const [statusFilter, setStatusFilter] = useState<SosPairingStatus>("pending");
+  const [queue, setQueue] = useState<SosPairing[]>([]);
   const [loadingQueue, setLoadingQueue] = useState(false);
-  const [busyId, setBusyId] = useState(null);
+  const [busyId, setBusyId] = useState<string | null>(null);
 
   const [newAdminName, setNewAdminName] = useState("");
   const [newAdminEmail, setNewAdminEmail] = useState("");
   const [newAdminCityId, setNewAdminCityId] = useState("all");
   const [addingAdmin, setAddingAdmin] = useState(false);
-  const [addAdminMsg, setAddAdminMsg] = useState(null);
+  const [addAdminMsg, setAddAdminMsg] = useState<StatusMessage | null>(null);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => setAuthSession(data.session ?? null));
@@ -114,7 +126,7 @@ export function SingOvaSundaysAdminPage() {
     async function loadProfile() {
       setProfileLoading(true);
       const { data } = await supabase.rpc("sos_my_admin_profile");
-      const row = Array.isArray(data) ? data[0] : data;
+      const row: SosAdminProfile | null | undefined = Array.isArray(data) ? data[0] : data;
       if (cancelled) return;
       setProfile(row ?? null);
       if (row) {
@@ -157,7 +169,7 @@ export function SingOvaSundaysAdminPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCityId, statusFilter]);
 
-  async function handleSignIn(e) {
+  async function handleSignIn(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSigningIn(true);
     setLoginMsg(null);
@@ -224,7 +236,7 @@ export function SingOvaSundaysAdminPage() {
     await supabase.auth.signOut();
   }
 
-  async function handleSetStatus(pairingId, status) {
+  async function handleSetStatus(pairingId: string, status: SosPairingStatus) {
     setBusyId(pairingId);
     try {
       await supabase.from("sos_pairings").update({ status }).eq("id", pairingId);
@@ -234,7 +246,7 @@ export function SingOvaSundaysAdminPage() {
     }
   }
 
-  async function handleAddAdmin(e) {
+  async function handleAddAdmin(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!newAdminName.trim() || !newAdminEmail.trim()) {
       setAddAdminMsg({ text: "Enter a name and email.", ok: false });
