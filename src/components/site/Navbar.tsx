@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Menu, MessageCircle, X } from "lucide-react";
+import { MapPin, Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 
@@ -69,7 +69,7 @@ export function Navbar() {
               rel="noreferrer"
               aria-label="Get Directions"
             >
-              <MessageCircle className="size-4" />
+              <MapPin className="size-4" />
               <span className="hidden sm:inline">Get Directions</span>
             </a>
           </Button>
