@@ -51,7 +51,6 @@ export default defineConfig({
       { path: "/irie-jerk/ackee-acid-jazz-after-dark" },
       { path: "/irie-jerk/just-laugh-wednesdays" },
       { path: "/irie-jerk/laugh-after-dark" },
-      { path: "/irie-jerk/dancehall101-hospitality" },
       { path: "/irie-jerk/swiftie-saturdays" },
       { path: "/irie-jerk/swiftie-saturdays-after-dark" },
       // Irie Jerk & Juggling design editions (one per entry in

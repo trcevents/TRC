@@ -24,8 +24,14 @@ export type IrieJerkLineupRow = {
   detail_path: string | null;
 };
 
-// Retired from the lineup (Karaoke Thursdays is gone; Thursdays are Irie Jerk & Juggling).
-const REMOVED_SLUGS = ["karaoke-thursdays", "karaoke-after-dark"];
+// Retired from the lineup (Karaoke Thursdays is gone; Thursdays are Irie Jerk &
+// Juggling. Dancehall 101 is archived).
+const REMOVED_SLUGS = [
+  "karaoke-thursdays",
+  "karaoke-after-dark",
+  "dancehall101",
+  "dancehall101-hospitality",
+];
 
 const LINEUP_COLUMNS =
   "slug, day_of_week, day_index, phase, slot_order, name, time_window, description, signature_plate, signature_drinks, cover_charge, alcohol_free, is_flagship, is_monthly_special, is_21_plus, replaces_slug, detail_path";

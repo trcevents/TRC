@@ -6,7 +6,7 @@
 // reachable directly (Charly Black keeps its street-team / comp / comp-admin
 // tooling live at /charly-black/*), they're just no longer linked from the
 // Navbar — see Navbar.tsx's EVENT_LINKS. A recurring series belongs here only
-// once the whole series has ended (Dancehall Fridays), not when one week's date
+// once the whole series has ended (Dancehall Fridays, Dancehall 101), not when one week's date
 // passes.
 //
 // The list lives in Supabase (public.trc_past_events, see
@@ -50,6 +50,15 @@ type PastEvent = {
 
 // Newest first.
 const FALLBACK_EVENTS: PastEvent[] = [
+  {
+    slug: "dancehall-101",
+    name: "Dancehall 101",
+    date: "Friday series at Irie Jerk",
+    to: "/dancehall-101",
+    image: null,
+    description:
+      "Lessons in Dancehall Culture: Friday nights at Irie Jerk, with free entry for college students 21+.",
+  },
   {
     slug: "dancehall-fridays",
     name: "Dancehall Fridays — Girls Night Out",

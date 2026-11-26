@@ -952,7 +952,7 @@ export function SingOvaSundaysPage({ citySlug }: { citySlug: string }) {
             {[
               { icon: MapPin, label: "Address", value: city.venue_address ?? "TBA" },
               { icon: Clock, label: "Time", value: city.hours_label ?? "TBA" },
-              { icon: Ticket, label: "Admission", value: "Free · First 4 Sundays" },
+              { icon: Ticket, label: "Admission", value: "Free" },
             ].map(({ icon: Icon, label, value }) => (
               <div key={label}>
                 <div className="mx-auto flex size-14 items-center justify-center rounded-full bg-secondary">

@@ -27,6 +27,7 @@ const ARCHIVED_PATHS = [
   "/jamaicaday",
   "/jamaica64",
   "/dancehall-fridays",
+  "/dancehall-101",
 ];
 
 export function Footer() {

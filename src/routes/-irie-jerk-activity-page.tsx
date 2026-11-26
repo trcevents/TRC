@@ -4,8 +4,7 @@
 //
 // A single generic stub detail page for every row in irie_jerk_weekly_lineup
 // that doesn't already have its own dedicated page (see irieJerkDetailHref in
-// src/lib/irieJerkLineup.ts for the one exception, Dancehall101, which
-// points at /dancehall-101 instead of here).
+// src/lib/irieJerkLineup.ts).
 import { useEffect, useState } from "react";
 import { CalendarDays, Clock, UtensilsCrossed } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -27,7 +26,6 @@ const ACTIVITY_SEO: Record<string, { name: string; day: string; blurb: string }>
   "ackee-acid-jazz-after-dark": { name: "Ackee & Acid Jazz: After Dark", day: "Tuesdays", blurb: "The acid-jazz lounge continues after dark." },
   "just-laugh-wednesdays": { name: "Just Laugh Wednesdays", day: "Wednesdays", blurb: "Stand-up and open mic comedy." },
   "laugh-after-dark": { name: "Laugh After Dark", day: "Wednesdays", blurb: "Comedy's late set." },
-  "dancehall101-hospitality": { name: "Dancehall101 Hospitality", day: "Fridays", blurb: "Food service all day, building into Friday's flagship night." },
   "swiftie-saturdays": { name: "Swiftie Saturdays", day: "Saturdays", blurb: "An Eras-themed, family-friendly daytime party." },
   "swiftie-saturdays-after-dark": { name: "Swiftie Saturdays: After Dark", day: "Saturdays", blurb: "The Eras-themed night continues after dark." },
 };

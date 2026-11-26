@@ -26,15 +26,9 @@
   </url>
   <url>
     <loc>https://trcevent.com/dancehall-101/</loc>
-    <lastmod>2026-11-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://trcevent.com/dancehall-101/leaderboard/</loc>
-    <lastmod>2026-11-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://trcevent.com/dancehall-fridays/</loc>
@@ -116,12 +110,6 @@
   </url>
   <url>
     <loc>https://trcevent.com/irie-jerk/laugh-after-dark/</loc>
-    <lastmod>2026-11-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://trcevent.com/irie-jerk/dancehall101-hospitality/</loc>
     <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

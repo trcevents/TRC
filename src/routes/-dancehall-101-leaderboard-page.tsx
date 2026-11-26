@@ -11,6 +11,7 @@
 import { useEffect, useState } from "react";
 
 import { fetchDh101Leaderboard, type Dh101LeaderboardRow } from "@/lib/dancehall101";
+import { ArchivedEventBanner } from "@/components/site/ArchivedEventBanner";
 import {
   DH101_BG,
   DH101_BORDER,
@@ -59,6 +60,7 @@ export function Dancehall101LeaderboardPage() {
 
   return (
     <div className="w-full" style={{ background: DH101_BG, color: "#f5f5f5", ...dh101Vars(me) }}>
+      <ArchivedEventBanner title="Dancehall 101 has ended." detail="Signups are closed." />
       <Dh101Topbar tagline="Ambassador Leaderboard" />
       <main>
         <div className="px-6 pt-12 pb-8 text-center">
