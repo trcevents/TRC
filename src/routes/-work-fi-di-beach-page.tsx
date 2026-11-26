@@ -9,7 +9,6 @@
 // at 63rd Street Beach. Same weekend as Chicago Vybez (-chicago-vybez-page),
 // different venue and organizer — the two run in parallel, not in competition.
 import { ArchivedEventBanner } from "@/components/site/ArchivedEventBanner";
-import { useEffect, useState } from "react";
 import {
   CalendarDays,
   Clock,
@@ -34,9 +33,6 @@ import clipVideo from "@/assets/work-fi-di-beach-clip.mp4";
 const SITE_URL = "https://trcevent.com";
 const VENUE_NAME = "63rd Street Beach";
 const VENUE_ADDRESS = "63rd Street Beach, Jackson Park, Chicago, IL";
-// Friday through Labor Day itself. Countdown targets the first morning shift.
-const EVENT_START = new Date("2026-09-04T09:00:00");
-
 const EVENT_DAYS = [
   { day: "Friday", date: "Sept 4" },
   { day: "Saturday", date: "Sept 5" },
@@ -129,49 +125,6 @@ export function workFiDiBeachHead() {
   };
 }
 
-function useCountdown(target: Date) {
-  const [remainingMs, setRemainingMs] = useState<number | null>(null);
-
-  useEffect(() => {
-    const tick = () => setRemainingMs(Math.max(0, target.getTime() - Date.now()));
-    tick();
-    const id = setInterval(tick, 1000);
-    return () => clearInterval(id);
-  }, [target]);
-
-  return remainingMs;
-}
-
-function CountdownStrip() {
-  const remainingMs = useCountdown(EVENT_START);
-  const totalSeconds = remainingMs == null ? null : Math.floor(remainingMs / 1000);
-
-  const units = [
-    { label: "Days", value: totalSeconds == null ? null : Math.floor(totalSeconds / 86400) },
-    {
-      label: "Hours",
-      value: totalSeconds == null ? null : Math.floor((totalSeconds % 86400) / 3600),
-    },
-    { label: "Min", value: totalSeconds == null ? null : Math.floor((totalSeconds % 3600) / 60) },
-    { label: "Sec", value: totalSeconds == null ? null : totalSeconds % 60 },
-  ];
-
-  return (
-    <div className="flex justify-center gap-6 sm:gap-10">
-      {units.map((u) => (
-        <div key={u.label} className="text-center">
-          <p className="font-display text-3xl font-extrabold tabular-nums text-gold sm:text-4xl">
-            {u.value == null ? "--" : String(u.value).padStart(2, "0")}
-          </p>
-          <p className="mt-1 text-[0.65rem] uppercase tracking-wider text-muted-foreground">
-            {u.label}
-          </p>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 export function WorkFiDiBeachPage() {
   const mapsSrc = `https://www.google.com/maps?q=${encodeURIComponent(VENUE_ADDRESS)}&output=embed`;
 
@@ -258,12 +211,10 @@ export function WorkFiDiBeachPage() {
         </div>
       </section>
 
-      {/* Countdown */}
+      {/* Days */}
       <section className="border-y border-border bg-card">
         <div className="mx-auto max-w-4xl px-4 py-10 text-center sm:px-6">
-          <p className="eyebrow mb-6">First Shift Starts In</p>
-          <CountdownStrip />
-          <div className="mx-auto mt-8 flex max-w-xl flex-wrap justify-center gap-2">
+          <div className="mx-auto flex max-w-xl flex-wrap justify-center gap-2">
             {EVENT_DAYS.map(({ day, date, holiday }) => (
               <Badge
                 key={day}

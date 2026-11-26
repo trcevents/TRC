@@ -110,9 +110,6 @@ const FLYER_FLIP_MS = 700;
 const SITE_URL = "https://trcevent.com";
 const VENUE_NAME = "Bombay Banquet Hall";
 const VENUE_ADDRESS = "2448 W. Devon Ave., Chicago, IL 60659";
-// Doors 9 PM CDT — parsed as local time like the rest of the app's date helpers.
-const EVENT_DATE = new Date("2026-08-28T21:00:00");
-
 // Ticket Tailor and Eventbrite are live as of 2026-07-14; Humanitix is still
 // intentionally unlinked until Stephen provides that live URL.
 const TICKET_OUTLETS = [
@@ -162,49 +159,6 @@ export function charlyBlackHead() {
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/charly-black/` }],
   };
-}
-
-function useCountdown(target: Date) {
-  const [remainingMs, setRemainingMs] = useState<number | null>(null);
-
-  useEffect(() => {
-    const tick = () => setRemainingMs(Math.max(0, target.getTime() - Date.now()));
-    tick();
-    const id = setInterval(tick, 1000);
-    return () => clearInterval(id);
-  }, [target]);
-
-  return remainingMs;
-}
-
-function CountdownStrip() {
-  const remainingMs = useCountdown(EVENT_DATE);
-  const totalSeconds = remainingMs == null ? null : Math.floor(remainingMs / 1000);
-
-  const units = [
-    { label: "Days", value: totalSeconds == null ? null : Math.floor(totalSeconds / 86400) },
-    {
-      label: "Hours",
-      value: totalSeconds == null ? null : Math.floor((totalSeconds % 86400) / 3600),
-    },
-    { label: "Min", value: totalSeconds == null ? null : Math.floor((totalSeconds % 3600) / 60) },
-    { label: "Sec", value: totalSeconds == null ? null : totalSeconds % 60 },
-  ];
-
-  return (
-    <div className="flex justify-center gap-6 sm:gap-10">
-      {units.map((u) => (
-        <div key={u.label} className="text-center">
-          <p className="font-display text-3xl font-extrabold tabular-nums text-gold sm:text-4xl">
-            {u.value == null ? "--" : String(u.value).padStart(2, "0")}
-          </p>
-          <p className="mt-1 text-[0.65rem] uppercase tracking-wider text-muted-foreground">
-            {u.label}
-          </p>
-        </div>
-      ))}
-    </div>
-  );
 }
 
 // Flips through all designed flyers like a card — swaps the image at the
@@ -482,14 +436,6 @@ export function CharlyBlackPage() {
               <a href="#venue">Venue Info</a>
             </Button>
           </div>
-        </div>
-      </section>
-
-      {/* Countdown */}
-      <section className="border-y border-border bg-card">
-        <div className="mx-auto max-w-4xl px-4 py-10 text-center sm:px-6">
-          <p className="eyebrow mb-6">Doors Open In</p>
-          <CountdownStrip />
         </div>
       </section>
 

@@ -11,7 +11,7 @@
 // Free admission, no ticket outlets, and the venue is genuinely secret until
 // attendees text in — don't add a real address anywhere on this page.
 import { ArchivedEventBanner } from "@/components/site/ArchivedEventBanner";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   CalendarDays,
   MapPin,
@@ -44,8 +44,6 @@ const CONTACT_PHONE_DISPLAY = "414-909-3279";
 const CONTACT_TEL = "tel:+14149093279";
 const CONTACT_SMS = "sms:+14149093279";
 
-// Labor Day Weekend 2026: Friday through Labor Day itself.
-const EVENT_START = new Date("2026-09-04T00:00:00");
 const EVENT_DAYS = [
   { day: "Friday", date: "Sept 4" },
   { day: "Saturday", date: "Sept 5" },
@@ -126,49 +124,6 @@ export function chicagoVybezHead() {
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/chicago-vybez/` }],
   };
-}
-
-function useCountdown(target: Date) {
-  const [remainingMs, setRemainingMs] = useState<number | null>(null);
-
-  useEffect(() => {
-    const tick = () => setRemainingMs(Math.max(0, target.getTime() - Date.now()));
-    tick();
-    const id = setInterval(tick, 1000);
-    return () => clearInterval(id);
-  }, [target]);
-
-  return remainingMs;
-}
-
-function CountdownStrip() {
-  const remainingMs = useCountdown(EVENT_START);
-  const totalSeconds = remainingMs == null ? null : Math.floor(remainingMs / 1000);
-
-  const units = [
-    { label: "Days", value: totalSeconds == null ? null : Math.floor(totalSeconds / 86400) },
-    {
-      label: "Hours",
-      value: totalSeconds == null ? null : Math.floor((totalSeconds % 86400) / 3600),
-    },
-    { label: "Min", value: totalSeconds == null ? null : Math.floor((totalSeconds % 3600) / 60) },
-    { label: "Sec", value: totalSeconds == null ? null : totalSeconds % 60 },
-  ];
-
-  return (
-    <div className="flex justify-center gap-6 sm:gap-10">
-      {units.map((u) => (
-        <div key={u.label} className="text-center">
-          <p className="font-display text-3xl font-extrabold tabular-nums text-gold sm:text-4xl">
-            {u.value == null ? "--" : String(u.value).padStart(2, "0")}
-          </p>
-          <p className="mt-1 text-[0.65rem] uppercase tracking-wider text-muted-foreground">
-            {u.label}
-          </p>
-        </div>
-      ))}
-    </div>
-  );
 }
 
 function Gallery() {
@@ -287,12 +242,10 @@ export function ChicagoVybezPage() {
         </div>
       </section>
 
-      {/* Countdown */}
+      {/* Days */}
       <section className="border-y border-border bg-card">
         <div className="mx-auto max-w-4xl px-4 py-10 text-center sm:px-6">
-          <p className="eyebrow mb-6">Kickoff In</p>
-          <CountdownStrip />
-          <div className="mx-auto mt-8 flex max-w-xl flex-wrap justify-center gap-2">
+          <div className="mx-auto flex max-w-xl flex-wrap justify-center gap-2">
             {EVENT_DAYS.map(({ day, date, holiday }) => (
               <Badge
                 key={day}
