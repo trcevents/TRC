@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 
 const EVENT_LINKS = [
   { to: "/irie-jerk-and-juggling", label: "Irie Jerk Thursdays" },
+  { to: "/sing-ova-sundays/chicago", label: "Sing Ova Sundays" },
   { to: "/events", label: "Events" },
   { to: "/dancehall-101", label: "Dancehall 101" },
   { to: "/dinner-in-jamaica", label: "Dinner in Jamaica" },
