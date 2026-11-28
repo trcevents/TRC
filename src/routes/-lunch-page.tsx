@@ -10,6 +10,8 @@ import { CalendarDays, Clock, Loader2, MapPin, Phone, Plus, Trash2 } from "lucid
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/lib/supabase";
+import logoSmall from "@/assets/irie-jerk-logo-720.webp";
+import logoLarge from "@/assets/irie-jerk-logo-1440.webp";
 import { venueLine } from "@/lib/thursday/calendar";
 import { IRIE_JERK_JUGGLING } from "@/lib/thursday/irie-jerk-juggling-event";
 import {
@@ -33,7 +35,7 @@ import {
 const SITE_URL = "https://trcevent.com";
 const PAGE_URL = `${SITE_URL}/lunch/`;
 const TITLE = "Lunch at Irie Jerk | Jerk Bowls 7 Days a Week";
-const DESCRIPTION = `Front Yard Jerk Bowls at Irie Jerk Bar and Grill, Calumet Park. Lunch 7 days a week, ${LUNCH_HOURS.label}. Bowls $20, seafood $25.`;
+const DESCRIPTION = `Jerk Bowls at Irie Jerk Bar and Grill, Calumet Park. Lunch 7 days a week, ${LUNCH_HOURS.label}. Bowls $20, seafood $25.`;
 
 // Same venue for every Irie Jerk page.
 const VENUE = IRIE_JERK_JUGGLING.venue;
@@ -198,9 +200,18 @@ export function LunchPage() {
     <div>
       <section className="border-b border-border bg-card">
         <div className="mx-auto max-w-4xl px-4 py-14 text-center sm:px-6 sm:py-20">
-          <p className="eyebrow mb-3">Lunch at Irie Jerk</p>
+          <p className="eyebrow mb-4">Lunch at</p>
           <h1 className="font-display text-5xl font-extrabold tracking-tight sm:text-6xl">
-            Front Yard <span className="text-gradient-gold">Jerk Bowl</span>
+            <img
+              src={logoLarge}
+              srcSet={`${logoSmall} 720w, ${logoLarge} 1440w`}
+              sizes="(min-width: 768px) 672px, 92vw"
+              width={1440}
+              height={228}
+              alt="Irie Jerk Bar and Grill"
+              className="mx-auto h-auto w-full max-w-2xl"
+            />
+            <span className="mt-4 block text-gradient-gold">Jerk Bowl</span>
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
             Coconut, savory, smoky jerk, creamy cheese, fresh crunch, sweet pineapple and spicy jerk

@@ -156,7 +156,7 @@ export function FridayLimePage() {
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             <div className="flex flex-col rounded-xl border border-border bg-card p-6">
               <p className="eyebrow">Lunch · {LUNCH_HOURS.label}</p>
-              <h3 className="mt-2 font-display text-xl font-bold">Front Yard Jerk Bowl</h3>
+              <h3 className="mt-2 font-display text-xl font-bold">Irie Jerk Bowl</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 Coconut rice, smoky jerk, creamy cheese, fresh crunch, sweet pineapple and spicy
                 jerk sauce, built your way. $20, seafood $25.

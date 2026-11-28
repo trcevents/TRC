@@ -12,6 +12,7 @@ import { venueLine } from "@/lib/thursday/calendar";
 import { IRIE_JERK_JUGGLING } from "@/lib/thursday/irie-jerk-juggling-event";
 import ijjFlyer from "@/assets/irie-jerk-juggling-flyer-560.webp";
 import limeFlyer from "@/assets/friday-lime-flags-560.webp";
+import irieJerkLogo from "@/assets/irie-jerk-logo-720.webp";
 import { FRIDAY_LIME } from "@/lib/friday-lime";
 
 const SITE_URL = "https://trcevent.com";
@@ -77,7 +78,14 @@ export function EventsPage() {
           <div>
             <p className="eyebrow mb-2">Lunch · 7 days a week · 11 AM – 3 PM</p>
             <h2 className="font-display text-2xl font-extrabold sm:text-3xl">
-              Front Yard <span className="text-gradient-gold">Jerk Bowl</span>
+              <img
+                src={irieJerkLogo}
+                width={720}
+                height={114}
+                alt="Irie Jerk Bar and Grill"
+                className="mx-auto mb-1 h-auto w-full max-w-xs sm:mx-0"
+              />
+              <span className="text-gradient-gold">Jerk Bowl</span>
             </h2>
             <p className="mt-2 text-muted-foreground">Bowls $20, seafood $25.</p>
           </div>
