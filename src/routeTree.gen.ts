@@ -47,6 +47,9 @@ import { Route as Dancehall101CheckinRouteImport } from './routes/dancehall-101_
 import { Route as Dancehall101LeaderboardRouteImport } from './routes/dancehall-101_.leaderboard'
 import { Route as Dancehall101TicketRouteImport } from './routes/dancehall-101_.ticket'
 import { Route as IrieJerkAndJugglingEditionRouteImport } from './routes/irie-jerk-and-juggling_.$edition'
+import { Route as IrieJerkAndJugglingCalendarRouteImport } from './routes/irie-jerk-and-juggling_.calendar'
+import { Route as IrieJerkAndJugglingChristmasEveRouteImport } from './routes/irie-jerk-and-juggling_.christmas-eve'
+import { Route as IrieJerkAndJugglingWinterBallRouteImport } from './routes/irie-jerk-and-juggling_.winter-ball'
 import { Route as IrieJerkSlugRouteImport } from './routes/irie-jerk.$slug'
 import { Route as JayReblDollyPartonTributeRouteImport } from './routes/jay-rebl_.dolly-parton-tribute'
 import { Route as JayReblNapIdeaSubmissionRouteImport } from './routes/jay-rebl_.nap-idea-submission'
@@ -252,6 +255,24 @@ const IrieJerkAndJugglingEditionRoute =
     path: '/irie-jerk-and-juggling/$edition',
     getParentRoute: () => rootRouteImport,
   } as any)
+const IrieJerkAndJugglingCalendarRoute =
+  IrieJerkAndJugglingCalendarRouteImport.update({
+    id: '/irie-jerk-and-juggling_/calendar',
+    path: '/irie-jerk-and-juggling/calendar',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const IrieJerkAndJugglingChristmasEveRoute =
+  IrieJerkAndJugglingChristmasEveRouteImport.update({
+    id: '/irie-jerk-and-juggling_/christmas-eve',
+    path: '/irie-jerk-and-juggling/christmas-eve',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const IrieJerkAndJugglingWinterBallRoute =
+  IrieJerkAndJugglingWinterBallRouteImport.update({
+    id: '/irie-jerk-and-juggling_/winter-ball',
+    path: '/irie-jerk-and-juggling/winter-ball',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const IrieJerkSlugRoute = IrieJerkSlugRouteImport.update({
   id: '/irie-jerk/$slug',
   path: '/irie-jerk/$slug',
@@ -351,6 +372,9 @@ export interface FileRoutesByFullPath {
   '/dancehall-101/leaderboard': typeof Dancehall101LeaderboardRoute
   '/dancehall-101/ticket': typeof Dancehall101TicketRoute
   '/irie-jerk-and-juggling/$edition': typeof IrieJerkAndJugglingEditionRoute
+  '/irie-jerk-and-juggling/calendar': typeof IrieJerkAndJugglingCalendarRoute
+  '/irie-jerk-and-juggling/christmas-eve': typeof IrieJerkAndJugglingChristmasEveRoute
+  '/irie-jerk-and-juggling/winter-ball': typeof IrieJerkAndJugglingWinterBallRoute
   '/irie-jerk/$slug': typeof IrieJerkSlugRoute
   '/jay-rebl/dolly-parton-tribute': typeof JayReblDollyPartonTributeRoute
   '/jay-rebl/nap-idea-submission': typeof JayReblNapIdeaSubmissionRoute
@@ -402,6 +426,9 @@ export interface FileRoutesByTo {
   '/dancehall-101/leaderboard': typeof Dancehall101LeaderboardRoute
   '/dancehall-101/ticket': typeof Dancehall101TicketRoute
   '/irie-jerk-and-juggling/$edition': typeof IrieJerkAndJugglingEditionRoute
+  '/irie-jerk-and-juggling/calendar': typeof IrieJerkAndJugglingCalendarRoute
+  '/irie-jerk-and-juggling/christmas-eve': typeof IrieJerkAndJugglingChristmasEveRoute
+  '/irie-jerk-and-juggling/winter-ball': typeof IrieJerkAndJugglingWinterBallRoute
   '/irie-jerk/$slug': typeof IrieJerkSlugRoute
   '/jay-rebl/dolly-parton-tribute': typeof JayReblDollyPartonTributeRoute
   '/jay-rebl/nap-idea-submission': typeof JayReblNapIdeaSubmissionRoute
@@ -454,6 +481,9 @@ export interface FileRoutesById {
   '/dancehall-101_/leaderboard': typeof Dancehall101LeaderboardRoute
   '/dancehall-101_/ticket': typeof Dancehall101TicketRoute
   '/irie-jerk-and-juggling_/$edition': typeof IrieJerkAndJugglingEditionRoute
+  '/irie-jerk-and-juggling_/calendar': typeof IrieJerkAndJugglingCalendarRoute
+  '/irie-jerk-and-juggling_/christmas-eve': typeof IrieJerkAndJugglingChristmasEveRoute
+  '/irie-jerk-and-juggling_/winter-ball': typeof IrieJerkAndJugglingWinterBallRoute
   '/irie-jerk/$slug': typeof IrieJerkSlugRoute
   '/jay-rebl_/dolly-parton-tribute': typeof JayReblDollyPartonTributeRoute
   '/jay-rebl_/nap-idea-submission': typeof JayReblNapIdeaSubmissionRoute
@@ -507,6 +537,9 @@ export interface FileRouteTypes {
     | '/dancehall-101/leaderboard'
     | '/dancehall-101/ticket'
     | '/irie-jerk-and-juggling/$edition'
+    | '/irie-jerk-and-juggling/calendar'
+    | '/irie-jerk-and-juggling/christmas-eve'
+    | '/irie-jerk-and-juggling/winter-ball'
     | '/irie-jerk/$slug'
     | '/jay-rebl/dolly-parton-tribute'
     | '/jay-rebl/nap-idea-submission'
@@ -558,6 +591,9 @@ export interface FileRouteTypes {
     | '/dancehall-101/leaderboard'
     | '/dancehall-101/ticket'
     | '/irie-jerk-and-juggling/$edition'
+    | '/irie-jerk-and-juggling/calendar'
+    | '/irie-jerk-and-juggling/christmas-eve'
+    | '/irie-jerk-and-juggling/winter-ball'
     | '/irie-jerk/$slug'
     | '/jay-rebl/dolly-parton-tribute'
     | '/jay-rebl/nap-idea-submission'
@@ -609,6 +645,9 @@ export interface FileRouteTypes {
     | '/dancehall-101_/leaderboard'
     | '/dancehall-101_/ticket'
     | '/irie-jerk-and-juggling_/$edition'
+    | '/irie-jerk-and-juggling_/calendar'
+    | '/irie-jerk-and-juggling_/christmas-eve'
+    | '/irie-jerk-and-juggling_/winter-ball'
     | '/irie-jerk/$slug'
     | '/jay-rebl_/dolly-parton-tribute'
     | '/jay-rebl_/nap-idea-submission'
@@ -661,6 +700,9 @@ export interface RootRouteChildren {
   Dancehall101LeaderboardRoute: typeof Dancehall101LeaderboardRoute
   Dancehall101TicketRoute: typeof Dancehall101TicketRoute
   IrieJerkAndJugglingEditionRoute: typeof IrieJerkAndJugglingEditionRoute
+  IrieJerkAndJugglingCalendarRoute: typeof IrieJerkAndJugglingCalendarRoute
+  IrieJerkAndJugglingChristmasEveRoute: typeof IrieJerkAndJugglingChristmasEveRoute
+  IrieJerkAndJugglingWinterBallRoute: typeof IrieJerkAndJugglingWinterBallRoute
   IrieJerkSlugRoute: typeof IrieJerkSlugRoute
   JayReblDollyPartonTributeRoute: typeof JayReblDollyPartonTributeRoute
   JayReblNapIdeaSubmissionRoute: typeof JayReblNapIdeaSubmissionRoute
@@ -942,6 +984,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IrieJerkAndJugglingEditionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/irie-jerk-and-juggling_/calendar': {
+      id: '/irie-jerk-and-juggling_/calendar'
+      path: '/irie-jerk-and-juggling/calendar'
+      fullPath: '/irie-jerk-and-juggling/calendar'
+      preLoaderRoute: typeof IrieJerkAndJugglingCalendarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/irie-jerk-and-juggling_/christmas-eve': {
+      id: '/irie-jerk-and-juggling_/christmas-eve'
+      path: '/irie-jerk-and-juggling/christmas-eve'
+      fullPath: '/irie-jerk-and-juggling/christmas-eve'
+      preLoaderRoute: typeof IrieJerkAndJugglingChristmasEveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/irie-jerk-and-juggling_/winter-ball': {
+      id: '/irie-jerk-and-juggling_/winter-ball'
+      path: '/irie-jerk-and-juggling/winter-ball'
+      fullPath: '/irie-jerk-and-juggling/winter-ball'
+      preLoaderRoute: typeof IrieJerkAndJugglingWinterBallRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/irie-jerk/$slug': {
       id: '/irie-jerk/$slug'
       path: '/irie-jerk/$slug'
@@ -1061,6 +1124,9 @@ const rootRouteChildren: RootRouteChildren = {
   Dancehall101LeaderboardRoute: Dancehall101LeaderboardRoute,
   Dancehall101TicketRoute: Dancehall101TicketRoute,
   IrieJerkAndJugglingEditionRoute: IrieJerkAndJugglingEditionRoute,
+  IrieJerkAndJugglingCalendarRoute: IrieJerkAndJugglingCalendarRoute,
+  IrieJerkAndJugglingChristmasEveRoute: IrieJerkAndJugglingChristmasEveRoute,
+  IrieJerkAndJugglingWinterBallRoute: IrieJerkAndJugglingWinterBallRoute,
   IrieJerkSlugRoute: IrieJerkSlugRoute,
   JayReblDollyPartonTributeRoute: JayReblDollyPartonTributeRoute,
   JayReblNapIdeaSubmissionRoute: JayReblNapIdeaSubmissionRoute,

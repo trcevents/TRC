@@ -5,6 +5,7 @@
 //     error logger plugins, and sandbox detection (port/host/strictPort).
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { SCHEDULE } from "./src/lib/thursday/schedule";
 
 export default defineConfig({
   tanstackStart: {
@@ -53,11 +54,11 @@ export default defineConfig({
       { path: "/irie-jerk/laugh-after-dark" },
       { path: "/irie-jerk/swiftie-saturdays" },
       { path: "/irie-jerk/swiftie-saturdays-after-dark" },
-      // Irie Jerk & Juggling design editions (one per entry in
-      // IRIE_JERK_JUGGLING_EDITIONS, src/lib/thursday/irie-jerk-juggling.ts).
-      { path: "/irie-jerk-and-juggling/tokyo" },
-      { path: "/irie-jerk-and-juggling/copenhagen" },
-      { path: "/irie-jerk-and-juggling/seoul" },
+      // Irie Jerk & Juggling: every scheduled city edition, the calendar and
+      // the holiday nights.
+      ...[...new Set(SCHEDULE.map(([, key]) => key)), "calendar", "christmas-eve", "winter-ball"].map(
+        (key) => ({ path: `/irie-jerk-and-juggling/${key}` }),
+      ),
     ],
   },
 });

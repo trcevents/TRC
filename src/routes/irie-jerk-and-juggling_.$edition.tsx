@@ -7,8 +7,7 @@ import {
 
 // One design edition on its own page, e.g. /irie-jerk-and-juggling/copenhagen.
 // The trailing "_" keeps it out from under the /irie-jerk-and-juggling page
-// (which has no <Outlet />). Each edition must also be listed in
-// prerender.pages in vite.config.ts.
+// (which has no <Outlet />). vite.config.ts prerenders every scheduled edition.
 export const Route = createFileRoute("/irie-jerk-and-juggling_/$edition")({
   beforeLoad: ({ params }) => {
     if (!findIrieJerkJugglingEdition(params.edition)) throw notFound();

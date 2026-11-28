@@ -1,16 +1,12 @@
-// Irie Jerk & Juggling: the event facts and its three design editions.
+// Irie Jerk & Juggling: every design edition. Tokyo, Copenhagen and Seoul are
+// written out here (each has its own look and clip); the other cities come from
+// cities.json. schedule.ts says which one shows each Thursday, and each also has
+// its own page at /irie-jerk-and-juggling/<key>.
 //
-// The page rotates through EDITIONS in order on each visit (see
-// src/components/thursday/RotatingEditions.tsx), and each edition also has its
-// own page at /irie-jerk-and-juggling/<key>.
-//
-// Images are WebP web copies of the originals in src/assets/originals/ (see the
-// README there). Clips are the supplied files, untouched; each poster is a still
-// of its clip's first frame.
-//
-// To add a design: add web copies + a poster, then append a ThursdayEdition here
-// (and its path to `prerender.pages` in vite.config.ts).
+// Images are WebP web copies; the originals of the first three are in
+// src/assets/originals/. Clips are 1280px copies without sound.
 import { responsiveImage } from "./calendar";
+import { cityEditions } from "./cities";
 import type { ThursdayEdition } from "./types";
 export { IRIE_JERK_JUGGLING } from "./irie-jerk-juggling-event";
 
@@ -284,5 +280,9 @@ export const SEOUL: ThursdayEdition = {
   },
 };
 
-/** Rotation order. */
-export const IRIE_JERK_JUGGLING_EDITIONS: readonly ThursdayEdition[] = [TOKYO, COPENHAGEN, SEOUL];
+export const IRIE_JERK_JUGGLING_EDITIONS: readonly ThursdayEdition[] = [
+  TOKYO,
+  COPENHAGEN,
+  SEOUL,
+  ...cityEditions(FLYER_SIZES, PHOTO_SIZES),
+];

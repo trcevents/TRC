@@ -8,6 +8,10 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Thursday night in Chicago (Friday 03:15 UTC): rebuild so the Irie Jerk &
+  # Juggling page and its share image move on to next week's city.
+  schedule:
+    - cron: "15 3 * * 5"
 
 permissions:
   contents: read

@@ -53,7 +53,9 @@ export type ThursdayEdition = {
   /** The two "what to expect" columns. */
   story: readonly [{ heading: string; body: string }, { heading: string; body: string }];
   /** The animated flyer clip. `poster` is a still of its first frame. */
-  clip: { src: string; poster: string; label: string };
+  clip?: { src: string; poster: string; label: string };
+  /** A picture and caption shown in place of the clip when there isn't one. */
+  still?: { image: ResponsiveImage; caption: string };
 };
 
 export type HolidayNight = {
@@ -67,6 +69,8 @@ export type HolidayNight = {
   description: string;
   /** True if this night replaces the regular weekly night (skipped in the weekly calendar entry). */
   replacesWeekly: boolean;
+  /** The night's own page. */
+  href: string;
 };
 
 export type ThursdayEvent = {

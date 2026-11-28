@@ -102,7 +102,7 @@ export function EventsPage() {
             className="w-40 shrink-0 rounded-lg border border-gold/30"
           />
           <div className="text-center sm:text-left">
-            <p className="eyebrow mb-2">Featured · Starts Thursday, Dec 3</p>
+            <p className="eyebrow mb-2">Featured · Every Thursday from Dec 3</p>
             <h2 className="font-display text-3xl font-extrabold">
               Irie Jerk <span className="text-gradient-gold">&amp; Juggling</span>
             </h2>

@@ -1,0 +1,2738 @@
+[
+ {
+  "key": "abidjan",
+  "city": "Abidjan",
+  "theme": {
+   "bg": "#101426",
+   "fg": "#fff1d5",
+   "muted": "#e1cbb5",
+   "accent": "#f1ac7c",
+   "accent2": "#ffc897",
+   "line": "#8b6c62",
+   "hero": "radial-gradient(ellipse at 82% 72%,#613b38 0%,transparent 59%),linear-gradient(115deg,#232c4c 0%,#161a30 58%)",
+   "feature": "#322018",
+   "takeout": "#26151b",
+   "story": "#20294a",
+   "surface": "#3b2b28",
+   "buttonText": "#201322",
+   "serif": false
+  },
+  "intro": "The selector drops a Jamaican record. The next one takes you to Côte d’Ivoire. The bass keeps the room moving through both.",
+  "heading": [
+   "Same riddim.",
+   "More than one language."
+  ],
+  "hook": "From Kingston to Abidjan, one record at a time.",
+  "body": "Listen for the bassline that ties the night together, from a reggae groove into the dancehall hooks you know by heart.",
+  "story": [
+   [
+    "From Abidjan to 127th Street.",
+    "Indigo walls and warm copper set the mood in this Abidjan-inspired edition. Start with jerk from the Jamaican kitchen, then move to the floor when your tune comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Dancers step beside a copper-trimmed speaker on an amber-lit floor.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Abidjan Edition flyer. An Ivorian selector cues a record in an indigo-and-copper listening room. Same riddim. More than one language."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "Two selectors trade records at a copper-lit DJ booth while guests gather behind them."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "Dancers step beside a copper-trimmed speaker on an amber-lit terrazzo floor."
+   }
+  }
+ },
+ {
+  "key": "accra",
+  "city": "Accra",
+  "theme": {
+   "bg": "#191327",
+   "fg": "#fff5e9",
+   "muted": "#e9dcee",
+   "accent": "#e0baff",
+   "accent2": "#f5b893",
+   "line": "#886f95",
+   "hero": "radial-gradient(ellipse at 80% 72%,#704a8f,transparent 62%),linear-gradient(115deg,#34204e,#22182e)",
+   "feature": "#332241",
+   "takeout": "#3d2a37",
+   "story": "#2f2243",
+   "surface": "#49314e",
+   "buttonText": "#27162f",
+   "serif": true
+  },
+  "intro": "Come through after work for jerk from the Jamaican kitchen. Stay for the dancehall favorite that gets your whole table singing.",
+  "heading": [
+   "Chorus After Hours.",
+   "Your table knows the hook."
+  ],
+  "hook": "She drops the volume. Your table takes the chorus.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Accra to 127th Street.",
+    "Violet light washes across copper mesh and dark walnut. Find your friends at a table close to the booth, then move to the floor when your tune comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Copper catches the violet light beside the turntable, just before the next record goes on.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Chorus After Hours flyer with a Ghanaian woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "A Ghanaian woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "Violet light catches a copper speaker grille and turntable."
+   }
+  }
+ },
+ {
+  "key": "auckland",
+  "city": "Auckland",
+  "theme": {
+   "bg": "#12292e",
+   "fg": "#f2ffff",
+   "muted": "#d2e8eb",
+   "accent": "#9ce2e5",
+   "accent2": "#d6edf7",
+   "line": "#6f8c93",
+   "hero": "linear-gradient(135deg,#26505a,#132930 65%,#344754)",
+   "feature": "#1b3741",
+   "takeout": "#293f48",
+   "story": "#223f49",
+   "surface": "#293f48",
+   "buttonText": "#122c32",
+   "serif": false
+  },
+  "intro": "Meet over jerk from the Jamaican kitchen. The DJ brings the dancehall favorites, and the room brings the chorus.",
+  "heading": [
+   "Harbour Echo.",
+   "Send the hook back."
+  ],
+  "hook": "She lowers the fader. Your table sends the hook back.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Auckland to 127th Street.",
+    "Silver ceiling lights reflect off frosted glass and midnight teal. Start at a table with friends, then move closer to the booth when a dancehall favorite comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Silver light catches the vinyl as the DJ cues the next track.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Harbour Echo flyer with a Māori woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "A Māori woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "A vinyl deck under silver light beside teal frosted glass."
+   }
+  }
+ },
+ {
+  "key": "bali",
+  "city": "Bali",
+  "theme": {
+   "bg": "#111813",
+   "fg": "#fff1d5",
+   "muted": "#e1d2b6",
+   "accent": "#78d8a6",
+   "accent2": "#ffac73",
+   "line": "#727953",
+   "hero": "radial-gradient(ellipse at 80% 72%,#6e3921,transparent 58%),linear-gradient(115deg,#122c23,#181913)",
+   "feature": "#263126",
+   "takeout": "#272119",
+   "story": "#16362a",
+   "surface": "#303629",
+   "buttonText": "#0f251b",
+   "serif": false
+  },
+  "intro": "Meet over jerk, then move in closer as the selector sends a familiar sound into echo.",
+  "heading": [
+   "Bali Dub & Roots.",
+   "Follow the echo."
+  ],
+  "hook": "One beat. Then listen to what comes back.",
+  "body": "Start with roots selection and dub space. Listen to a snare or vocal phrase trail off in echo. When the dancehall hooks come in, move closer to the floor.",
+  "story": [
+   [
+    "From Bali to 127th Street.",
+    "Jade light and carved wood set the mood in this Bali-inspired edition. Start with jerk from the Jamaican kitchen, then move to the floor when your tune comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Jade reflections, dark lacquer, and the warm glow of an analog echo unit bring the booth into focus.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Bali Dub and Roots flyer with a selector working an echo unit indoors."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "A selector works the mixer beside dancers and jade-lit carved wood panels."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "An analog echo unit and coiled cable catch light on an indoor counter."
+   }
+  }
+ },
+ {
+  "key": "belize-city",
+  "city": "Belize City",
+  "theme": {
+   "bg": "#152521",
+   "fg": "#fff1dc",
+   "muted": "#dae5dc",
+   "accent": "#a1e7c8",
+   "accent2": "#ffbb8e",
+   "line": "#718e7f",
+   "hero": "linear-gradient(135deg,#254e41,#152521 65%,#4d3228)",
+   "feature": "#213a32",
+   "takeout": "#3d332b",
+   "story": "#253e35",
+   "surface": "#3d332b",
+   "buttonText": "#112b23",
+   "serif": false
+  },
+  "intro": "Meet over jerk from the Jamaican kitchen. The DJ brings the dancehall favorites, and the room brings the chorus.",
+  "heading": [
+   "Jade Groove.",
+   "Save me a dance."
+  ],
+  "hook": "When the DJ cuts the volume, sing the hook to your dance partner.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Belize City to 127th Street.",
+    "Copper light warms the charcoal terrazzo, and backlit jade glass frames the booth. Start over jerk from the Jamaican kitchen and save a dance for your favorite tune."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Copper reflections cross the vinyl as the DJ cues the next record.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Jade Groove flyer with a Belizean woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "A Belizean woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "A Belizean woman DJ cues vinyl beside backlit jade glass."
+   }
+  }
+ },
+ {
+  "key": "benicassim",
+  "city": "Benicàssim",
+  "theme": {
+   "bg": "#15232d",
+   "fg": "#fff1db",
+   "muted": "#edcfb2",
+   "accent": "#a4e0d1",
+   "accent2": "#ffc477",
+   "line": "#927467",
+   "hero": "radial-gradient(ellipse at 82% 72%,#8b442b 0%,transparent 59%),linear-gradient(115deg,#264850 0%,#202530 58%)",
+   "feature": "#3f2725",
+   "takeout": "#28262b",
+   "story": "#26433e",
+   "surface": "#493431",
+   "buttonText": "#182523",
+   "serif": false
+  },
+  "intro": "Before the needle drops, the selector tells you why this record matters. A minute later, you’re hearing it with fresh ears.",
+  "heading": [
+   "One record.",
+   "One good story."
+  ],
+  "hook": "Hear the story. Then hear the tune.",
+  "body": "The selector picks one record and gives the room a short story about it. Then the needle drops and the dancing starts again.",
+  "story": [
+   [
+    "From Benicàssim to 127th Street.",
+    "Terracotta, sea-glass teal and evening light set the mood in this Benicàssim-inspired edition. Start with jerk from the Jamaican kitchen, then move to the floor when your tune comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Terracotta, sea-glass teal and the last light of the evening frame the second before the record starts.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Benicàssim Edition flyer. A selector holds a record sleeve and speaks into a microphone against a Mediterranean coastline at dusk."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "A selector holds up a record sleeve as guests lean in to listen in a lantern-lit room."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "A tonearm descends toward a vinyl record in amber evening light."
+   }
+  }
+ },
+ {
+  "key": "bogota",
+  "city": "Bogotá",
+  "theme": {
+   "bg": "#171222",
+   "fg": "#f7f2ff",
+   "muted": "#e6dbf2",
+   "accent": "#d6ff84",
+   "accent2": "#c8abff",
+   "line": "#78658e",
+   "hero": "radial-gradient(ellipse at 80% 72%,#4a297b,transparent 62%),linear-gradient(115deg,#2b194a,#1e172d)",
+   "feature": "#312445",
+   "takeout": "#332843",
+   "story": "#252038",
+   "surface": "#392d4e",
+   "buttonText": "#1e2514",
+   "serif": false
+  },
+  "intro": "Meet over jerk from the Jamaican kitchen. The DJ brings the dancehall favorites, and the room brings the chorus.",
+  "heading": [
+   "High Altitude Bass.",
+   "The hook hits different."
+  ],
+  "hook": "A familiar chorus sounds different when the whole room sings it.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Bogotá to 127th Street.",
+    "Pale concrete catches the violet light, and a translucent lime booth puts the DJ in full view. Grab a seat near the floor so you can get up when your tune comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Violet runs through the vinyl grooves at the edge of the lime booth.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "High Altitude Bass flyer with an Afro-Colombian woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "An Afro-Colombian woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "Violet reflections on a vinyl record beside a lime acrylic booth."
+   }
+  }
+ },
+ {
+  "key": "bridgetown",
+  "city": "Bridgetown",
+  "theme": {
+   "bg": "#19182a",
+   "fg": "#fff6e4",
+   "muted": "#e4e0ed",
+   "accent": "#d2fb88",
+   "accent2": "#c3b7f4",
+   "line": "#85809b",
+   "hero": "linear-gradient(135deg,#332a55,#161528 65%,#343c2b)",
+   "feature": "#242038",
+   "takeout": "#36344b",
+   "story": "#292945",
+   "surface": "#36344b",
+   "buttonText": "#1b2612",
+   "serif": false
+  },
+  "intro": "Meet over jerk from the Jamaican kitchen. The DJ brings the dancehall favorites, and the room brings the chorus.",
+  "heading": [
+   "Bass on Repeat.",
+   "One more tune."
+  ],
+  "hook": "When your favorite comes back around, sing it louder.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Bridgetown to 127th Street.",
+    "Lime light runs along black glass and cream acoustic panels. Have dinner with friends, then stay for one more tune."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Lime light reflects across the grooves as the DJ cues the next record.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Bass on Repeat flyer with a Barbadian woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "A Barbadian woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "A Barbadian woman DJ cues vinyl beside lime-lit black glass."
+   }
+  }
+ },
+ {
+  "key": "bristol",
+  "city": "Bristol",
+  "theme": {
+   "bg": "#211220",
+   "fg": "#fff0ec",
+   "muted": "#ebd9e9",
+   "accent": "#e6b9ff",
+   "accent2": "#f6a8bb",
+   "line": "#92748d",
+   "hero": "linear-gradient(135deg,#49202f,#221522 68%,#35284f)",
+   "feature": "#321d2d",
+   "takeout": "#422737",
+   "story": "#38283f",
+   "surface": "#422737",
+   "buttonText": "#26182a",
+   "serif": false
+  },
+  "intro": "Meet over jerk from the Jamaican kitchen. The DJ brings the dancehall favorites, and the room brings the chorus.",
+  "heading": [
+   "Pressure Drop.",
+   "Speakers down. Voices up."
+  ],
+  "hook": "When the speakers go quiet, the room gets loud.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Bristol to 127th Street.",
+    "Lilac tubes light up burgundy brick and a wall of black speaker cabinets. Start at a table and move closer when the bass comes in."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Lilac light catches the vinyl and the speaker cones as the DJ cues the next record.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Pressure Drop flyer with a Black British woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "A Black British woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "Speaker cones and a turntable reflecting lilac light indoors."
+   }
+  }
+ },
+ {
+  "key": "cape-town",
+  "city": "Cape Town",
+  "theme": {
+   "bg": "#251c26",
+   "fg": "#fff4f1",
+   "muted": "#e8dbe3",
+   "accent": "#ffbfce",
+   "accent2": "#e7dbe3",
+   "line": "#90788a",
+   "hero": "linear-gradient(135deg,#4e293b,#241b25 65%,#383137)",
+   "feature": "#32232f",
+   "takeout": "#40303c",
+   "story": "#3f2937",
+   "surface": "#40303c",
+   "buttonText": "#301c25",
+   "serif": false
+  },
+  "intro": "Meet over jerk from the Jamaican kitchen. The DJ brings the dancehall favorites, and the room brings the chorus.",
+  "heading": [
+   "Cape Frequency.",
+   "Keep the hook alive."
+  ],
+  "hook": "She leaves a gap in the track. The room fills it.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Cape Town to 127th Street.",
+    "Rose light warms charcoal concrete and glints off the brushed steel decks. Share a table with friends, then bring the chorus with you when you hit the floor."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Rose light catches the record as the DJ cues the next track.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Cape Frequency flyer with a Black South African woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "A Black South African woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "A brushed steel turntable and vinyl record catching rose light."
+   }
+  }
+ },
+ {
+  "key": "colombo",
+  "city": "Colombo",
+  "theme": {
+   "bg": "#091735",
+   "fg": "#fff4e9",
+   "muted": "#d6e0fd",
+   "accent": "#ffbb7c",
+   "accent2": "#ffa66a",
+   "line": "#566a9e",
+   "hero": "radial-gradient(ellipse at 80% 72%,#173fbd,transparent 62%),linear-gradient(115deg,#142a6e,#101943)",
+   "feature": "#122966",
+   "takeout": "#232f57",
+   "story": "#172b5b",
+   "surface": "#263a68",
+   "buttonText": "#191e38",
+   "serif": false
+  },
+  "intro": "Start at the table with jerk from the Jamaican kitchen. When a familiar dancehall hook comes through the speakers, take it to the floor.",
+  "heading": [
+   "Island Frequencies.",
+   "One hook. Whole room."
+  ],
+  "hook": "Find the groove. Sing the hook.",
+  "body": "Settle in with an early reggae groove, then make room for the dancehall tunes you know by heart. When the DJ pulls the volume down, the chorus belongs to everybody.",
+  "story": [
+   [
+    "From Colombo to 127th Street.",
+    "The Colombo-inspired design pairs cobalt tile and smoked glass with a sharp line of tangerine light. From the dinner table, you can see the DJ cue up the next record."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "A tangerine reflection runs across the mixer and smoked glass. Behind the booth, a record sleeve picks up the cobalt of the tile.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Island Frequencies flyer with a Sri Lankan woman selector and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "A Sri Lankan woman DJ leads an indoor dance floor under cobalt and tangerine lighting."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "Record sleeve and mixer against cobalt tiles in the indoor DJ booth."
+   }
+  }
+ },
+ {
+  "key": "curacao",
+  "city": "Curaçao",
+  "theme": {
+   "bg": "#102827",
+   "fg": "#fff4e6",
+   "muted": "#d6e6df",
+   "accent": "#9cf0d9",
+   "accent2": "#ffad9e",
+   "line": "#628f84",
+   "hero": "linear-gradient(135deg,#183e39,#102523 65%,#472d2a)",
+   "feature": "#173431",
+   "takeout": "#293f37",
+   "story": "#1d3f39",
+   "surface": "#293f37",
+   "buttonText": "#102823",
+   "serif": false
+  },
+  "intro": "Meet over jerk from the Jamaican kitchen. The DJ brings the dancehall favorites, and the room brings the chorus.",
+  "heading": [
+   "Between the Beats.",
+   "The room takes the chorus."
+  ],
+  "hook": "When the beat drops out, keep the chorus going.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Curaçao to 127th Street.",
+    "Coral light traces warm white arches and a sea-glass teal booth. Pull up a chair near the sound and get on your feet when your tune comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "A coral reflection runs across the deck as the DJ cues the next record.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Between the Beats flyer with an Afro-Curaçaoan woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "An Afro-Curaçaoan woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "A turntable by a sea-glass teal booth with coral reflections."
+   }
+  }
+ },
+ {
+  "key": "dakar",
+  "city": "Dakar",
+  "theme": {
+   "bg": "#171f1d",
+   "fg": "#fff1da",
+   "muted": "#e3ddce",
+   "accent": "#a1efe0",
+   "accent2": "#d9bb97",
+   "line": "#797c69",
+   "hero": "radial-gradient(ellipse at 80% 72%,#38675d,transparent 62%),linear-gradient(115deg,#233d35,#1b2927)",
+   "feature": "#253d37",
+   "takeout": "#342d26",
+   "story": "#293c32",
+   "surface": "#3c4033",
+   "buttonText": "#162c26",
+   "serif": false
+  },
+  "intro": "Come for jerk fresh from the Jamaican kitchen. Stay for a dancehall set built around familiar tunes and the moment the room sings them back.",
+  "heading": [
+   "Open Channel.",
+   "When she cuts the sound, sing."
+  ],
+  "hook": "One fader down. The whole room up.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Dakar to 127th Street.",
+    "Mint light runs across smoked bronze and sand-toned acoustic panels. Settle in with friends close enough to the booth to catch the first cue."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Mint light catches the edge of the fader. This is where the DJ hands the chorus to the room.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Open Channel flyer with a Senegalese woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "A Senegalese woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "A mixer fader reflecting mint light in the indoor booth."
+   }
+  }
+ },
+ {
+  "key": "fiji",
+  "city": "Fiji",
+  "theme": {
+   "bg": "#0e2335",
+   "fg": "#fff2dc",
+   "muted": "#d8ebed",
+   "accent": "#90e5ee",
+   "accent2": "#ffabc8",
+   "line": "#698d9d",
+   "hero": "radial-gradient(ellipse at 80% 72%,#6e3657,transparent 58%),linear-gradient(115deg,#113a52,#152839)",
+   "feature": "#1e4052",
+   "takeout": "#293143",
+   "story": "#244456",
+   "surface": "#304556",
+   "buttonText": "#102834",
+   "serif": false
+  },
+  "intro": "Meet over jerk, then ease into the rhythm. Pacific Roots brings a reggae set with room to sway and familiar dancehall hooks to sing back.",
+  "heading": [
+   "Pacific Roots.",
+   "Let the groove carry you."
+  ],
+  "hook": "A slow sway becomes a full dance floor.",
+  "body": "Start with roots and reggae, then stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Fiji to 127th Street.",
+    "Lagoon blue and hibiscus pink set the mood in this Fiji-inspired edition. Start with jerk from the Jamaican kitchen, then move to the floor when your tune comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Lagoon blue and hibiscus pink reflect across a mixer and woven panels inside the room.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Pacific Roots flyer with a Fijian woman selector and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "A Fijian woman selector gestures to dancers in a lagoon-blue bar and grill."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "A DJ mixer and woven acoustic panel catch blue and pink light indoors."
+   }
+  }
+ },
+ {
+  "key": "georgetown",
+  "city": "Georgetown",
+  "theme": {
+   "bg": "#281c2d",
+   "fg": "#fff1e4",
+   "muted": "#ebdbe7",
+   "accent": "#efc5f2",
+   "accent2": "#ffc39f",
+   "line": "#947688",
+   "hero": "linear-gradient(135deg,#543252,#26192d 65%,#50342d)",
+   "feature": "#38253d",
+   "takeout": "#48303c",
+   "story": "#402943",
+   "surface": "#48303c",
+   "buttonText": "#2b1b30",
+   "serif": false
+  },
+  "intro": "Meet over jerk from the Jamaican kitchen. The DJ brings the dancehall favorites, and the room brings the chorus.",
+  "heading": [
+   "Tableside Bass.",
+   "Don’t leave your chorus behind."
+  ],
+  "hook": "Your table knows the line. The next table knows it too.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Georgetown, Guyana, to 127th Street.",
+    "Apricot light washes over pale timber and plum velvet. Start with a plate from the Jamaican kitchen. When the DJ cuts the volume, sing the hook across the table."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Apricot light catches the record as the DJ cues the next tune.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Tableside Bass flyer with an Afro-Guyanese woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "An Afro-Guyanese woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "An Afro-Guyanese woman DJ cues vinyl beside plum velvet panels."
+   }
+  }
+ },
+ {
+  "key": "havana",
+  "city": "Havana",
+  "theme": {
+   "bg": "#211c1d",
+   "fg": "#fff2e3",
+   "muted": "#e9dccf",
+   "accent": "#a7dce6",
+   "accent2": "#ffc29e",
+   "line": "#927970",
+   "hero": "linear-gradient(135deg,#4f302a,#242423 65%,#263d45)",
+   "feature": "#2b302f",
+   "takeout": "#453028",
+   "story": "#273a3c",
+   "surface": "#453028",
+   "buttonText": "#16282d",
+   "serif": false
+  },
+  "intro": "Meet over jerk from the Jamaican kitchen. The DJ brings the dancehall favorites, and the room brings the chorus.",
+  "heading": [
+   "Backbeat Social.",
+   "Sing it across the table."
+  ],
+  "hook": "One side of the table starts the line. The other side finishes it.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Havana to 127th Street.",
+    "Apricot light warms the mahogany, and the sea-blue booth draws you toward the floor. Get something hot from the Jamaican kitchen and listen for a tune your whole table knows."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Apricot light catches the record at the edge of the sea-blue booth.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Backbeat Social flyer with an Afro-Cuban woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "An Afro-Cuban woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "Vinyl and a sea-blue booth catching apricot reflections."
+   }
+  }
+ },
+ {
+  "key": "johannesburg",
+  "city": "Johannesburg",
+  "theme": {
+   "bg": "#171d17",
+   "fg": "#fff4df",
+   "muted": "#e4e7d5",
+   "accent": "#d2ff83",
+   "accent2": "#e6bf8f",
+   "line": "#75815f",
+   "hero": "linear-gradient(135deg,#334329,#161c17 70%,#393126)",
+   "feature": "#202c20",
+   "takeout": "#303a28",
+   "story": "#283527",
+   "surface": "#303a28",
+   "buttonText": "#172213",
+   "serif": false
+  },
+  "intro": "Meet over jerk from the Jamaican kitchen. The DJ brings the dancehall favorites, and the room brings the chorus.",
+  "heading": [
+   "Floor Signal.",
+   "Catch the cue."
+  ],
+  "hook": "Watch for her cue, then give her the chorus.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Johannesburg to 127th Street.",
+    "Lime light runs along smoked glass and dark walnut. Start with dinner, then watch the DJ for the cue to sing."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Lime light catches the mixer as the DJ cues the next track.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Floor Signal flyer with a Black South African woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "A Black South African woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "Mixer knobs reflecting lime light beside smoked glass."
+   }
+  }
+ },
+ {
+  "key": "kathmandu",
+  "city": "Kathmandu",
+  "theme": {
+   "bg": "#1e1018",
+   "fg": "#fff0ee",
+   "muted": "#ebd6e0",
+   "accent": "#ddc5ff",
+   "accent2": "#ffabbb",
+   "line": "#86647a",
+   "hero": "radial-gradient(ellipse at 80% 72%,#743045,transparent 62%),linear-gradient(115deg,#421325,#201125)",
+   "feature": "#381621",
+   "takeout": "#291923",
+   "story": "#422336",
+   "surface": "#422a3b",
+   "buttonText": "#250d24",
+   "serif": true
+  },
+  "intro": "Come for jerk straight from the Jamaican kitchen. Stay for the moment the DJ pulls the fader down and the whole room sings the next line.",
+  "heading": [
+   "Himalayan Roots.",
+   "The room sings back."
+  ],
+  "hook": "Find the groove. Sing the hook.",
+  "body": "Settle in with an early reggae groove, then make room for the dancehall tunes you know by heart. When the DJ pulls the volume down, the chorus belongs to everybody.",
+  "story": [
+   [
+    "From Kathmandu to 127th Street.",
+    "The Kathmandu-inspired design brings the intimacy of a basement listening room to 127th Street. Oxblood lacquer and smoked chrome frame the booth, with a line of cool lavender light running above the dance floor."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "A lavender line reflects off the mixer. Beyond the booth, the room is ready to take the chorus.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Himalayan Roots flyer with a Nepali woman selector and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "A Nepali woman DJ leads an indoor dance floor under oxblood and lavender lighting."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "Smoked chrome mixer faders reflecting a lavender light in the indoor DJ booth."
+   }
+  }
+ },
+ {
+  "key": "kingston",
+  "city": "Kingston",
+  "theme": {
+   "bg": "#190e14",
+   "fg": "#fff1db",
+   "muted": "#edcfb2",
+   "accent": "#f2c5a3",
+   "accent2": "#ffc987",
+   "line": "#91665e",
+   "hero": "radial-gradient(ellipse at 82% 72%,#71302f 0%,transparent 59%),linear-gradient(115deg,#47212b 0%,#26131d 58%)",
+   "feature": "#382021",
+   "takeout": "#2b161c",
+   "story": "#3b1e2b",
+   "surface": "#482730",
+   "buttonText": "#182523",
+   "serif": false
+  },
+  "intro": "Roots reggae sets the pace. Dancehall brings the floor up. When the selector holds out the mic, the chorus belongs to the room.",
+  "heading": [
+   "Kingston calls.",
+   "The room answers."
+  ],
+  "hook": "Roots first. Dancehall next. Your voice on the hook.",
+  "body": "Start with roots selections, build into familiar dancehall, and let the room carry the chorus when the selector cuts the volume.",
+  "story": [
+   [
+    "From Kingston to 127th Street.",
+    "Warm tungsten light and analog studio gear give this edition its Jamaican sound-system feel. Start with jerk from the Jamaican kitchen, then move to the floor when your tune comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Tungsten light, oxblood tones, and analog studio equipment set the scene for this Kingston-inspired edition in Calumet Park.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Kingston Edition flyer for International Reggae Day, Thursday, July 1, 2027, with a selector holding the microphone out to the crowd."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "A crowd sings back into a selector’s microphone beyond a warm-lit mixing console."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "Warm analog recording meters glow beside a reel-to-reel tape machine."
+   }
+  }
+ },
+ {
+  "key": "koh-phangan",
+  "city": "Koh Phangan",
+  "theme": {
+   "bg": "#17101c",
+   "fg": "#fff1db",
+   "muted": "#edcfb2",
+   "accent": "#e9a0fc",
+   "accent2": "#ffad87",
+   "line": "#847661",
+   "hero": "radial-gradient(ellipse at 82% 72%,#723a24 0%,transparent 59%),linear-gradient(115deg,#275146 0%,#2c1833 58%)",
+   "feature": "#3f2725",
+   "takeout": "#28262b",
+   "story": "#233930",
+   "surface": "#3b3127",
+   "buttonText": "#182523",
+   "serif": false
+  },
+  "intro": "A room full of records, bass close enough to feel, and friends catching the same beat. Koh Phangan inspires an indoor reggae night on 127th Street.",
+  "heading": [
+   "The island",
+   "has a sound."
+  ],
+  "hook": "Get close to the booth and catch the first bassline.",
+  "body": "Start with roots selections, then step in when the selector plays a dancehall hook you know.",
+  "story": [
+   [
+    "From Koh Phangan to 127th Street.",
+    "Timber walls and orchid light set the mood in this Koh Phangan-inspired edition. Start with jerk from the Jamaican kitchen, then move to the floor when your tune comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Wood grain, woven speaker grilles, and orchid light set the mood inside Irie Jerk in Calumet Park.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Koh Phangan flyer with a Thai selector and dancers in an indoor timber-walled bar."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "Friends dance beside a record booth under orchid and jade lighting."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "A vinyl crate and woven speaker grille catch colored light indoors."
+   }
+  }
+ },
+ {
+  "key": "lagos",
+  "city": "Lagos",
+  "theme": {
+   "bg": "#111928",
+   "fg": "#fff3e7",
+   "muted": "#dce4f4",
+   "accent": "#a9ceff",
+   "accent2": "#ffae77",
+   "line": "#657990",
+   "hero": "linear-gradient(135deg,#153660,#141c2a 65%,#482821)",
+   "feature": "#1a2840",
+   "takeout": "#342a2d",
+   "story": "#1c304d",
+   "surface": "#342a2d",
+   "buttonText": "#182337",
+   "serif": false
+  },
+  "intro": "Meet over jerk from the Jamaican kitchen. The DJ brings the dancehall favorites, and the room brings the chorus.",
+  "heading": [
+   "Full Current.",
+   "The beat cuts. The room carries it."
+  ],
+  "hook": "When she cuts the beat, sing the next line.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Lagos to 127th Street.",
+    "Electric-blue panels frame the booth, and thin lines of orange light run across polished graphite. Start at a table with friends, then get up when your tune comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Blue and orange meet on the vinyl as the DJ cues the next track.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Full Current flyer with a Nigerian woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "A Nigerian woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "A fader and vinyl record reflecting blue and orange light."
+   }
+  }
+ },
+ {
+  "key": "lisbon",
+  "city": "Lisbon",
+  "theme": {
+   "bg": "#0e1522",
+   "fg": "#f9f6e8",
+   "muted": "#d3ddea",
+   "accent": "#e8fa69",
+   "accent2": "#d9ee55",
+   "line": "#697688",
+   "hero": "radial-gradient(ellipse at 80% 72%,#425436,transparent 62%),linear-gradient(115deg,#202c45,#151d2d)",
+   "feature": "#1e2838",
+   "takeout": "#282f38",
+   "story": "#232f42",
+   "surface": "#2b3747",
+   "buttonText": "#1a2312",
+   "serif": false
+  },
+  "intro": "Start with jerk from the Jamaican kitchen. When the DJ drops a tune you know by heart, you’ll hear the chorus travel from the booths to the dance floor.",
+  "heading": [
+   "Atlantic Bass.",
+   "The chorus crosses the room."
+  ],
+  "hook": "The DJ starts it. The room carries it.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Lisbon to 127th Street.",
+    "Black-and-white stone patterns, steel speaker grilles, and a slash of yellow light give the room the feel of a Lisbon listening bar. Settle into a booth or find a spot near the speakers."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "A strip of yellow light catches the steel speaker grille and the edge of the vinyl deck.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Atlantic Bass flyer with an Afro-Portuguese woman selector and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "An Afro-Portuguese woman DJ leads an indoor singalong under yellow strip lights."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "Steel speaker grille and a vinyl deck with yellow edge lighting."
+   }
+  }
+ },
+ {
+  "key": "manila",
+  "city": "Manila",
+  "theme": {
+   "bg": "#1c1024",
+   "fg": "#fff1d5",
+   "muted": "#efcee9",
+   "accent": "#e5a5ff",
+   "accent2": "#ff9e91",
+   "line": "#976c9b",
+   "hero": "radial-gradient(ellipse at 80% 72%,#7a2635,transparent 58%),linear-gradient(115deg,#35204d,#241126)",
+   "feature": "#382043",
+   "takeout": "#321327",
+   "story": "#3c2052",
+   "surface": "#422650",
+   "buttonText": "#2a0f35",
+   "serif": false
+  },
+  "intro": "Meet over jerk, then let the selector take it from there. From the first drop, she gives the room something to move to.",
+  "heading": [
+   "Manila Reggae Revival.",
+   "From the first drop."
+  ],
+  "hook": "She sets the pace. The floor follows.",
+  "body": "Start with roots and reggae, then stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Manila to 127th Street.",
+    "Ultraviolet and vermilion light set the mood in this Manila-inspired edition. Start with jerk from the Jamaican kitchen, then move to the floor when your tune comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Ultraviolet and vermilion light catch the headphones and record crate at the edge of the booth.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Manila Reggae Revival flyer with a Filipina selector at the decks in a violet-lit indoor bar."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "A Filipina DJ raises a fader while guests dance under vermilion and violet light."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "Headphones and a vinyl crate at the edge of an indoor DJ booth."
+   }
+  }
+ },
+ {
+  "key": "marseille",
+  "city": "Marseille",
+  "theme": {
+   "bg": "#251918",
+   "fg": "#fff1e8",
+   "muted": "#ead7ce",
+   "accent": "#bce8ff",
+   "accent2": "#ffb296",
+   "line": "#946f67",
+   "hero": "radial-gradient(ellipse at 80% 72%,#8f3c30,transparent 62%),linear-gradient(115deg,#512c28,#251f2b)",
+   "feature": "#342830",
+   "takeout": "#44302a",
+   "story": "#3d2a29",
+   "surface": "#4c3437",
+   "buttonText": "#172430",
+   "serif": false
+  },
+  "intro": "Start with jerk straight from the Jamaican kitchen. When the DJ slips a familiar dancehall tune into the mix, get up and sing it back.",
+  "heading": [
+   "Port Side Bass.",
+   "From the booth to the floor."
+  ],
+  "hook": "She cues it up. You take it from there.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Marseille to 127th Street.",
+    "The Marseille edition brings a Mediterranean palette indoors. Matte terracotta warms the room, and icy blue light runs along the aluminum DJ booth."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Icy blue light skims the turntable, with the room just beyond it.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Port Side Bass flyer with a Black French woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "A Black French woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "A brushed aluminum turntable catches icy blue light beside a terracotta wall."
+   }
+  }
+ },
+ {
+  "key": "mauritius",
+  "city": "Mauritius",
+  "theme": {
+   "bg": "#131b1a",
+   "fg": "#fff1db",
+   "muted": "#edcfb2",
+   "accent": "#70dbc9",
+   "accent2": "#ffad70",
+   "line": "#847661",
+   "hero": "radial-gradient(ellipse at 82% 72%,#723a24 0%,transparent 59%),linear-gradient(115deg,#164a45 0%,#152623 58%)",
+   "feature": "#3f2725",
+   "takeout": "#28262b",
+   "story": "#173e38",
+   "surface": "#3b3127",
+   "buttonText": "#182523",
+   "serif": false
+  },
+  "intro": "Mauritian séga meets Jamaican reggae. Follow the rhythm from the first drumbeat to the dance floor at Irie Jerk.",
+  "heading": [
+   "Seggae",
+   "Island."
+  ],
+  "hook": "Hear what happens when séga meets reggae.",
+  "body": "Catch the pull of an island drum against a familiar reggae groove, then the dancehall hooks that bring the room together.",
+  "story": [
+   [
+    "From Mauritius to 127th Street.",
+    "Turquoise, persimmon and amber light set the mood in this Mauritius-inspired edition. Start with jerk from the Jamaican kitchen, then move to the floor when your tune comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "The ravanne and the turntable sit side by side. Turquoise, persimmon and amber light bring the island inspiration indoors.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Mauritius Edition flyer. The indoor Seggae Island flyer shows a ravanne drummer, dancer and selector at a warmly lit bar and grill."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "Friends dance beside a ravanne drummer in an enclosed turquoise-walled bar and grill."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "A ravanne frame drum rests beside a turntable on a turquoise counter inside a warmly lit bar."
+   }
+  }
+ },
+ {
+  "key": "mexico-city",
+  "city": "Mexico City",
+  "theme": {
+   "bg": "#10141e",
+   "fg": "#fff1e9",
+   "muted": "#d9e0ef",
+   "accent": "#9cbbff",
+   "accent2": "#ff9387",
+   "line": "#646f90",
+   "hero": "radial-gradient(ellipse at 80% 72%,#243d83,transparent 62%),linear-gradient(115deg,#1b2965,#141623)",
+   "feature": "#202a4a",
+   "takeout": "#32202a",
+   "story": "#202941",
+   "surface": "#2a3553",
+   "buttonText": "#131a2b",
+   "serif": false
+  },
+  "intro": "Start with Jamaican jerk. When the DJ drops a dancehall hook you know by heart, follow it to the floor and sing it back.",
+  "heading": [
+   "Bass in Transit.",
+   "Next stop: the dance floor."
+  ],
+  "hook": "Start at the table. Finish on the floor.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Mexico City to 127th Street.",
+    "Cobalt glass blocks and dark basalt frame the room. A red light runs from the tables toward the booth, where the DJ cues up the next track."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Red light cuts across the record. With the next track cued, the room is ready to move.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Bass in Transit flyer with an Afro-Mexican woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "An Afro-Mexican woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "A red line reflects across vinyl grooves against cobalt glass."
+   }
+  }
+ },
+ {
+  "key": "moscow",
+  "city": "Moscow",
+  "theme": {
+   "bg": "#200e12",
+   "fg": "#f5f4fa",
+   "muted": "#e0d5e5",
+   "accent": "#efb8aa",
+   "accent2": "#ffc989",
+   "line": "#9f7161",
+   "hero": "radial-gradient(ellipse at 82% 72%,#72332b,transparent 59%),linear-gradient(115deg,#281318,#331a1a)",
+   "feature": "#391e20",
+   "takeout": "#391e20",
+   "story": "#391e20",
+   "surface": "#391e20",
+   "buttonText": "#2a1517",
+   "serif": false
+  },
+  "intro": "Come in from the cold. The room is warm, the bass is already rolling, and there’s a place at the table for you.",
+  "heading": [
+   "Cold streets.",
+   "Warm bass."
+  ],
+  "hook": "Coats off. Bass on.",
+  "body": "Ease in with roots and dub. When the selector brings in familiar dancehall, get out of your seat and join the people already moving.",
+  "story": [
+   [
+    "From Moscow to 127th Street.",
+    "Frosted glass, warm wood and amber light set the mood in this Moscow-inspired edition. Start with jerk from the Jamaican kitchen, then move to the floor when your tune comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Frosted glass, warm wood and an amber speaker cone set the scene for this indoor edition in Calumet Park.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Moscow Riddim flyer showing dancers, a winter coat rack and frosted windows inside a warmly lit room."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "Friends greet a dancer near a coat rack inside an amber-lit bar and grill."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "A speaker cone catches amber light in front of a frosted window."
+   }
+  }
+ },
+ {
+  "key": "nairobi",
+  "city": "Nairobi",
+  "theme": {
+   "bg": "#1e252c",
+   "fg": "#fff3df",
+   "muted": "#e4dacd",
+   "accent": "#ffd096",
+   "accent2": "#f4a56f",
+   "line": "#85766d",
+   "hero": "linear-gradient(135deg,#24394b,#1c2934 65%,#4b3028)",
+   "feature": "#263441",
+   "takeout": "#3c302b",
+   "story": "#30404c",
+   "surface": "#3c302b",
+   "buttonText": "#302318",
+   "serif": false
+  },
+  "intro": "Meet over jerk from the Jamaican kitchen. The DJ brings the dancehall favorites, and the room brings the chorus.",
+  "heading": [
+   "Bass Relay.",
+   "Pass the chorus."
+  ],
+  "hook": "Your table starts it. The next table carries it.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Nairobi to 127th Street.",
+    "Amber light filters through perforated steel and warms the burnt-orange booths. Settle in for dinner and hear the chorus travel from one table to the next."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Amber light catches the vinyl grooves beside the steel panel.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Bass Relay flyer with a Kenyan woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "A Kenyan woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "A vinyl deck catching amber light beside perforated steel."
+   }
+  }
+ },
+ {
+  "key": "new-delhi",
+  "city": "New Delhi",
+  "theme": {
+   "bg": "#171019",
+   "fg": "#f5f4fa",
+   "muted": "#e0d5e5",
+   "accent": "#d3ff4d",
+   "accent2": "#d7e0e6",
+   "line": "#80668a",
+   "hero": "radial-gradient(ellipse at 82% 72%,#482851,transparent 59%),linear-gradient(115deg,#201725,#26192e)",
+   "feature": "#281a2e",
+   "takeout": "#281a2e",
+   "story": "#281a2e",
+   "surface": "#281a2e",
+   "buttonText": "#191a0e",
+   "serif": false
+  },
+  "intro": "The low end hits first. Then a dancehall hook makes its way across the room. Delhi Bassline brings sound-system energy to 127th Street.",
+  "heading": [
+   "Delhi Bassline.",
+   "Feel it before you hear it."
+  ],
+  "hook": "The bassline brings everyone onto the same floor.",
+  "body": "Start with dub and roots, then get on the floor when the selector drops a dancehall hook you know.",
+  "story": [
+   [
+    "From New Delhi to 127th Street.",
+    "Speaker stacks, aubergine shadows and acid-green light set the mood in this New Delhi-inspired edition. Start with jerk from the Jamaican kitchen, then move to the floor when your tune comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Steel grilles, aubergine shadows, and acid-green light set the mood for this indoor edition in Calumet Park.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Delhi Bassline flyer with a selector and dancers framed by speaker stacks and acid-green lighting."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "Adults dance together under green light in front of two indoor speaker stacks."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "Silver fabric ripples beside a dark speaker in green and purple light."
+   }
+  }
+ },
+ {
+  "key": "okinawa",
+  "city": "Okinawa",
+  "theme": {
+   "bg": "#161827",
+   "fg": "#fff0db",
+   "muted": "#e7d7d5",
+   "accent": "#ffaf9e",
+   "accent2": "#ffc9ab",
+   "line": "#876e81",
+   "hero": "radial-gradient(ellipse at 80% 72%,#622c3b,transparent 62%),linear-gradient(115deg,#222846,#1b182b)",
+   "feature": "#272840",
+   "takeout": "#38212e",
+   "story": "#22243b",
+   "surface": "#34304a",
+   "buttonText": "#291b29",
+   "serif": false
+  },
+  "intro": "Follow the offbeat from the dinner table to the dance floor, with the Jamaican dancehall hooks you already know.",
+  "heading": [
+   "Island Sound.",
+   "Follow the offbeat."
+  ],
+  "hook": "Find the groove. Sing the hook.",
+  "body": "The Okinawa edition opens with reggae you can settle into, then picks up with familiar dancehall. When the DJ turns it down, the room takes the chorus.",
+  "story": [
+   [
+    "From Okinawa to 127th Street.",
+    "Indigo light and coral reflections set the mood in this Okinawa-inspired edition. Start with jerk from the Jamaican kitchen, then move to the floor when your tune comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Indigo light, coral reflections, and a close-up of the selector’s booth.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Island Sound flyer with an Okinawan woman selector and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "An Okinawan woman DJ leads an indoor dance floor under indigo and coral lighting."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "A close-up of the indoor DJ booth under indigo and coral light."
+   }
+  }
+ },
+ {
+  "key": "osaka",
+  "city": "Osaka",
+  "theme": {
+   "bg": "#211918",
+   "fg": "#fff5e4",
+   "muted": "#e8dbd2",
+   "accent": "#ffc2a8",
+   "accent2": "#ffaa91",
+   "line": "#8b7471",
+   "hero": "radial-gradient(ellipse at 80% 72%,#8a3025,transparent 62%),linear-gradient(115deg,#49201d,#271e21)",
+   "feature": "#371f21",
+   "takeout": "#432323",
+   "story": "#36272b",
+   "surface": "#473139",
+   "buttonText": "#30140f",
+   "serif": false
+  },
+  "intro": "Meet over jerk straight from the Jamaican kitchen. When the DJ drops a dancehall favorite, get up and sing along.",
+  "heading": [
+   "Redline Riddim.",
+   "The whole room knows the words."
+  ],
+  "hook": "You know the first line. The next table knows it too.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Osaka to 127th Street.",
+    "Vermilion lacquer, frosted silver, and soft ivory pendants give this Osaka-inspired listening room its look. Take a seat near the speakers and listen for the first tune you know by heart."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Vermilion light reflects off the steel mixer and vinyl grooves.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Redline Riddim flyer with a Japanese woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "A Japanese woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "A steel mixer and vinyl record catch vermilion reflections."
+   }
+  }
+ },
+ {
+  "key": "panama-city",
+  "city": "Panama City",
+  "theme": {
+   "bg": "#101c2b",
+   "fg": "#fff5e6",
+   "muted": "#dddeea",
+   "accent": "#ffc778",
+   "accent2": "#f4ac64",
+   "line": "#786c60",
+   "hero": "radial-gradient(ellipse at 80% 72%,#634429,transparent 62%),linear-gradient(115deg,#172f4b,#121f30)",
+   "feature": "#1e3450",
+   "takeout": "#302825",
+   "story": "#172c40",
+   "surface": "#283a4d",
+   "buttonText": "#281a10",
+   "serif": false
+  },
+  "intro": "Meet over jerk from the Jamaican kitchen. The DJ brings the dancehall favorites, and the room brings the chorus.",
+  "heading": [
+   "Cross the Channel.",
+   "The DJ calls. The room answers."
+  ],
+  "hook": "Sing it from your table or bring it to the floor.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Panama City to 127th Street.",
+    "Amber ribbed glass warms the deep-blue room. Grab a seat near the chrome booth and listen for the first dancehall hook you know by heart."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Amber glass casts a warm reflection across the chrome mixer.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Cross the Channel flyer with an Afro-Panamanian woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "An Afro-Panamanian woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "A chrome DJ mixer reflecting amber and deep-blue light."
+   }
+  }
+ },
+ {
+  "key": "paramaribo",
+  "city": "Paramaribo",
+  "theme": {
+   "bg": "#232820",
+   "fg": "#fff4df",
+   "muted": "#e4e7d8",
+   "accent": "#e0ef93",
+   "accent2": "#e8bf9d",
+   "line": "#878b70",
+   "hero": "linear-gradient(135deg,#404b2c,#232820 65%,#4a362f)",
+   "feature": "#30372b",
+   "takeout": "#3c352c",
+   "story": "#383f30",
+   "surface": "#3c352c",
+   "buttonText": "#20271a",
+   "serif": false
+  },
+  "intro": "Meet over jerk from the Jamaican kitchen. The DJ brings the dancehall favorites, and the room brings the chorus.",
+  "heading": [
+   "Timber & Bass.",
+   "Sing it louder."
+  ],
+  "hook": "The DJ gives you the hook. Give it back louder.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Paramaribo to 127th Street.",
+    "Citron light filters through dark timber lattice and catches on pale concrete. Start with jerk at the table and head to the floor when the DJ drops your tune."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Citron light catches the grooves as the DJ cues up the next record.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Timber & Bass flyer with an Afro-Surinamese woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "An Afro-Surinamese woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "An Afro-Surinamese woman DJ cues vinyl behind a citron-lit booth."
+   }
+  }
+ },
+ {
+  "key": "paris",
+  "city": "Paris",
+  "theme": {
+   "bg": "#101a29",
+   "fg": "#fff6e4",
+   "muted": "#dce5ef",
+   "accent": "#b8e5ff",
+   "accent2": "#d6e8f6",
+   "line": "#667e94",
+   "hero": "linear-gradient(135deg,#233d59,#101a29 70%,#344758)",
+   "feature": "#18283c",
+   "takeout": "#273950",
+   "story": "#21364e",
+   "surface": "#273950",
+   "buttonText": "#112337",
+   "serif": false
+  },
+  "intro": "Meet over jerk from the Jamaican kitchen. The DJ brings the dancehall favorites, and the room brings the chorus.",
+  "heading": [
+   "Blue Hour Bass.",
+   "Know the hook? Sing it."
+  ],
+  "hook": "The first line is hers. The hook is yours.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Paris to 127th Street.",
+    "Ice-blue light glides off mirrored chrome and cream fluted walls. Start with dinner and move closer to the booth when you hear your tune."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Blue light catches the record as the DJ cues up the next tune.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Blue Hour Bass flyer with a Black French woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "A Black French woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "A vinyl deck reflecting ice-blue light beside a chrome booth."
+   }
+  }
+ },
+ {
+  "key": "rotterdam",
+  "city": "Rotterdam",
+  "theme": {
+   "bg": "#111c1b",
+   "fg": "#f6f2f7",
+   "muted": "#dce6df",
+   "accent": "#ffa9dc",
+   "accent2": "#f782c7",
+   "line": "#787680",
+   "hero": "radial-gradient(ellipse at 80% 72%,#634054,transparent 62%),linear-gradient(115deg,#18483f,#161f24)",
+   "feature": "#153a34",
+   "takeout": "#2f2333",
+   "story": "#153b30",
+   "surface": "#382b3f",
+   "buttonText": "#241321",
+   "serif": false
+  },
+  "intro": "Clock out and meet your people at Irie Jerk. Start with something hot from the Jamaican kitchen and stay for the dancehall hooks you know by heart.",
+  "heading": [
+   "After Work Signal.",
+   "The bass clocks in."
+  ],
+  "hook": "A familiar hook can get the whole table on its feet.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Rotterdam to 127th Street.",
+    "Brushed steel, emerald booths, and hot-pink light give this Rotterdam-inspired room its look. Bring your coworkers, claim a booth, and get up when your tune comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Hot-pink light reflects off the speaker grille and vinyl deck.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "After Work Signal flyer with an Afro-Dutch woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "An Afro-Dutch woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "A steel speaker grille and vinyl deck catch the pink light."
+   }
+  }
+ },
+ {
+  "key": "santo-domingo",
+  "city": "Santo Domingo",
+  "theme": {
+   "bg": "#24192b",
+   "fg": "#fff2e5",
+   "muted": "#e9dce8",
+   "accent": "#edb7ff",
+   "accent2": "#ffc178",
+   "line": "#907687",
+   "hero": "linear-gradient(135deg,#522d62,#231a2c 65%,#543726)",
+   "feature": "#34243e",
+   "takeout": "#452c35",
+   "story": "#3b2b49",
+   "surface": "#452c35",
+   "buttonText": "#291637",
+   "serif": false
+  },
+  "intro": "Meet over jerk from the Jamaican kitchen. The DJ brings the dancehall favorites, and the room brings the chorus.",
+  "heading": [
+   "Afterglow Riddim.",
+   "Sing through the break."
+  ],
+  "hook": "When the DJ leaves a gap, the room keeps the hook going.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Santo Domingo to 127th Street.",
+    "Orchid light runs across black terrazzo and ribbed amber glass. Come for jerk from the Jamaican kitchen and stay for the first hook that gets your table on its feet."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Orchid light catches the record as the DJ cues the next tune.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Afterglow Riddim flyer with an Afro-Dominican woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "An Afro-Dominican woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "Vinyl grooves reflecting orchid light beside ribbed amber glass."
+   }
+  }
+ },
+ {
+  "key": "sao-luis",
+  "city": "São Luís",
+  "theme": {
+   "bg": "#1c1015",
+   "fg": "#fff1d5",
+   "muted": "#e1cbb5",
+   "accent": "#64d1bd",
+   "accent2": "#ffbd66",
+   "line": "#916d57",
+   "hero": "radial-gradient(ellipse at 82% 72%,#69321d 0%,transparent 59%),linear-gradient(115deg,#182b2b 0%,#25151a 58%)",
+   "feature": "#322018",
+   "takeout": "#26151b",
+   "story": "#12342f",
+   "surface": "#3b2b28",
+   "buttonText": "#082620",
+   "serif": false
+  },
+  "intro": "You hear the first bars. Somebody reaches for your hand. Next thing you know, you’re on the dance floor.",
+  "heading": [
+   "Find a partner.",
+   "Catch the riddim."
+  ],
+  "hook": "One hand, one step, and you’re in.",
+  "body": "Come with a friend or ask someone to dance. A reggae groove gives you time to find your step together.",
+  "story": [
+   [
+    "Start with one dance.",
+    "Come with a friend or ask someone for a dance when your tune comes on. This edition takes its cue from partner dancing, and the selector can take the room from a reggae groove into familiar dancehall hooks."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Dancers step in time across an amber-lit floor beside blue-and-white tile.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "São Luís Edition flyer. A smiling dancer reaches back for her partner’s hand in an amber-lit room with teal arches and patterned tile. Find a partner. Catch the riddim."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "A smiling dancer takes her partner by the hand in a room of teal arches and amber light."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "Dancers step in time across an amber-lit floor beside blue-and-white tile."
+   }
+  }
+ },
+ {
+  "key": "sydney",
+  "city": "Sydney",
+  "theme": {
+   "bg": "#201018",
+   "fg": "#f5f4fa",
+   "muted": "#e0d5e5",
+   "accent": "#f3aebc",
+   "accent2": "#ffd091",
+   "line": "#a97577",
+   "hero": "radial-gradient(ellipse at 82% 72%,#65333e,transparent 59%),linear-gradient(115deg,#2b161d,#321922)",
+   "feature": "#351d27",
+   "takeout": "#351d27",
+   "story": "#351d27",
+   "surface": "#351d27",
+   "buttonText": "#2d1420",
+   "serif": false
+  },
+  "intro": "Start over a plate, stay for a soulful reggae selection, and get onto the floor when the dancehall hooks come in.",
+  "heading": [
+   "Soulmaker",
+   "Sessions."
+  ],
+  "hook": "The tune that gets you out of your seat.",
+  "body": "Start with a warm, soul-led reggae set. When the selector moves into familiar dancehall, slide out of the booth and bring your friends with you.",
+  "story": [
+   [
+    "From Sydney to 127th Street.",
+    "Rose light on brass and plum velvet set the mood in this Sydney-inspired edition. Start with jerk from the Jamaican kitchen, then move to the floor when your tune comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Rose light on brass, plum velvet, and a well-worn record sleeve set the mood for this indoor edition in Calumet Park.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Sydney Soulmaker Sessions flyer with dancers and a selector in a plum and brass lounge."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "Four photographs follow two friends from their booth onto the dance floor."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "A hand turns a record sleeve beside a turntable in an indoor lounge."
+   }
+  }
+ },
+ {
+  "key": "yokohama",
+  "city": "Yokohama",
+  "theme": {
+   "bg": "#061020",
+   "fg": "#f0f8ff",
+   "muted": "#c0d5e7",
+   "accent": "#8bdff7",
+   "accent2": "#c8ecff",
+   "line": "#526d89",
+   "hero": "radial-gradient(ellipse at 82% 72%,#204d79 0%,transparent 59%),linear-gradient(115deg,#193454 0%,#0a172c 58%)",
+   "feature": "#101f33",
+   "takeout": "#0a1728",
+   "story": "#0d2944",
+   "surface": "#162841",
+   "buttonText": "#071827",
+   "serif": false
+  },
+  "intro": "One selector drops a tune you know. The other finds a different voice on the same riddim. The floor keeps moving through the handoff.",
+  "heading": [
+   "Two selectors.",
+   "One riddim."
+  ],
+  "hook": "Hear the same riddim turn into a different tune.",
+  "body": "Listen for the bassline that keeps coming back as the selectors trade versions. When the hook you know comes around, sing it back.",
+  "story": [
+   [
+    "From Yokohama to 127th Street.",
+    "Steel, chrome and ice-blue light set the mood in this Yokohama-inspired edition. Start with jerk from the Jamaican kitchen, then move to the floor when your tune comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "The steel, chrome and ice-blue light take their cue from Yokohama’s harbor. The party takes place at Irie Jerk in Calumet Park.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Yokohama Edition flyer. Two selectors hold records across a booth with a chrome-lit Yokohama harbor skyline behind them."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "Two DJs pass a record sleeve across a booth while the crowd dances behind them."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "A crowd dances in front of sound-system speakers under blue industrial lights."
+   }
+  }
+ },
+ {
+  "key": "zanzibar",
+  "city": "Zanzibar",
+  "theme": {
+   "bg": "#0d211f",
+   "fg": "#fff1d7",
+   "muted": "#e2d6c8",
+   "accent": "#f7ce89",
+   "accent2": "#efae81",
+   "line": "#967a62",
+   "hero": "radial-gradient(ellipse at 80% 72%,#694222,transparent 62%),linear-gradient(115deg,#17433e,#0d2523)",
+   "feature": "#13332f",
+   "takeout": "#342820",
+   "story": "#193d36",
+   "surface": "#29433a",
+   "buttonText": "#172620",
+   "serif": false
+  },
+  "intro": "Follow the bass in. Start with a plate from the Jamaican kitchen, then move closer to the booth when the selector drops a dancehall tune you know by heart.",
+  "heading": [
+   "Indian Ocean Frequencies.",
+   "Follow the bass in."
+  ],
+  "hook": "Find the groove. Sing the hook.",
+  "body": "An early reggae groove gives way to a dancehall-heavy set. Bring a friend who knows every word. When the selector cuts the volume, the room finishes the chorus.",
+  "story": [
+   [
+    "From Zanzibar to 127th Street.",
+    "The Zanzibar edition takes its visual cues from carved geometric patterns, pierced brass, and warm light. Inside Irie Jerk, amber pools across the tables and deep teal frames the selector’s booth."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "Amber light filters through pierced brass onto the vinyl and mixer, with the dance floor just beyond the booth.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 1122,
+    "height": 1402,
+    "alt": "Indian Ocean Frequencies flyer with a Zanzibari woman selector and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 1086,
+    "alt": "A Zanzibari woman DJ leads an indoor dance floor under amber and teal lighting."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 1448,
+    "height": 814,
+    "alt": "A close-up of the indoor DJ booth under amber and teal light."
+   }
+  }
+ },
+ {
+  "key": "berlin",
+  "city": "Berlin",
+  "theme": {
+   "bg": "#151519",
+   "fg": "#fff4df",
+   "muted": "#e4e7d8",
+   "accent": "#ceff80",
+   "accent2": "#ceff80",
+   "line": "#878b70",
+   "hero": "linear-gradient(130deg,#ceff8035,#151519 62%)",
+   "feature": "#30372b",
+   "takeout": "#3c352c",
+   "story": "#383f30",
+   "surface": "#3c352c",
+   "buttonText": "#20271a",
+   "serif": false
+  },
+  "intro": "Meet over jerk from the Jamaican kitchen. The DJ brings the dancehall favorites, and the room brings the chorus.",
+  "heading": [
+   "Concrete Chorus.",
+   "Give the chorus back."
+  ],
+  "hook": "The DJ gives you the hook. Give it back louder.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Berlin to 127th Street.",
+    "Graphite and acid green set the mood in this Berlin-inspired edition. Start with jerk from the Jamaican kitchen, then move to the floor when your tune comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "A closer look at the decks between tracks.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 634,
+    "height": 1024,
+    "alt": "Concrete Chorus flyer with an Afro-German woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 902,
+    "height": 510,
+    "alt": "An Afro-German woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 902,
+    "height": 514,
+    "alt": "An Afro-German woman DJ cues vinyl at the indoor DJ booth."
+   }
+  }
+ },
+ {
+  "key": "buenos-aires",
+  "city": "Buenos Aires",
+  "theme": {
+   "bg": "#151519",
+   "fg": "#fff4df",
+   "muted": "#e4e7d8",
+   "accent": "#ffadbf",
+   "accent2": "#ffadbf",
+   "line": "#878b70",
+   "hero": "linear-gradient(130deg,#ffadbf35,#151519 62%)",
+   "feature": "#30372b",
+   "takeout": "#3c352c",
+   "story": "#383f30",
+   "surface": "#3c352c",
+   "buttonText": "#20271a",
+   "serif": false
+  },
+  "intro": "Meet over jerk from the Jamaican kitchen. The DJ brings the dancehall favorites, and the room brings the chorus.",
+  "heading": [
+   "Low End Salon.",
+   "Lean into the bass."
+  ],
+  "hook": "The DJ gives you the hook. Give it back louder.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Buenos Aires to 127th Street.",
+    "Oxblood and ice pink set the mood in this Buenos Aires-inspired edition. Start with jerk from the Jamaican kitchen, then move to the floor when your tune comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "A closer look at the decks between tracks.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 612,
+    "height": 1024,
+    "alt": "Low End Salon flyer with an Afro-Argentine woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 924,
+    "height": 512,
+    "alt": "An Afro-Argentine woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 924,
+    "height": 512,
+    "alt": "An Afro-Argentine woman DJ cues vinyl at the indoor DJ booth."
+   }
+  }
+ },
+ {
+  "key": "lima",
+  "city": "Lima",
+  "theme": {
+   "bg": "#151519",
+   "fg": "#fff4df",
+   "muted": "#e4e7d8",
+   "accent": "#a6bbff",
+   "accent2": "#a6bbff",
+   "line": "#878b70",
+   "hero": "linear-gradient(130deg,#a6bbff35,#151519 62%)",
+   "feature": "#30372b",
+   "takeout": "#3c352c",
+   "story": "#383f30",
+   "surface": "#3c352c",
+   "buttonText": "#20271a",
+   "serif": false
+  },
+  "intro": "Meet over jerk from the Jamaican kitchen. The DJ brings the dancehall favorites, and the room brings the chorus.",
+  "heading": [
+   "Coastal Signal.",
+   "Follow the signal."
+  ],
+  "hook": "The DJ gives you the hook. Give it back louder.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Lima to 127th Street.",
+    "Warm white and cobalt set the mood in this Lima-inspired edition. Start with jerk from the Jamaican kitchen, then move to the floor when your tune comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "A closer look at the decks between tracks.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 629,
+    "height": 1024,
+    "alt": "Coastal Signal flyer with an Afro-Peruvian woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 907,
+    "height": 530,
+    "alt": "An Afro-Peruvian woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 907,
+    "height": 494,
+    "alt": "An Afro-Peruvian woman DJ cues vinyl at the indoor DJ booth."
+   }
+  }
+ },
+ {
+  "key": "melbourne",
+  "city": "Melbourne",
+  "theme": {
+   "bg": "#151519",
+   "fg": "#fff4df",
+   "muted": "#e4e7d8",
+   "accent": "#e4b8ed",
+   "accent2": "#e4b8ed",
+   "line": "#878b70",
+   "hero": "linear-gradient(130deg,#e4b8ed35,#151519 62%)",
+   "feature": "#30372b",
+   "takeout": "#3c352c",
+   "story": "#383f30",
+   "surface": "#3c352c",
+   "buttonText": "#20271a",
+   "serif": false
+  },
+  "intro": "Meet over jerk from the Jamaican kitchen. The DJ brings the dancehall favorites, and the room brings the chorus.",
+  "heading": [
+   "Last Track Social.",
+   "Stay for one more."
+  ],
+  "hook": "The DJ gives you the hook. Give it back louder.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Melbourne to 127th Street.",
+    "Plum and chrome set the mood in this Melbourne-inspired edition. Start with jerk from the Jamaican kitchen, then move to the floor when your tune comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "A closer look at the decks between tracks.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 610,
+    "height": 1024,
+    "alt": "Last Track Social flyer with a Black Australian woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 926,
+    "height": 542,
+    "alt": "A Black Australian woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 926,
+    "height": 484,
+    "alt": "A Black Australian woman DJ cues vinyl at the indoor DJ booth."
+   }
+  }
+ },
+ {
+  "key": "santiago",
+  "city": "Santiago",
+  "theme": {
+   "bg": "#151519",
+   "fg": "#fff4df",
+   "muted": "#e4e7d8",
+   "accent": "#91d9ff",
+   "accent2": "#91d9ff",
+   "line": "#878b70",
+   "hero": "linear-gradient(130deg,#91d9ff35,#151519 62%)",
+   "feature": "#30372b",
+   "takeout": "#3c352c",
+   "story": "#383f30",
+   "surface": "#3c352c",
+   "buttonText": "#20271a",
+   "serif": false
+  },
+  "intro": "Meet over jerk from the Jamaican kitchen. The DJ brings the dancehall favorites, and the room brings the chorus.",
+  "heading": [
+   "After the Drop.",
+   "Sing through the drop."
+  ],
+  "hook": "The DJ gives you the hook. Give it back louder.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Santiago to 127th Street.",
+    "Copper and arctic blue set the mood in this Santiago-inspired edition. Start with jerk from the Jamaican kitchen, then move to the floor when your tune comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "A closer look at the decks between tracks.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 652,
+    "height": 1024,
+    "alt": "After the Drop flyer with a Chilean woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 884,
+    "height": 524,
+    "alt": "A Chilean woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 884,
+    "height": 502,
+    "alt": "A Chilean woman DJ cues vinyl at the indoor DJ booth."
+   }
+  }
+ },
+ {
+  "key": "singapore",
+  "city": "Singapore",
+  "theme": {
+   "bg": "#151519",
+   "fg": "#fff4df",
+   "muted": "#e4e7d8",
+   "accent": "#9cf0c2",
+   "accent2": "#9cf0c2",
+   "line": "#878b70",
+   "hero": "linear-gradient(130deg,#9cf0c235,#151519 62%)",
+   "feature": "#30372b",
+   "takeout": "#3c352c",
+   "story": "#383f30",
+   "surface": "#3c352c",
+   "buttonText": "#20271a",
+   "serif": false
+  },
+  "intro": "Meet over jerk from the Jamaican kitchen. The DJ brings the dancehall favorites, and the room brings the chorus.",
+  "heading": [
+   "Switch the Tempo.",
+   "Catch the switch."
+  ],
+  "hook": "The DJ gives you the hook. Give it back louder.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Singapore to 127th Street.",
+    "Jade and amber set the mood in this Singapore-inspired edition. Start with jerk from the Jamaican kitchen, then move to the floor when your tune comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "A closer look at the decks between tracks.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 649,
+    "height": 1024,
+    "alt": "Switch the Tempo flyer with a Singaporean woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 887,
+    "height": 512,
+    "alt": "A Singaporean woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 887,
+    "height": 512,
+    "alt": "A Singaporean woman DJ cues vinyl at the indoor DJ booth."
+   }
+  }
+ },
+ {
+  "key": "stockholm",
+  "city": "Stockholm",
+  "theme": {
+   "bg": "#151519",
+   "fg": "#fff4df",
+   "muted": "#e4e7d8",
+   "accent": "#d6b4ff",
+   "accent2": "#d6b4ff",
+   "line": "#878b70",
+   "hero": "linear-gradient(130deg,#d6b4ff35,#151519 62%)",
+   "feature": "#30372b",
+   "takeout": "#3c352c",
+   "story": "#383f30",
+   "surface": "#3c352c",
+   "buttonText": "#20271a",
+   "serif": false
+  },
+  "intro": "Meet over jerk from the Jamaican kitchen. The DJ brings the dancehall favorites, and the room brings the chorus.",
+  "heading": [
+   "Northern Riddim.",
+   "Warm up the room."
+  ],
+  "hook": "The DJ gives you the hook. Give it back louder.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Stockholm to 127th Street.",
+    "Birch and ultraviolet set the mood in this Stockholm-inspired edition. Start with jerk from the Jamaican kitchen, then move to the floor when your tune comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "A closer look at the decks between tracks.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 636,
+    "height": 1024,
+    "alt": "Northern Riddim flyer with a Black Swedish woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 900,
+    "height": 502,
+    "alt": "A Black Swedish woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 900,
+    "height": 524,
+    "alt": "A Black Swedish woman DJ cues vinyl at the indoor DJ booth."
+   }
+  }
+ },
+ {
+  "key": "taipei",
+  "city": "Taipei",
+  "theme": {
+   "bg": "#151519",
+   "fg": "#fff4df",
+   "muted": "#e4e7d8",
+   "accent": "#ffb289",
+   "accent2": "#ffb289",
+   "line": "#878b70",
+   "hero": "linear-gradient(130deg,#ffb28935,#151519 62%)",
+   "feature": "#30372b",
+   "takeout": "#3c352c",
+   "story": "#383f30",
+   "surface": "#3c352c",
+   "buttonText": "#20271a",
+   "serif": false
+  },
+  "intro": "Meet over jerk from the Jamaican kitchen. The DJ brings the dancehall favorites, and the room brings the chorus.",
+  "heading": [
+   "Neon Rewind.",
+   "Run that hook back."
+  ],
+  "hook": "The DJ gives you the hook. Give it back louder.",
+  "body": "Ease in with reggae and stay for a dancehall-heavy set. When the DJ drops the volume, sing the next line from wherever you’re standing.",
+  "story": [
+   [
+    "From Taipei to 127th Street.",
+    "Ultramarine and phosphor peach set the mood in this Taipei-inspired edition. Start with jerk from the Jamaican kitchen, then move to the floor when your tune comes on."
+   ],
+   [
+    "Meet over jerk.",
+    "Settle in with a plate from Irie Jerk’s Jamaican kitchen. Catch up at the table until a riddim gets you on your feet. When the DJ cuts the volume on a familiar chorus, sing it back."
+   ]
+  ],
+  "caption": "A closer look at the decks between tracks.",
+  "images": {
+   "flyer": {
+    "smallWidth": 560,
+    "width": 612,
+    "height": 1024,
+    "alt": "Neon Rewind flyer with a Taiwanese woman DJ and an indoor dance floor."
+   },
+   "photo": {
+    "smallWidth": 724,
+    "width": 924,
+    "height": 532,
+    "alt": "A Taiwanese woman DJ smiles as guests sing along indoors."
+   },
+   "still": {
+    "smallWidth": 724,
+    "width": 924,
+    "height": 494,
+    "alt": "A Taiwanese woman DJ cues vinyl at the indoor DJ booth."
+   }
+  }
+ }
+]

@@ -6,8 +6,9 @@
 //   2. Feature   photo + two-line heading + story   (only if the edition has one)
 //   3. Takeout   the takeout offer, with the edition's photo if it has one
 //   4. Story     two "what to expect" columns
-//   5. Clip      the edition's animated flyer, with a still of its first frame
-//   6. Holidays  holiday nights + link to all events
+//   5. Clip      the edition's animated flyer, or a picture if it has none
+//   6. Holidays  upcoming holiday nights + link to all events
+// A banner above the hero names the edition's Thursday and any special night.
 //
 // Theme variables (all required, set in the edition's theme.vars):
 //   --bg --fg --muted          page background, text, secondary text
@@ -26,6 +27,7 @@
 //                              section backgrounds and story text
 import { type CSSProperties, type RefObject, useEffect } from "react";
 import { googleCalendarUrl, startsLabel, venueLine } from "@/lib/thursday/calendar";
+import { longDate, specialOn } from "@/lib/thursday/schedule";
 import type { ThursdayEdition, ThursdayEvent } from "@/lib/thursday/types";
 
 const CSS = `
@@ -43,6 +45,13 @@ const CSS = `
 .thx h3{font-family:var(--body-font);font-size:1.1rem;line-height:1.25}
 .thx .lede{font-family:var(--lede-font);font-size:clamp(1.12rem,2vw,1.45rem);line-height:1.35;max-width:34ch}
 .thx .muted{color:var(--muted)}
+.thx .week{border-bottom:1px solid var(--line);background:var(--surface)}
+.thx .week .wrap{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.3rem 2rem;padding-block:.8rem}
+.thx .week p{max-width:70ch}
+.thx .still figcaption{margin-top:1.2rem;color:var(--muted)}
+.thx .still img{display:block;width:100%;height:auto}
+.thx a.card{display:block;text-decoration:none}
+.thx a.card:hover h3{text-decoration:underline}
 .thx .hero{background:var(--hero-bg);overflow:hidden}
 .thx .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"copy art";align-items:center;gap:clamp(2rem,5vw,5rem);padding-block:clamp(2.2rem,6vw,5.5rem)}
 .thx[data-art=left] .hero-grid{grid-template-areas:"art copy"}
@@ -79,7 +88,7 @@ const CSS = `
 .thx .story .wrap{display:grid;grid-template-columns:1fr 1fr;gap:2rem 4rem;padding-block:clamp(2.4rem,5vw,4.5rem)}
 .thx .story p{margin-top:.9rem;max-width:52ch;color:var(--story-muted)}
 .thx .clip{padding-block:clamp(2.4rem,5vw,4rem)}
-.thx .clip .framed{max-width:56rem;margin-top:1.4rem}
+.thx .clip .framed,.thx .still{max-width:56rem;margin-top:1.4rem}
 .thx .clip video{aspect-ratio:16/9;object-fit:cover;background:var(--surface)}
 .thx .holidays{padding-block:clamp(2.4rem,5vw,4rem)}
 .thx .holidays-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.5rem 2rem}
@@ -104,18 +113,17 @@ export function ThursdayStyles() {
 type Props = {
   event: ThursdayEvent;
   edition: ThursdayEdition;
-  /**
-   * True when several editions share the page and only one is shown (rotation):
-   * images stay lazy and the clip's poster is applied later by useEditionClip(),
-   * so hidden editions download nothing. False on a single-edition page.
-   */
-  deferMedia: boolean;
+  /** The Thursday this page is about (ISO date). */
+  date: string;
 };
 
-export function ThursdayEditionView({ event, edition, deferMedia }: Props) {
+export function ThursdayEditionView({ event, edition, date }: Props) {
   const id = (name: string) => `${edition.key}-${name}`;
-  const { theme, flyer, feature, takeoutImage } = edition;
+  const { theme, flyer, feature, takeoutImage, clip, still } = edition;
   const v = event.venue;
+  const holiday = event.holidays.find((h) => h.date === date);
+  const special = specialOn(date);
+  const holidays = event.holidays.filter((h) => h.date >= date);
 
   return (
     <div
@@ -125,6 +133,34 @@ export function ThursdayEditionView({ event, edition, deferMedia }: Props) {
       data-frame={theme.frame}
       data-facts={theme.facts}
     >
+      <section className="week" aria-label="This edition's date">
+        <div className="wrap">
+          <p>
+            <span className="label">
+              {edition.label} edition · {longDate(date)}
+            </span>
+            <br />
+            {holiday ? (
+              <a href={holiday.href}>
+                <strong>{holiday.title}</strong>, ${holiday.price}, replaces the free night this
+                Thursday →
+              </a>
+            ) : special ? (
+              <>
+                <strong>{special.title}.</strong> {special.description}
+              </>
+            ) : (
+              <>
+                {event.admission}, {event.schedule.timeLabel}.
+              </>
+            )}
+          </p>
+          <a className="textlink" href={`/${event.slug}/calendar`}>
+            Every Thursday&rsquo;s city →
+          </a>
+        </div>
+      </section>
+
       <section className="hero" aria-labelledby={id("title")}>
         <div className="wrap hero-grid">
           <div className="hero-copy">
@@ -173,7 +209,7 @@ export function ThursdayEditionView({ event, edition, deferMedia }: Props) {
               height={flyer.height}
               alt={flyer.alt}
               decoding="async"
-              {...(deferMedia ? { loading: "lazy" as const } : { fetchPriority: "high" as const })}
+              fetchPriority="high"
             />
           </figure>
         </div>
@@ -251,59 +287,84 @@ export function ThursdayEditionView({ event, edition, deferMedia }: Props) {
         </div>
       </section>
 
-      <section className="band clip" aria-labelledby={id("clip-title")}>
-        <div className="wrap">
-          <h2 id={id("clip-title")} className="h2">
-            See the vibe.
-          </h2>
-          <figure className="framed">
-            <video
-              controls
-              loop
-              muted
-              playsInline
-              preload="none"
-              width={1920}
-              height={1080}
-              data-thx-clip=""
-              data-poster={edition.clip.poster}
-              {...(deferMedia ? {} : { poster: edition.clip.poster })}
-              aria-label={edition.clip.label}
-            >
-              <source src={edition.clip.src} type="video/mp4" />
-            </video>
-          </figure>
-        </div>
-      </section>
-
-      <section className="band holidays" aria-labelledby={id("holidays")}>
-        <div className="wrap">
-          <div className="holidays-head">
-            <h2 id={id("holidays")} className="h2">
-              Holiday nights at {v.shortName}
+      {clip ? (
+        <section className="band clip" aria-labelledby={id("clip-title")}>
+          <div className="wrap">
+            <h2 id={id("clip-title")} className="h2">
+              See the vibe.
             </h2>
-            <a className="textlink" href={event.allEventsHref}>
-              All events at {v.shortName} →
-            </a>
+            <figure className="framed">
+              <video
+                controls
+                loop
+                muted
+                playsInline
+                preload="none"
+                width={1920}
+                height={1080}
+                data-thx-clip=""
+                data-poster={clip.poster}
+                poster={clip.poster}
+                aria-label={clip.label}
+              >
+                <source src={clip.src} type="video/mp4" />
+              </video>
+            </figure>
           </div>
-          {event.holidays.some((h) => h.replacesWeekly) && (
-            <p className="muted holidays-note">
-              On these Thursdays the holiday party replaces the regular free night.
-            </p>
-          )}
-          <div className="cards">
-            {event.holidays.map((h) => (
-              <article key={h.date} className="card">
-                <p className="label">
-                  <time dateTime={h.date}>{h.dateLabel}</time> · ${h.price}
-                </p>
-                <h3>{h.title}</h3>
-                <p>{h.description}</p>
-              </article>
-            ))}
+        </section>
+      ) : still ? (
+        <section className="band clip" aria-labelledby={id("clip-title")}>
+          <div className="wrap">
+            <h2 id={id("clip-title")} className="h2">
+              See the vibe.
+            </h2>
+            <figure className="still">
+              <img
+                loading="lazy"
+                decoding="async"
+                src={still.image.src}
+                srcSet={still.image.srcSet}
+                sizes={still.image.sizes}
+                width={still.image.width}
+                height={still.image.height}
+                alt={still.image.alt}
+              />
+              <figcaption>{still.caption}</figcaption>
+            </figure>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
+
+      {holidays.length > 0 && (
+        <section className="band holidays" aria-labelledby={id("holidays")}>
+          <div className="wrap">
+            <div className="holidays-head">
+              <h2 id={id("holidays")} className="h2">
+                Holiday nights at {v.shortName}
+              </h2>
+              <a className="textlink" href={event.allEventsHref}>
+                All events at {v.shortName} →
+              </a>
+            </div>
+            {holidays.some((h) => h.replacesWeekly) && (
+              <p className="muted holidays-note">
+                On these Thursdays the holiday party replaces the regular free night.
+              </p>
+            )}
+            <div className="cards">
+              {holidays.map((h) => (
+                <a key={h.date} className="card" href={h.href}>
+                  <p className="label">
+                    <time dateTime={h.date}>{h.dateLabel}</time> · ${h.price}
+                  </p>
+                  <h3>{h.title}</h3>
+                  <p>{h.description}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </div>
   );
 }
@@ -342,6 +403,6 @@ export function useEditionClip(root: RefObject<HTMLElement | null>, selector: ()
     );
     io.observe(video);
     return () => io.disconnect();
-    // `selector` is read once, on mount: the shown edition never changes afterwards.
+    // `selector` is read once, on mount: a new edition remounts the page.
   }, [root]);
 }
