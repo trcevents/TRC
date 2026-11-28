@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 
 const EVENT_LINKS = [
   { to: "/lunch", label: "Lunch" },
+  { to: "/blaqs/", label: "Reggae Wednesdays", staticPage: true },
   { to: "/irie-jerk-and-juggling", label: "Irie Jerk Thursdays" },
   { to: "/friday-lime", label: "Friday Lime" },
   { to: "/sing-ova-sundays/chicago", label: "Sing Ova Sundays" },
@@ -49,17 +50,21 @@ export function Navbar() {
             </span>
           </Link>
 
-          {/* The links need about 900px, so narrower screens get the menu button. */}
-          <nav className="hidden items-center gap-4 lg:flex xl:gap-5">
-            {EVENT_LINKS.map((event) => (
-              <Link
-                key={event.to}
-                to={event.to}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-gold [&.active]:text-gold"
-              >
-                {event.label}
-              </Link>
-            ))}
+          {/* The links need about 1050px, so narrower screens get the menu button. */}
+          <nav className="hidden items-center gap-4 xl:flex">
+            {EVENT_LINKS.map((event) => {
+              const style =
+                "text-sm font-medium text-muted-foreground transition-colors hover:text-gold [&.active]:text-gold";
+              return "staticPage" in event ? (
+                <a key={event.to} href={event.to} className={style}>
+                  {event.label}
+                </a>
+              ) : (
+                <Link key={event.to} to={event.to} className={style}>
+                  {event.label}
+                </Link>
+              );
+            })}
           </nav>
         </div>
 
@@ -72,7 +77,7 @@ export function Navbar() {
               aria-label="Get Directions"
             >
               <MapPin className="size-4" />
-              <span className="hidden sm:inline lg:hidden xl:inline">Get Directions</span>
+              <span className="hidden sm:inline">Get Directions</span>
             </a>
           </Button>
           <button
@@ -81,7 +86,7 @@ export function Navbar() {
             aria-expanded={open}
             aria-controls="site-menu"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="flex size-11 items-center justify-center rounded-md border border-border text-foreground hover:text-gold lg:hidden"
+            className="flex size-11 items-center justify-center rounded-md border border-border text-foreground hover:text-gold xl:hidden"
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
@@ -91,18 +96,21 @@ export function Navbar() {
       {open && (
         <nav
           id="site-menu"
-          className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-border/60 bg-background px-4 py-2 sm:px-6 lg:hidden"
+          className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-border/60 bg-background px-4 py-2 sm:px-6 xl:hidden"
         >
-          {EVENT_LINKS.map((event) => (
-            <Link
-              key={event.to}
-              to={event.to}
-              onClick={() => setOpen(false)}
-              className="block border-b border-border/40 py-3.5 text-base font-medium text-muted-foreground last:border-0 hover:text-gold [&.active]:text-gold"
-            >
-              {event.label}
-            </Link>
-          ))}
+          {EVENT_LINKS.map((event) => {
+            const style =
+              "block border-b border-border/40 py-3.5 text-base font-medium text-muted-foreground last:border-0 hover:text-gold [&.active]:text-gold";
+            return "staticPage" in event ? (
+              <a key={event.to} href={event.to} className={style}>
+                {event.label}
+              </a>
+            ) : (
+              <Link key={event.to} to={event.to} onClick={() => setOpen(false)} className={style}>
+                {event.label}
+              </Link>
+            );
+          })}
         </nav>
       )}
     </header>

@@ -182,6 +182,50 @@ export function EventsPage() {
 
         <IrieJerkLineupGrid />
 
+        <section className="mt-16">
+          <p className="eyebrow mb-2">Also every Wednesday · 4 PM – 2 AM</p>
+          <h2 className="font-display text-3xl font-extrabold">
+            Reggae Wednesdays at <span className="text-gradient-gold">Blaqs Lounge</span>
+          </h2>
+          <p className="mt-2 text-muted-foreground">7628 S. Cottage Grove Ave, Chicago, IL 60619</p>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            {[
+              {
+                href: "/blaqs/",
+                image: "/blaqs/holo-flyer.webp",
+                title: "Reggae Wednesdays",
+                note: "Presented by Prestige Promotions",
+              },
+              {
+                href: "/blaqs/nadia/",
+                image: "/blaqs/nadia/nadia-flyer.webp",
+                title: "Reggae Wednesdays with Nadia",
+                note: "Promoted and hosted by Nadia",
+              },
+            ].map((night) => (
+              <a
+                key={night.href}
+                href={night.href}
+                className="flex items-center gap-4 rounded-xl border border-gold/40 bg-card p-4 transition-colors hover:border-gold"
+              >
+                <img
+                  src={night.image}
+                  alt={`${night.title} flyer`}
+                  loading="lazy"
+                  className="w-28 shrink-0 rounded-lg border border-gold/30"
+                />
+                <div>
+                  <h3 className="font-display text-xl font-extrabold">{night.title}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{night.note}</p>
+                  <span className="mt-2 inline-block text-sm font-medium text-gold">
+                    See the night →
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+
         <p className="mt-14 text-center text-sm text-muted-foreground">
           Curious about the story behind Sunday's food?{" "}
           <a href="/dinner-in-jamaica" className="font-medium text-gold hover:underline">
