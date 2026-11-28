@@ -83,6 +83,13 @@ export function Footer() {
               </li>
               {!archived && (
                 <li>
+                  <Link to="/lunch" className="hover:text-gold">
+                    Lunch, 7 Days a Week
+                  </Link>
+                </li>
+              )}
+              {!archived && (
+                <li>
                   <Link to="/friday-lime" className="hover:text-gold">
                     The Ultimate Friday Lime
                   </Link>

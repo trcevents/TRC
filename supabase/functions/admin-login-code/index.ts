@@ -1,9 +1,10 @@
-// Password-free sign-in for TRC admins (comp admins and Sing Ova city admins).
+// Password-free sign-in for TRC admins (comp admins and Sing Ova city admins)
+// and Irie Jerk lunch staff.
 //   { action: "request", email }       emails a 6-digit code to an active admin
 //   { action: "verify", email, code }  checks it and returns a one-time token the
 //                                      browser exchanges for a normal session
 //                                      (supabase.auth.verifyOtp)
-// Needs migration 0023.
+// Needs migrations 0023 and 0029.
 import { createClient } from "npm:@supabase/supabase-js@2";
 
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
@@ -64,11 +65,12 @@ Deno.serve(async (req) => {
   }
 
   const supabase = createClient(SUPABASE_URL!, SERVICE_ROLE_KEY!);
-  const [comp, sos] = await Promise.all([
+  const [comp, sos, lunch] = await Promise.all([
     supabase.from("comp_admins").select("email").eq("active", true),
     supabase.from("sos_city_admins").select("email").eq("active", true),
+    supabase.from("lunch_staff").select("email").eq("active", true),
   ]);
-  const admin = [...(comp.data ?? []), ...(sos.data ?? [])].some(
+  const admin = [...(comp.data ?? []), ...(sos.data ?? []), ...(lunch.data ?? [])].some(
     (row) => String(row.email ?? "").toLowerCase() === email,
   );
 

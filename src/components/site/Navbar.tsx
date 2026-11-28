@@ -5,6 +5,7 @@ import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 
 const EVENT_LINKS = [
+  { to: "/lunch", label: "Lunch" },
   { to: "/irie-jerk-and-juggling", label: "Irie Jerk Thursdays" },
   { to: "/friday-lime", label: "Friday Lime" },
   { to: "/sing-ova-sundays/chicago", label: "Sing Ova Sundays" },
@@ -48,8 +49,8 @@ export function Navbar() {
             </span>
           </Link>
 
-          {/* The links need about 850px, so narrower screens get the menu button. */}
-          <nav className="hidden items-center gap-5 lg:flex">
+          {/* The links need about 900px, so narrower screens get the menu button. */}
+          <nav className="hidden items-center gap-4 lg:flex xl:gap-5">
             {EVENT_LINKS.map((event) => (
               <Link
                 key={event.to}
@@ -71,7 +72,7 @@ export function Navbar() {
               aria-label="Get Directions"
             >
               <MapPin className="size-4" />
-              <span className="hidden sm:inline">Get Directions</span>
+              <span className="hidden sm:inline lg:hidden xl:inline">Get Directions</span>
             </a>
           </Button>
           <button

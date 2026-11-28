@@ -8,7 +8,7 @@ import type { ReactNode } from "react";
 import { SOCIAL_LINKS } from "@/lib/social";
 
 const SITE_URL = "https://trcevent.com";
-const EFFECTIVE_DATE = "November 26, 2026";
+const EFFECTIVE_DATE = "November 27, 2026";
 const TITLE = "Privacy Policy | TRC Events";
 const DESCRIPTION =
   "What trcevent.com collects, how TRC Events uses it, and how to ask to see, correct or delete it.";
@@ -28,6 +28,7 @@ export function privacyHead() {
 
 const COLLECTED: [string, string][] = [
   ["Event updates", "your email address."],
+  ["Online lunch orders", "your name, phone number, table number if you dine in, and your order."],
   [
     "Sing Ova",
     "your email, display name, song pairings, notes and the pairings you heart. Approved pairings show your display name and note publicly. Your email is not shown publicly.",
@@ -102,7 +103,7 @@ export function PrivacyPage() {
 
       <Section title="How we use it">
         <p>
-          To run our events, send the messages you ask for (sign-in codes, confirmations and event
+          To run our events, prepare food orders, send the messages you ask for (sign-in codes, confirmations and event
           updates), review requests and submissions, prepare and keep performer agreements, pay
           performers, and meet legal and tax duties. We do not sell your information.
         </p>

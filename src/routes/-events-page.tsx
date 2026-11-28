@@ -71,6 +71,20 @@ export function EventsPage() {
 
       <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
         <a
+          href="/lunch"
+          className="mb-6 flex flex-col items-center justify-between gap-3 rounded-xl border-2 border-gold bg-gold/10 p-6 text-center sm:flex-row sm:text-left"
+        >
+          <div>
+            <p className="eyebrow mb-2">Lunch · 7 days a week · 11 AM – 3 PM</p>
+            <h2 className="font-display text-2xl font-extrabold sm:text-3xl">
+              Front Yard <span className="text-gradient-gold">Jerk Bowl</span>
+            </h2>
+            <p className="mt-2 text-muted-foreground">Bowls $20, seafood $25.</p>
+          </div>
+          <span className="shrink-0 text-sm font-medium text-gold">See the lunch menu →</span>
+        </a>
+
+        <a
           href="/irie-jerk-and-juggling"
           className="mb-6 flex flex-col items-center gap-6 rounded-xl border border-gold/40 bg-card p-6 transition-colors hover:border-gold sm:flex-row"
         >

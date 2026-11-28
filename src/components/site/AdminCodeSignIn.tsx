@@ -10,7 +10,10 @@ import { Input } from "@/components/ui/input";
 
 export type AdminStatus = "checking" | "signed-out" | "not-admin" | "admin";
 
-export function useAdminStatus(): AdminStatus {
+/** `check` is the database function that says whether this account may use the page. */
+export function useAdminStatus(
+  rpc: "is_comp_admin" | "is_lunch_staff" = "is_comp_admin",
+): AdminStatus {
   const [status, setStatus] = useState<AdminStatus>("checking");
 
   useEffect(() => {
@@ -21,7 +24,7 @@ export function useAdminStatus(): AdminStatus {
         if (active) setStatus("signed-out");
         return;
       }
-      const { data: isAdmin } = await supabase.rpc("is_comp_admin");
+      const { data: isAdmin } = await supabase.rpc(rpc);
       if (active) setStatus(isAdmin ? "admin" : "not-admin");
     }
     check();
@@ -33,7 +36,7 @@ export function useAdminStatus(): AdminStatus {
       active = false;
       listener.subscription.unsubscribe();
     };
-  }, []);
+  }, [rpc]);
 
   return status;
 }

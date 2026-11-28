@@ -27,6 +27,7 @@ import { Route as Jamaica64RouteImport } from './routes/jamaica64'
 import { Route as JamaicadayRouteImport } from './routes/jamaicaday'
 import { Route as JayReblRouteImport } from './routes/jay-rebl'
 import { Route as JustLaughWednesdayBrainstormRouteImport } from './routes/just-laugh-wednesday-brainstorm'
+import { Route as LunchRouteImport } from './routes/lunch'
 import { Route as MinglesTuesdaysBrainstormRouteImport } from './routes/mingles-tuesdays-brainstorm'
 import { Route as PastEventsRouteImport } from './routes/past-events'
 import { Route as PlateCostRouteImport } from './routes/plate-cost'
@@ -54,6 +55,7 @@ import { Route as JayReblReggaeDayProposalRouteImport } from './routes/jay-rebl_
 import { Route as JayReblRiddimVaultRouteImport } from './routes/jay-rebl_.riddim-vault'
 import { Route as JayReblSongFactoryRouteImport } from './routes/jay-rebl_.song-factory'
 import { Route as JerkyJerkSlugRouteImport } from './routes/jerky-jerk.$slug'
+import { Route as LunchKitchenRouteImport } from './routes/lunch_.kitchen'
 import { Route as PitchSlugRouteImport } from './routes/pitch.$slug'
 import { Route as SingOvaSundaysCityRouteImport } from './routes/sing-ova-sundays_.$city'
 
@@ -148,6 +150,11 @@ const JustLaughWednesdayBrainstormRoute =
     path: '/just-laugh-wednesday-brainstorm',
     getParentRoute: () => rootRouteImport,
   } as any)
+const LunchRoute = LunchRouteImport.update({
+  id: '/lunch',
+  path: '/lunch',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MinglesTuesdaysBrainstormRoute =
   MinglesTuesdaysBrainstormRouteImport.update({
     id: '/mingles-tuesdays-brainstorm',
@@ -289,6 +296,11 @@ const JerkyJerkSlugRoute = JerkyJerkSlugRouteImport.update({
   path: '/jerky-jerk/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LunchKitchenRoute = LunchKitchenRouteImport.update({
+  id: '/lunch_/kitchen',
+  path: '/lunch/kitchen',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PitchSlugRoute = PitchSlugRouteImport.update({
   id: '/pitch/$slug',
   path: '/pitch/$slug',
@@ -319,6 +331,7 @@ export interface FileRoutesByFullPath {
   '/jamaicaday': typeof JamaicadayRoute
   '/jay-rebl': typeof JayReblRoute
   '/just-laugh-wednesday-brainstorm': typeof JustLaughWednesdayBrainstormRoute
+  '/lunch': typeof LunchRoute
   '/mingles-tuesdays-brainstorm': typeof MinglesTuesdaysBrainstormRoute
   '/past-events': typeof PastEventsRoute
   '/plate-cost': typeof PlateCostRoute
@@ -346,6 +359,7 @@ export interface FileRoutesByFullPath {
   '/jay-rebl/riddim-vault': typeof JayReblRiddimVaultRoute
   '/jay-rebl/song-factory': typeof JayReblSongFactoryRoute
   '/jerky-jerk/$slug': typeof JerkyJerkSlugRoute
+  '/lunch/kitchen': typeof LunchKitchenRoute
   '/pitch/$slug': typeof PitchSlugRoute
   '/sing-ova-sundays/$city': typeof SingOvaSundaysCityRoute
 }
@@ -368,6 +382,7 @@ export interface FileRoutesByTo {
   '/jamaicaday': typeof JamaicadayRoute
   '/jay-rebl': typeof JayReblRoute
   '/just-laugh-wednesday-brainstorm': typeof JustLaughWednesdayBrainstormRoute
+  '/lunch': typeof LunchRoute
   '/mingles-tuesdays-brainstorm': typeof MinglesTuesdaysBrainstormRoute
   '/past-events': typeof PastEventsRoute
   '/plate-cost': typeof PlateCostRoute
@@ -395,6 +410,7 @@ export interface FileRoutesByTo {
   '/jay-rebl/riddim-vault': typeof JayReblRiddimVaultRoute
   '/jay-rebl/song-factory': typeof JayReblSongFactoryRoute
   '/jerky-jerk/$slug': typeof JerkyJerkSlugRoute
+  '/lunch/kitchen': typeof LunchKitchenRoute
   '/pitch/$slug': typeof PitchSlugRoute
   '/sing-ova-sundays/$city': typeof SingOvaSundaysCityRoute
 }
@@ -418,6 +434,7 @@ export interface FileRoutesById {
   '/jamaicaday': typeof JamaicadayRoute
   '/jay-rebl': typeof JayReblRoute
   '/just-laugh-wednesday-brainstorm': typeof JustLaughWednesdayBrainstormRoute
+  '/lunch': typeof LunchRoute
   '/mingles-tuesdays-brainstorm': typeof MinglesTuesdaysBrainstormRoute
   '/past-events': typeof PastEventsRoute
   '/plate-cost': typeof PlateCostRoute
@@ -445,6 +462,7 @@ export interface FileRoutesById {
   '/jay-rebl_/riddim-vault': typeof JayReblRiddimVaultRoute
   '/jay-rebl_/song-factory': typeof JayReblSongFactoryRoute
   '/jerky-jerk/$slug': typeof JerkyJerkSlugRoute
+  '/lunch_/kitchen': typeof LunchKitchenRoute
   '/pitch/$slug': typeof PitchSlugRoute
   '/sing-ova-sundays_/$city': typeof SingOvaSundaysCityRoute
 }
@@ -469,6 +487,7 @@ export interface FileRouteTypes {
     | '/jamaicaday'
     | '/jay-rebl'
     | '/just-laugh-wednesday-brainstorm'
+    | '/lunch'
     | '/mingles-tuesdays-brainstorm'
     | '/past-events'
     | '/plate-cost'
@@ -496,6 +515,7 @@ export interface FileRouteTypes {
     | '/jay-rebl/riddim-vault'
     | '/jay-rebl/song-factory'
     | '/jerky-jerk/$slug'
+    | '/lunch/kitchen'
     | '/pitch/$slug'
     | '/sing-ova-sundays/$city'
   fileRoutesByTo: FileRoutesByTo
@@ -518,6 +538,7 @@ export interface FileRouteTypes {
     | '/jamaicaday'
     | '/jay-rebl'
     | '/just-laugh-wednesday-brainstorm'
+    | '/lunch'
     | '/mingles-tuesdays-brainstorm'
     | '/past-events'
     | '/plate-cost'
@@ -545,6 +566,7 @@ export interface FileRouteTypes {
     | '/jay-rebl/riddim-vault'
     | '/jay-rebl/song-factory'
     | '/jerky-jerk/$slug'
+    | '/lunch/kitchen'
     | '/pitch/$slug'
     | '/sing-ova-sundays/$city'
   id:
@@ -567,6 +589,7 @@ export interface FileRouteTypes {
     | '/jamaicaday'
     | '/jay-rebl'
     | '/just-laugh-wednesday-brainstorm'
+    | '/lunch'
     | '/mingles-tuesdays-brainstorm'
     | '/past-events'
     | '/plate-cost'
@@ -594,6 +617,7 @@ export interface FileRouteTypes {
     | '/jay-rebl_/riddim-vault'
     | '/jay-rebl_/song-factory'
     | '/jerky-jerk/$slug'
+    | '/lunch_/kitchen'
     | '/pitch/$slug'
     | '/sing-ova-sundays_/$city'
   fileRoutesById: FileRoutesById
@@ -617,6 +641,7 @@ export interface RootRouteChildren {
   JamaicadayRoute: typeof JamaicadayRoute
   JayReblRoute: typeof JayReblRoute
   JustLaughWednesdayBrainstormRoute: typeof JustLaughWednesdayBrainstormRoute
+  LunchRoute: typeof LunchRoute
   MinglesTuesdaysBrainstormRoute: typeof MinglesTuesdaysBrainstormRoute
   PastEventsRoute: typeof PastEventsRoute
   PlateCostRoute: typeof PlateCostRoute
@@ -644,6 +669,7 @@ export interface RootRouteChildren {
   JayReblRiddimVaultRoute: typeof JayReblRiddimVaultRoute
   JayReblSongFactoryRoute: typeof JayReblSongFactoryRoute
   JerkyJerkSlugRoute: typeof JerkyJerkSlugRoute
+  LunchKitchenRoute: typeof LunchKitchenRoute
   PitchSlugRoute: typeof PitchSlugRoute
   SingOvaSundaysCityRoute: typeof SingOvaSundaysCityRoute
 }
@@ -774,6 +800,13 @@ declare module '@tanstack/react-router' {
       path: '/just-laugh-wednesday-brainstorm'
       fullPath: '/just-laugh-wednesday-brainstorm'
       preLoaderRoute: typeof JustLaughWednesdayBrainstormRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lunch': {
+      id: '/lunch'
+      path: '/lunch'
+      fullPath: '/lunch'
+      preLoaderRoute: typeof LunchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mingles-tuesdays-brainstorm': {
@@ -965,6 +998,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof JerkyJerkSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lunch_/kitchen': {
+      id: '/lunch_/kitchen'
+      path: '/lunch/kitchen'
+      fullPath: '/lunch/kitchen'
+      preLoaderRoute: typeof LunchKitchenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pitch/$slug': {
       id: '/pitch/$slug'
       path: '/pitch/$slug'
@@ -1001,6 +1041,7 @@ const rootRouteChildren: RootRouteChildren = {
   JamaicadayRoute: JamaicadayRoute,
   JayReblRoute: JayReblRoute,
   JustLaughWednesdayBrainstormRoute: JustLaughWednesdayBrainstormRoute,
+  LunchRoute: LunchRoute,
   MinglesTuesdaysBrainstormRoute: MinglesTuesdaysBrainstormRoute,
   PastEventsRoute: PastEventsRoute,
   PlateCostRoute: PlateCostRoute,
@@ -1028,6 +1069,7 @@ const rootRouteChildren: RootRouteChildren = {
   JayReblRiddimVaultRoute: JayReblRiddimVaultRoute,
   JayReblSongFactoryRoute: JayReblSongFactoryRoute,
   JerkyJerkSlugRoute: JerkyJerkSlugRoute,
+  LunchKitchenRoute: LunchKitchenRoute,
   PitchSlugRoute: PitchSlugRoute,
   SingOvaSundaysCityRoute: SingOvaSundaysCityRoute,
 }
