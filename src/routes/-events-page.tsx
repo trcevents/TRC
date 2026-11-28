@@ -11,6 +11,8 @@ import { IrieJerkLineupGrid } from "@/components/site/IrieJerkLineupGrid";
 import { venueLine } from "@/lib/thursday/calendar";
 import { IRIE_JERK_JUGGLING } from "@/lib/thursday/irie-jerk-juggling-event";
 import ijjFlyer from "@/assets/irie-jerk-juggling-flyer-560.webp";
+import limeFlyer from "@/assets/friday-lime-flags-560.webp";
+import { FRIDAY_LIME } from "@/lib/friday-lime";
 
 const SITE_URL = "https://trcevent.com";
 
@@ -70,7 +72,7 @@ export function EventsPage() {
       <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
         <a
           href="/irie-jerk-and-juggling"
-          className="mb-12 flex flex-col items-center gap-6 rounded-xl border border-gold/40 bg-card p-6 transition-colors hover:border-gold sm:flex-row"
+          className="mb-6 flex flex-col items-center gap-6 rounded-xl border border-gold/40 bg-card p-6 transition-colors hover:border-gold sm:flex-row"
         >
           <img
             src={ijjFlyer}
@@ -87,6 +89,30 @@ export function EventsPage() {
               Calumet Park.
             </p>
             <span className="mt-3 inline-block text-sm font-medium text-gold">
+              See the event →
+            </span>
+          </div>
+        </a>
+
+        <a
+          href={FRIDAY_LIME.path}
+          className="mb-12 flex flex-col items-center gap-6 rounded-xl border border-lime/40 bg-card p-6 transition-colors hover:border-lime sm:flex-row"
+        >
+          <img
+            src={limeFlyer}
+            alt="The Ultimate Friday Lime flyer"
+            className="w-40 shrink-0 rounded-lg border border-lime/30"
+          />
+          <div className="text-center sm:text-left">
+            <p className="eyebrow mb-2">Every Friday</p>
+            <h2 className="font-display text-3xl font-extrabold">
+              The Ultimate Friday <span className="text-lime">Lime</span>
+            </h2>
+            <p className="mt-2 text-muted-foreground">
+              Jamaican dinners and DJs playing soca, dancehall, reggae, Afrobeats, amapiano and
+              neo-soul. {FRIDAY_LIME.coverLabel}.
+            </p>
+            <span className="mt-3 inline-block text-sm font-medium text-lime">
               See the event →
             </span>
           </div>

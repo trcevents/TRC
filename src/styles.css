@@ -67,6 +67,8 @@
   --color-gold: var(--gold);
   --color-gold-foreground: var(--gold-foreground);
   --color-success: var(--success);
+  --color-lime: var(--lime);
+  --color-lime-deep: var(--lime-deep);
 }
 
 /*
@@ -89,6 +91,10 @@
 
   --gold: oklch(0.755 0.107 86);
   --gold-foreground: oklch(0.04 0 0);
+
+  /* The Ultimate Friday Lime accent and hero background. */
+  --lime: oklch(0.88 0.22 130);
+  --lime-deep: oklch(0.17 0.035 165);
 
   --secondary: oklch(0.2 0 0);
   --secondary-foreground: oklch(1 0 0);

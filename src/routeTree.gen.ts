@@ -20,6 +20,7 @@ import { Route as Dancehall101RouteImport } from './routes/dancehall-101'
 import { Route as DancehallFridaysRouteImport } from './routes/dancehall-fridays'
 import { Route as DinnerInJamaicaRouteImport } from './routes/dinner-in-jamaica'
 import { Route as EventsRouteImport } from './routes/events'
+import { Route as FridayLimeRouteImport } from './routes/friday-lime'
 import { Route as GetStartedRouteImport } from './routes/get-started'
 import { Route as IrieJerkAndJugglingRouteImport } from './routes/irie-jerk-and-juggling'
 import { Route as Jamaica64RouteImport } from './routes/jamaica64'
@@ -109,6 +110,11 @@ const DinnerInJamaicaRoute = DinnerInJamaicaRouteImport.update({
 const EventsRoute = EventsRouteImport.update({
   id: '/events',
   path: '/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FridayLimeRoute = FridayLimeRouteImport.update({
+  id: '/friday-lime',
+  path: '/friday-lime',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GetStartedRoute = GetStartedRouteImport.update({
@@ -306,6 +312,7 @@ export interface FileRoutesByFullPath {
   '/dancehall-fridays': typeof DancehallFridaysRoute
   '/dinner-in-jamaica': typeof DinnerInJamaicaRoute
   '/events': typeof EventsRoute
+  '/friday-lime': typeof FridayLimeRoute
   '/get-started': typeof GetStartedRoute
   '/irie-jerk-and-juggling': typeof IrieJerkAndJugglingRoute
   '/jamaica64': typeof Jamaica64Route
@@ -354,6 +361,7 @@ export interface FileRoutesByTo {
   '/dancehall-fridays': typeof DancehallFridaysRoute
   '/dinner-in-jamaica': typeof DinnerInJamaicaRoute
   '/events': typeof EventsRoute
+  '/friday-lime': typeof FridayLimeRoute
   '/get-started': typeof GetStartedRoute
   '/irie-jerk-and-juggling': typeof IrieJerkAndJugglingRoute
   '/jamaica64': typeof Jamaica64Route
@@ -403,6 +411,7 @@ export interface FileRoutesById {
   '/dancehall-fridays': typeof DancehallFridaysRoute
   '/dinner-in-jamaica': typeof DinnerInJamaicaRoute
   '/events': typeof EventsRoute
+  '/friday-lime': typeof FridayLimeRoute
   '/get-started': typeof GetStartedRoute
   '/irie-jerk-and-juggling': typeof IrieJerkAndJugglingRoute
   '/jamaica64': typeof Jamaica64Route
@@ -453,6 +462,7 @@ export interface FileRouteTypes {
     | '/dancehall-fridays'
     | '/dinner-in-jamaica'
     | '/events'
+    | '/friday-lime'
     | '/get-started'
     | '/irie-jerk-and-juggling'
     | '/jamaica64'
@@ -501,6 +511,7 @@ export interface FileRouteTypes {
     | '/dancehall-fridays'
     | '/dinner-in-jamaica'
     | '/events'
+    | '/friday-lime'
     | '/get-started'
     | '/irie-jerk-and-juggling'
     | '/jamaica64'
@@ -549,6 +560,7 @@ export interface FileRouteTypes {
     | '/dancehall-fridays'
     | '/dinner-in-jamaica'
     | '/events'
+    | '/friday-lime'
     | '/get-started'
     | '/irie-jerk-and-juggling'
     | '/jamaica64'
@@ -598,6 +610,7 @@ export interface RootRouteChildren {
   DancehallFridaysRoute: typeof DancehallFridaysRoute
   DinnerInJamaicaRoute: typeof DinnerInJamaicaRoute
   EventsRoute: typeof EventsRoute
+  FridayLimeRoute: typeof FridayLimeRoute
   GetStartedRoute: typeof GetStartedRoute
   IrieJerkAndJugglingRoute: typeof IrieJerkAndJugglingRoute
   Jamaica64Route: typeof Jamaica64Route
@@ -712,6 +725,13 @@ declare module '@tanstack/react-router' {
       path: '/events'
       fullPath: '/events'
       preLoaderRoute: typeof EventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/friday-lime': {
+      id: '/friday-lime'
+      path: '/friday-lime'
+      fullPath: '/friday-lime'
+      preLoaderRoute: typeof FridayLimeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/get-started': {
@@ -974,6 +994,7 @@ const rootRouteChildren: RootRouteChildren = {
   DancehallFridaysRoute: DancehallFridaysRoute,
   DinnerInJamaicaRoute: DinnerInJamaicaRoute,
   EventsRoute: EventsRoute,
+  FridayLimeRoute: FridayLimeRoute,
   GetStartedRoute: GetStartedRoute,
   IrieJerkAndJugglingRoute: IrieJerkAndJugglingRoute,
   Jamaica64Route: Jamaica64Route,

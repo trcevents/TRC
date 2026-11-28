@@ -38,7 +38,8 @@ function ActivityCard({ activity }: { activity: IrieJerkLineupRow }) {
         <p className="mt-2 text-xs font-medium italic">{activity.signature_plate}</p>
       )}
       <p className="mt-2 flex items-center gap-2 text-[0.65rem] font-medium text-gold">
-        {activity.cover_charge ? `$${activity.cover_charge} cover` : "Free entry"}
+        {activity.cover_label ??
+          (activity.cover_charge ? `$${activity.cover_charge} cover` : "Free entry")}
         {activity.is_21_plus && (
           <span className="rounded-sm border border-gold/50 px-1 py-0.5 text-muted-foreground">
             21+

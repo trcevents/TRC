@@ -3,6 +3,7 @@
 // source (the "Weekly Master (14 Activities)" tab). Read-only from the site;
 // edits happen via SQL against irie_jerk_weekly_lineup directly.
 import { supabase } from "@/lib/supabase";
+import { FRIDAY_LIME } from "@/lib/friday-lime";
 
 export type IrieJerkLineupRow = {
   slug: string;
@@ -22,6 +23,8 @@ export type IrieJerkLineupRow = {
   is_21_plus: boolean;
   replaces_slug: string | null;
   detail_path: string | null;
+  /** Replaces the cover/free text, for a cover that only applies part of the day. */
+  cover_label?: string;
 };
 
 // Retired from the lineup (Karaoke Thursdays is gone; Thursdays are Irie Jerk &
@@ -31,6 +34,30 @@ const REMOVED_SLUGS = [
   "karaoke-after-dark",
   "dancehall101",
   "dancehall101-hospitality",
+];
+
+// Nights kept in code rather than in the table. They have their own pages.
+const CODE_ROWS: IrieJerkLineupRow[] = [
+  {
+    slug: "friday-lime",
+    day_of_week: "Fri",
+    day_index: 5,
+    phase: "night",
+    slot_order: 12,
+    name: FRIDAY_LIME.name,
+    time_window: null,
+    description: `Jamaican dinners from ${FRIDAY_LIME.foodFrom}, and DJs from soca and dancehall to amapiano.`,
+    signature_plate: null,
+    signature_drinks: null,
+    cover_charge: 20,
+    cover_label: FRIDAY_LIME.coverLabel,
+    alcohol_free: false,
+    is_flagship: false,
+    is_monthly_special: false,
+    is_21_plus: false,
+    replaces_slug: null,
+    detail_path: FRIDAY_LIME.path,
+  },
 ];
 
 const LINEUP_COLUMNS =
@@ -43,7 +70,8 @@ export async function fetchIrieJerkLineup(): Promise<IrieJerkLineupRow[]> {
     .order("slot_order", { ascending: true })
     .order("is_monthly_special", { ascending: true });
   if (error) throw error;
-  return (data ?? []).filter((r) => !REMOVED_SLUGS.includes(r.slug));
+  const rows = (data ?? []).filter((r) => !REMOVED_SLUGS.includes(r.slug));
+  return [...rows, ...CODE_ROWS].sort((a, b) => a.slot_order - b.slot_order);
 }
 
 export async function fetchIrieJerkActivityBySlug(

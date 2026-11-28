@@ -83,6 +83,13 @@ export function Footer() {
               </li>
               {!archived && (
                 <li>
+                  <Link to="/friday-lime" className="hover:text-gold">
+                    The Ultimate Friday Lime
+                  </Link>
+                </li>
+              )}
+              {!archived && (
+                <li>
                   <address className="not-italic">
                     {IRIE_JERK_JUGGLING.venue.name}
                     <br />
