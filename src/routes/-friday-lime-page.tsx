@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FRIDAY_LIME } from "@/lib/friday-lime";
+import { LUNCH_HOURS } from "../../supabase/functions/lunch-order/menu";
 import { venueLine } from "@/lib/thursday/calendar";
 import { IRIE_JERK_JUGGLING } from "@/lib/thursday/irie-jerk-juggling-event";
 import flagsSmall from "@/assets/friday-lime-flags-560.webp";
@@ -105,8 +106,8 @@ export function FridayLimePage() {
                 <CalendarDays className="size-4 shrink-0 text-lime" /> Every Friday
               </li>
               <li className="inline-flex items-center gap-2">
-                <UtensilsCrossed className="size-4 shrink-0 text-lime" /> Food from{" "}
-                {FRIDAY_LIME.foodFrom}
+                <UtensilsCrossed className="size-4 shrink-0 text-lime" /> Lunch {LUNCH_HOURS.label},
+                dinners all night
               </li>
               <li className="inline-flex items-center gap-2">
                 <MapPin className="size-4 shrink-0 text-lime" /> {VENUE.name}, Calumet Park
@@ -141,15 +142,45 @@ export function FridayLimePage() {
       </section>
 
       <div className="mx-auto max-w-5xl space-y-16 px-4 py-16 sm:px-6">
-        {/* The night */}
-        <section className="grid gap-4 sm:grid-cols-3">
-          <div className="rounded-xl border border-border bg-card p-6">
-            <UtensilsCrossed className="size-6 text-lime" />
-            <h2 className="mt-3 font-display text-xl font-bold">Jamaican Dinners</h2>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Available all night, with food service from {FRIDAY_LIME.foodFrom}.
-            </p>
+        {/* Food */}
+        <section className="rounded-2xl border border-lime/40 bg-lime-deep p-6 sm:p-10">
+          <p className="eyebrow text-center">Come Hungry</p>
+          <h2 className="mt-3 text-center font-display text-3xl font-extrabold sm:text-4xl">
+            Come for lunch. <span className="italic text-lime">Stay for the lime.</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-center leading-relaxed text-muted-foreground">
+            Friday tastes like smoke, spice and a little sweetness. Start the afternoon with a jerk
+            bowl, then keep your plate close: Jamaican dinners are available all night, so you can
+            eat, dance and come back for more.
+          </p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <div className="flex flex-col rounded-xl border border-border bg-card p-6">
+              <p className="eyebrow">Lunch · {LUNCH_HOURS.label}</p>
+              <h3 className="mt-2 font-display text-xl font-bold">Front Yard Jerk Bowl</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                Coconut rice, smoky jerk, creamy cheese, fresh crunch, sweet pineapple and spicy
+                jerk sauce, built your way. $20, seafood $25.
+              </p>
+              <a href="/lunch" className="mt-4 text-sm font-medium text-lime hover:underline">
+                See the lunch menu →
+              </a>
+            </div>
+            <div className="flex flex-col rounded-xl border border-border bg-card p-6">
+              <p className="eyebrow">All Night</p>
+              <h3 className="mt-2 font-display text-xl font-bold">Jamaican Dinners</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                Real Jamaican plates from Irie Jerk, there when the music has you working up an
+                appetite. Grab a table and lime a while.
+              </p>
+              <a href={`tel:${VENUE.phone.tel}`} className="mt-4 text-sm font-medium text-lime hover:underline">
+                Call {VENUE.phone.display} →
+              </a>
+            </div>
           </div>
+        </section>
+
+        {/* The night */}
+        <section className="grid gap-4 sm:grid-cols-2">
           <div className="rounded-xl border border-border bg-card p-6">
             <Music className="size-6 text-lime" />
             <h2 className="mt-3 font-display text-xl font-bold">Music by DJs</h2>

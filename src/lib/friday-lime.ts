@@ -1,8 +1,8 @@
 // The Ultimate Friday Lime: the public facts, as printed on the flyers. Used by
 // /friday-lime, the /events card and the Friday column of the weekly lineup.
 //
-// Not on the flyers: the 12 noon food start comes from the owner's venue
-// paperwork. No first date or closing time is published.
+// Friday lunch is the daily Irie Jerk lunch (/lunch). No first date or closing
+// time is published.
 export const FRIDAY_LIME = {
   name: "The Ultimate Friday Lime",
   path: "/friday-lime",
@@ -10,6 +10,6 @@ export const FRIDAY_LIME = {
   description:
     "The Ultimate Friday Lime: every Friday at Irie Jerk Bar and Grill, Calumet Park. Jamaican dinners, DJs playing soca, dancehall, reggae, Afrobeats, amapiano and neo-soul, $20 after midnight.",
   coverLabel: "$20 after midnight",
-  foodFrom: "12 noon",
+  foodLine: "Come for lunch. Stay for the lime.",
   genres: ["Soca", "Dancehall", "Reggae", "Afrobeats", "Amapiano", "Neo-Soul"],
 } as const;

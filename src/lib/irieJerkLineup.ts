@@ -46,7 +46,7 @@ const CODE_ROWS: IrieJerkLineupRow[] = [
     slot_order: 12,
     name: FRIDAY_LIME.name,
     time_window: null,
-    description: `Jamaican dinners from ${FRIDAY_LIME.foodFrom}, and DJs from soca and dancehall to amapiano.`,
+    description: `${FRIDAY_LIME.foodLine} Jamaican dinners all night, and DJs from soca and dancehall to amapiano.`,
     signature_plate: null,
     signature_drinks: null,
     cover_charge: 20,
