@@ -6,11 +6,15 @@
 // Jamaica's dinner-specific narrative/hero/notify-me signup. That page still
 // carries its own hook and Culture Card story around Sunday's food; this one
 // is the plain "what's on, every day" index.
+import { useEffect, useState } from "react";
 import { CalendarDays, Phone, UtensilsCrossed } from "lucide-react";
 import { IrieJerkLineupGrid } from "@/components/site/IrieJerkLineupGrid";
 import { venueLine } from "@/lib/thursday/calendar";
 import { IRIE_JERK_JUGGLING } from "@/lib/thursday/irie-jerk-juggling-event";
 import ijjFlyer from "@/assets/irie-jerk-juggling-flyer-560.webp";
+import christmasFlyer from "@/assets/irie-jerk-christmas-eve-flyer-560.webp";
+import ballFlyer from "@/assets/irie-jerk-winter-ball-flyer-560.webp";
+import { currentThursday } from "@/lib/thursday/schedule";
 import limeFlyer from "@/assets/friday-lime-flags-560.webp";
 import irieJerkLogo from "@/assets/irie-jerk-logo-720.webp";
 import { FRIDAY_LIME } from "@/lib/friday-lime";
@@ -40,7 +44,17 @@ export function eventsHead() {
   };
 }
 
+const HOLIDAY_FLYERS: Record<string, string> = {
+  "2026-12-24": christmasFlyer,
+  "2026-12-31": ballFlyer,
+};
+
 export function EventsPage() {
+  // Parties that have passed drop off once the browser knows today's date.
+  const [from, setFrom] = useState("");
+  useEffect(() => setFrom(currentThursday()), []);
+  const holidays = IRIE_JERK_JUGGLING.holidays.filter((h) => h.date >= from);
+
   return (
     <div>
       <section className="border-b border-border bg-card">
@@ -115,6 +129,32 @@ export function EventsPage() {
             </span>
           </div>
         </a>
+
+        {holidays.length > 0 && (
+          <div className="mb-6 grid gap-4 sm:grid-cols-2">
+            {holidays.map((h) => (
+              <a
+                key={h.date}
+                href={h.href}
+                className="flex items-center gap-4 rounded-xl border border-gold/40 bg-card p-4 transition-colors hover:border-gold"
+              >
+                <img
+                  src={HOLIDAY_FLYERS[h.date]}
+                  alt={`${h.title} flyer`}
+                  className="w-28 shrink-0 rounded-lg border border-gold/30"
+                />
+                <div>
+                  <p className="eyebrow mb-2">{h.dateLabel}</p>
+                  <h2 className="font-display text-xl font-extrabold">{h.title}</h2>
+                  <p className="mt-1 text-sm text-muted-foreground">${h.price} admission</p>
+                  <span className="mt-2 inline-block text-sm font-medium text-gold">
+                    See the night →
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        )}
 
         <a
           href={FRIDAY_LIME.path}
