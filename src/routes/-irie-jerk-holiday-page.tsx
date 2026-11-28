@@ -6,6 +6,8 @@ import christmasSmall from "@/assets/irie-jerk-christmas-eve-flyer-560.webp";
 import christmasLarge from "@/assets/irie-jerk-christmas-eve-flyer-1024.webp";
 import ballSmall from "@/assets/irie-jerk-winter-ball-flyer-560.webp";
 import ballLarge from "@/assets/irie-jerk-winter-ball-flyer-1024.webp";
+import ballVideo from "@/assets/irie-jerk-winter-ball.mp4";
+import ballVideoPoster from "@/assets/irie-jerk-winter-ball-video-poster.webp";
 
 const SITE_URL = "https://trcevent.com";
 
@@ -101,7 +103,7 @@ function ChristmasEve() {
 <li><a href="/irie-jerk-and-juggling/tokyo">Tokyo</a></li>
 <li><a href="/irie-jerk-and-juggling/copenhagen">Copenhagen</a></li>
 <li><a href="/irie-jerk-and-juggling/seoul">Seoul</a></li>
-<li><a href="#main" aria-current="page">Christmas Eve</a></li><li><a href="#nye">New Year’s Eve</a></li></ul></nav></div>
+<li><a href="#main" aria-current="page">Christmas Eve</a></li><li><a href="/irie-jerk-and-juggling/winter-ball">New Year’s Eve</a></li></ul></nav></div>
 <div id="main">
 <section className="window" aria-labelledby="title"><div className="wrap entry">
 <div><p className="credit">Prestige Promotion presents</p>
@@ -182,6 +184,8 @@ const WINTERBALL_CSS = `
 }
 .ball ul{list-style-position:outside}
 .ball .steps ul{list-style:disc}
+.ball .film{padding-block:clamp(2.4rem,6vw,5rem);text-align:center}
+.ball .film video{display:block;width:min(100%,26rem);height:auto;aspect-ratio:9/16;margin:1.6rem auto 0;border:1px solid var(--line);background:#221417;box-shadow:0 1.3rem 3.5rem #060205a8}
 `;
 
 function WinterBall() {
@@ -213,6 +217,20 @@ function WinterBall() {
   fetchPriority="high"
 /></figure>
 </div></section>
+<section className="wrap film" aria-labelledby="film">
+  <h2 id="film">See the red carpet</h2>
+  <video
+    controls
+    playsInline
+    preload="none"
+    width={720}
+    height={1280}
+    poster={ballVideoPoster}
+    aria-label="GQ Meets VOGUE Winter Ball video"
+  >
+    <source src={ballVideo} type="video/mp4" />
+  </video>
+</section>
 <section className="program" id="evening" aria-labelledby="programme"><div className="wrap"><h2 id="programme">The evening</h2><div className="steps">
 <article><h3>The red carpet</h3><p>Make your entrance under sculptural lighting and stop for professional step-and-repeat photography.</p></article>
 <article><h3>Dinner with strings</h3><p>A string quartet reworks classic reggae and Afrobeats during dinner at Irie Jerk, with Jamaican cooking from the house kitchen.</p></article>
